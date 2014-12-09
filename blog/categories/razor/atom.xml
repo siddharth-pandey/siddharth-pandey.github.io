@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Razor | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/razor/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & V6+ MVC Razor Cheatsheets]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/"/>
+    <updated>2013-11-12T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic</id>
+    <content type="html"><![CDATA[<p>Below are the links to download cheat sheets for umbraco which I have found really useful:</p>
+
+<ul>
+<li><a href="http://our.umbraco.org/projects/developer-tools/razor-dynamicnode-cheat-sheet">Razor DynamicNode Cheat Sheet</a></li>
+<li><a href="http://our.umbraco.org/projects/developer-tools/umbraco-v6-mvc-razor-cheatsheets">Umbraco v6 MVC Razor Cheat Sheet</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

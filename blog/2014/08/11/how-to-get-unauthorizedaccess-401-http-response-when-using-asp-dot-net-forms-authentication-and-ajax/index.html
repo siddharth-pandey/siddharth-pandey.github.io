@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX? - Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
+
+  
+  <meta name="description" content="I&rsquo;ve a ASP.NET MVC application that uses FormsAuthentication and this application gives single page application experience to users after a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
+  
+    <h2>(life => life.make_it_better)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:siddharth-pandey.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-11T17:25:21+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:25 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&rsquo;ve a ASP.NET MVC application that uses FormsAuthentication and this application gives single page application experience to users after a user is authenticated where it uses AJAX for all HTTP requests.</p>
+
+<p>The log out action that I have works fine if user uses the logout button in the user interface and the click handler than performs a HTTP POST to Logout action in Account controller.</p>
+
+<p>Today,I was testing some other feature by setting 1 minute timeout for forms authentication in web.config. After a minute, when I performs a POST action to view a different view in my application, I was shown the user login page as set in the web.config under forms configuration. But I was not able to understand why is this happening. Later I figured out that the FormsAuthentication is doing its work and it detects that this user is not authorized. It then redirects the user to the login url as defined in the configuration.</p>
+
+<!-- more -->
+
+
+<p>However, my client-side code to handle 401 HTTP status-code was in place but it was not being called at all. That was something to worry about because while writing this code, I tested it many a times. By looking at the Network tab of my Chrome browser, I saw that the response of that request was not 401, it was a 302 i.e. a redirect to login page. And this was the reason my client-side 401 handler was not getting executed. Well, the handler just redirects user to login page so that browser can read the expired cookies.</p>
+
+<p>To solve this issue, I added the code below in the <strong>Global.asax.cs</strong> which solved the FormsAuthentication redirect behaviour. The code below just resets the 302 back to 401 for AJAX requests.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected void Application_EndRequest()
+</span><span class='line'>{
+</span><span class='line'>    var context = new HttpContextWrapper(this.Context);
+</span><span class='line'>    if (FormsAuthentication.IsEnabled && context.Response.StatusCode == 302 
+</span><span class='line'>        && context.Request.IsAjaxRequest())
+</span><span class='line'>    {
+</span><span class='line'>        context.Response.Clear();
+</span><span class='line'>        context.Response.StatusCode = 401;
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you want to write a client-side handler to handle this HTTP status code, you can add the script below in your layout file. The code below assumes that you are using jQuery.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;script type="text/javascript"&gt;
+</span><span class='line'>    $(document).ajaxError(function (xhr, props) {
+</span><span class='line'>      if (props.status === 401) {
+</span><span class='line'>        location.reload();
+</span><span class='line'>      }
+</span><span class='line'>    });
+</span><span class='line'>&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>For applications running ASP.NET 4.5 can leverage </strong><code>HttpResponse.SuppressFormsAuthenticationRedirect</code> property and set it to true. When not using AJAX, this can be done in <code>Application_EndRequest</code> but if you are using AJAX then it should be done in <code>Application_BeginRequest</code> so as to immediately suppress the behaviour on every request. The code looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected void Application_BeginRequest()
+</span><span class='line'>{
+</span><span class='line'>    HttpRequestBase request = new HttpRequestWrapper(Context.Request);
+</span><span class='line'>    if (request.IsAjaxRequest())
+</span><span class='line'>    {
+</span><span class='line'>        Context.Response.SuppressFormsAuthenticationRedirect = true;
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With above changes and the client-side error handler, everything should work as expected.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Siddharth Pandey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-08-11T17:25:21+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:25 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/" data-via="siddharthp28" data-counturl="http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/15/cookie-issues-with-internet-explorer/" title="Previous Post: Cookie issues with Internet Explorer.">&laquo; Cookie issues with Internet Explorer.</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/" title="Next Post: HTML5 LocalStorage API to the rescue">HTML5 LocalStorage API to the rescue &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Siddharth Pandey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/';
+        var disqus_url = 'http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

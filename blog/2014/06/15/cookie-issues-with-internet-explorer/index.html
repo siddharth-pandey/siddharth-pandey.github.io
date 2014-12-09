@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cookie Issues With Internet Explorer. - Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
+
+  
+  <meta name="description" content="Recently, I was working on a ASP.NET MVC 5 web application that was using cookies to store some user specific data. This was done by first &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
+  
+    <h2>(life => life.make_it_better)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:siddharth-pandey.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cookie Issues With Internet Explorer.</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-15T00:07:17+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:07 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently, I was working on a ASP.NET MVC 5 web application that was using cookies to store some user specific data. This was done by first serializing that object into forms authentication ticket and then encrypting this serialized data and setting this encrypted value to a cookie.</p>
+
+<!-- more -->
+
+
+<p>While developing this application, I was using Chrome, Firefox, Internet Explorer 10 to test my application and I faced no issues.</p>
+
+<p>When this applicatoin was published on the testing environment, I again tested it on Chrome, Firefox to make sure nothing is broken. But when I tested it on Internet Explorer 10, I was not able to go to home page even after using the right credentials for user-login page. Before I thought it is a issue with user credentials but this was not the reason as the same credentials were working fine on other browsers. I then started my other virtual machines to test the app on IE 8 and 9 but without any success I found the same issue.</p>
+
+<p>I spent many hours checking the logic to create and set cookies, expiration time on it, etc. but nothing helped me to understand the issue that was only happening on IE.</p>
+
+<p>As per <a href="https://connect.microsoft.com/IE/feedback/details/905702/ie11-bug-cookies-fail-to-save-load-when-browsing-a-site-with-underscores-in-its-subdomain">this link</a> I came to know that this behaviour is by design how IE works. It won’t set a cookie when the hostname/domain contains an underscore. This applies to all version of IE. Below is a comment from Microsoft in the link above:</p>
+
+<blockquote><p>The behavior you are experiencing is &ldquo;by Design&rdquo;. IE won’t set a cookie when the hostname/domain contains an underscore.
+Technically, an underscore (like this _ ) is not a DNS character, and while Windows will let you use an underscore when naming your machine, it warns you that doing so may cause problems. Although other software may be more relaxed on whether to allow this, using an underscore in hostnames is not the RFC standard and we are committed to making our browser as standards compliant as possible.</p></blockquote>
+
+<p>However, this issue was resolved when I modified the domain to not to have underscore character. And as per this change, I was able to log in successfully and get to the home page as authentication cookie was saved by IE and was sent to the server on every request which means user was authenticated.</p>
+
+<p>Hope this post can save someone&rsquo;s time to solve cookie issues with Internet Explorer (all versions).</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Siddharth Pandey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-06-15T00:07:17+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:07 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/browser/'>browser</a>, <a class='category' href='/blog/categories/internet-explorer/'>internet explorer</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/" data-via="siddharthp28" data-counturl="http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/" title="Previous Post: How to add a set of directories to environment variable $PATH on a mac?">&laquo; How to add a set of directories to environment variable $PATH on a mac?</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/" title="Next Post: How to get UnAuthorizedAccess (401) HTTP response when using ASP.NET Forms Authentication and AJAX?">How to get UnAuthorizedAccess (401) HTTP response when using ASP.NET Forms Authentication and AJAX? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Siddharth Pandey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/';
+        var disqus_url = 'http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

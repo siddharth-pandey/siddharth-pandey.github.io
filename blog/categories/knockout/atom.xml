@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Knockout | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/knockout/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Learn How to Build HTML5 and JavaScript Apps With MVVM and Knockout (Part - 1)]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/"/>
+    <updated>2012-12-05T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript</id>
+    <content type="html"><![CDATA[<p>One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application:</p>
+
+<ol>
+<li>The Structure i.e. HTML</li>
+<li>Presentation i.e. CSS</li>
+<li>Behaviour i.e. JavaScript</li>
+</ol>
+
+
+<p>Do we use any UI patterns with JavaScript development, like </p>
+
+<ol>
+<li>MVVM or</li>
+<li>Data binding structures</li>
+</ol>
+
+
+<p>How should be write structured JavaScript? Should we write in a modular pattern?</p>
+
+<!-- more -->
+
+
+<p></p>
+
+<p>Also, all apps love data, so, how should we care about data and bindings. Somehow, we need to load data from somewhere, such as using an Ajax service or loading JSON data on your screen and after getting the data how will you respect changes from the user</p>
+
+<p>Knockout is a JavaScript library that can solve the above issues in a very nice and efficient manner.</p>
+
+<p>So, what is Knockout?</p>
+
+<ol>
+<li>It allows you to have rich client-side interactivity for your UX provide a good pattern. </li>
+<li>It gives you a good separation of structure and behaviour.</li>
+<li>It provides you to use declarative bindings to be able to help you bind your UI elements, in case, HTML or even may be CSS styles and classes down to your source object. </li>
+<li>Offers you to work in MVVM pattern.</li>
+<li>It has a very good browser support. (IE6+, Firefox 2+, Chrome, Safari, Opera)</li>
+</ol>
+
+
+<p>Key Concepts of Knockout:</p>
+
+<ol>
+<li>Dependency Tracking via observables (eg: a property depending on another property and it is in sync with a UI control and vice-versa(optional).)</li>
+<li>Declarative Bindings (Instead of using JavaScript to go through DOM and find a particular control with certain ID use can bind the control from the html itself to push data to the UI and pull data from UI again from/to the source object.)</li>
+<li>Templating Support (eg: you might have repetitive structures in your webpage like list of abc or rows in a list box, rows in a table or li in a ul/ol. You can use templates to take care of those views. You can use jQuery templates with Knockout, or native templates of Knockout or any third party templating engine.)</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/ovrxL">Hello World Demo</a> (Open in a good browser as CodePen needs it.)</li>
+</ul>
+
+
+<p>The important factor is to understand the MVVM in terms of Knockout: the separation of concerns. </p>
+
+<ol>
+<li>MVVM is just a separation pattern and a way to organise your code structure to make it easier to maintain and to deal with separation and responsibilities.</li>
+<li>Model-View-ViewModel</li>
+<li>Not technology specific. ( you might have heard MVVM with XAML and now you are using with Knockout with JavaScript and HTML.)</li>
+<li>Works well with data bindings. (in this case its html)</li>
+</ol>
+
+
+<p>MVVM Components</p>
+
+<ol>
+<li>We have a view which is this case is HTML. ( is the user friendly presentation of information)</li>
+<li>We have our model which is in JSON. (javascript object in this case which has a property named as firstName)</li>
+<li><p>Between above two, we have logic to separate to how to  present that model JSON data into the view itself and that is our view model. </p></li>
+<li><p> It contains all the behaviour for the view that the view needs and can aggregate on or more models to show the data inside the view.</p></li>
+<li> Contains properties like firstName, methods and the Model.</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/tcuob">A quick demo using JavaScript&rsquo;s object literal notation</a></li>
+<li><a href="http://codepen.io/siddharth-pandey/full/dsmtH">A quick demo using JavaScript&rsquo;s function</a></li>
+<li><a href="http://a%20quick%20demo%20using%20javascript%27s%20function/">A quick demo</a></li>
+</ul>
+
+
+<p>Visual Studio Extensions for your productivity</p>
+
+<ul>
+<li>Nuget - to manage 3rd party libraries and references.</li>
+<li>Web Essentials - code collapsing, vendor specific css properties, etc.</li>
+<li>Web Standards Update - html intellisense and validation.</li>
+<li>WoVS Default Browser Switcher - quickly change the default browser from visual studio.</li>
+<li>JSLint - javascript code analysis.</li>
+<li>CSSCop - catches common CSS issues.</li>
+<li>Resharper 6 (trial version only) - javascript refactoring tools.</li>
+</ul>
+
+
+<p>Begin Coding with Knockout and Visual Studio</p>
+
+<ul>
+<li>Either download the JavaScript references from  <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>.</li>
+<li>Either get the debugger or minified version from Github.</li>
+<li>Use Nuget to install Knockout.</li>
+<li><p>Add intellisense for Knockout in Visual Studio for any *.js files by adding the following: &amp; lt; reference path=&ldquo;/scripts/knockout-2.2.0.debug.js&rdquo; / &amp; gt; at script-page level.</p>
+
+<ul>
+<li>After doing this, whenever you will type ko. you will see all the options that you can use from the Knockout library.</li>
+<li>It has to be the first line of code in the page and you have to comment it using &ldquo;///&rdquo;.</li>
+<li>Or use a tool like Resharper that will add the intellisense support for your project by its own.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Key Resources</p>
+
+<ul>
+<li>Knockout  - <a href="http://knockoutjs.com/">http://knockoutjs.com</a></li>
+<li>Source Code - <a href="https://github.com/SteveSanderson/knockout">https://github.com/SteveSanderson/knockout</a></li>
+<li>Documentation - <a href="http://jpapa.me/kodocs">http://jpapa.me/kodocs</a></li>
+<li>Forums - <a href="http://jpapa.me/koforum">http://jpapa.me/koforum</a></li>
+<li>Tutorials - <a href="http://learn.knockoutjs.com/">http://learn.knockoutjs.com</a></li>
+<li>Stackoverflow - <a href="http://jpapa.me/kostackoverflow">http://jpapa.me/kostackoverflow</a></li>
+<li>Ryan Niemeyer&rsquo;s Blog - <a href="http://www.knockmeout.net/">http://www.knockmeout.net</a></li>
+<li>jsFiddle - <a href="http://www.jsfiddle.net/">http://www.jsfiddle.net</a></li>
+<li>CodePen.io - <a href="http://codepen.io/">codepen.io</a></li>
+</ul>
+
+
+<p>Stay tuned for part - 2.</p>
+]]></content>
+  </entry>
+  
+</feed>

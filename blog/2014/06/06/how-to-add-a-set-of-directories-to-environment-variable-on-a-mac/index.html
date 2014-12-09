@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Add a Set of Directories to Environment Variable $PATH on a Mac? - Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
+
+  
+  <meta name="description" content="I often find myself installing a software or package for my projects while working on mac where I need to add a specific path to my $PATH variable. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
+  
+    <h2>(life => life.make_it_better)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:siddharth-pandey.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Add a Set of Directories to Environment Variable $PATH on a Mac?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-06T12:22:14+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I often find myself installing a software or package for my projects while working on mac where I need to add a specific path to my $PATH variable.
+So, I thought to write this quick post. Below is the directions to achieve the above goals:</p>
+
+<!-- more -->
+
+
+<ul>
+<li>Open Terminal on Mac from Applications or Spotlight.</li>
+<li>Now run the command below:</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> sudo nano /etc/paths</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>When prompted, you need to enter your password and hit Enter.</li>
+<li>If your password is correct, you will be shown a file. Go to the bottom of the file and enter the new path.</li>
+<li>Hit control + x to quit.</li>
+<li>Enter &ldquo;Y&rdquo; to save the modified buffer.</li>
+</ul>
+
+
+<p>So, above are the steps you need to take in order to add a new path to $PATH variable on mac. To test it, open a new terminal window and type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> echo $PATH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will be able to see all the paths that exists including the one your have recently added. If in case, you don&rsquo;t see the path added by you then try following the above steps carefully.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Siddharth Pandey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-06-06T12:22:14+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mac/'>mac</a>, <a class='category' href='/blog/categories/osx/'>osx</a>, <a class='category' href='/blog/categories/terminal/'>terminal</a>, <a class='category' href='/blog/categories/utilities/'>utilities</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/" data-via="siddharthp28" data-counturl="http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/" title="Previous Post: Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & v6+ MVC Razor Cheatsheets">&laquo; Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & v6+ MVC Razor Cheatsheets</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/06/15/cookie-issues-with-internet-explorer/" title="Next Post: Cookie issues with Internet Explorer.">Cookie issues with Internet Explorer. &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Siddharth Pandey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/';
+        var disqus_url = 'http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

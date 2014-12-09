@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Must Have Developer Tools! Some Tricks to Develop Quicker - Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
+
+  
+  <meta name="description" content="Google Developer Tools, Some tricks to develop quicker View Source => By going through menu navigation or Ctrl-Shit-I on windows or Cmd-option(alt)-I &hellip;&#8221;>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
+  
+    <h2>(life => life.make_it_better)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:siddharth-pandey.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Must Have Developer Tools! Some Tricks to Develop Quicker</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-20'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>Google Developer Tools, Some tricks to develop quicker</strong></p>
+
+<ol>
+<li>View Source => By going through menu navigation or Ctrl-Shit-I on windows or Cmd-option(alt)-I on mac.</li>
+<li>Or for particular element, just right click on it and choose inspect element.</li>
+<li>For fast navigation, prefer keyboard arrow keys to collapse or expand DOM elements. You will find the width and height of that active element as you move in Developer Tool.</li>
+<li>To get the full view of the page, try Ctrl - (minus) to zoom out so as to see your whole page with developer tools open without scrolling. Sometimes useful to me.</li>
+</ol>
+
+
+<!-- more -->
+
+
+<ol>
+<li>You can copy the the content or the DOM elements by using your mouse, but you might like to do this by using console&rsquo;s copy() method. For example, copy(document.body.innerText) and then paste that anywhere. Its handy if you know the DOM element and may help for productivity.</li>
+<li>Use clear(); function to clear the console, however the developer tool has a GUI for that.</li>
+<li>Use inspect(body) to inspect body element of the DOM, just pass any element in the function.</li>
+<li>Also, you can use $0 to access the element that is selected in the DOM in a console. So,  you can pass $( $0 ) for jquery method where an anchor tag was selected in your DOM, so it means you are accessing that anchor method.</li>
+<li>Under Network tab, the blue line in the waterfall chart shows that the DOM is ready or the DOMContentLoaded Event fire and the read line shows the windows load event which waits for the documents to load images, iframes, etc.</li>
+<li>You an see the cookies information by going through the Network tab and then selecting Header or Cookies tab.</li>
+<li>For javascript debugging, we can edit the script file of the page on the fly and it will render it as this feature is unique to Chrome because of its V8 JavaScript engine.</li>
+<li>Sometimes, its hard for us to find where the error is in our script, so you might want to open the script in developer tools and then click the pause button, now chrome will set a breakpoint when it find the statement because of which the error is being logged in console.</li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Siddharth Pandey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-12-20'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css3/'>css3</a>, <a class='category' href='/blog/categories/developer-tools/'>developer tools</a>, <a class='category' href='/blog/categories/html5/'>html5</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/jquery/'>jquery</a>, <a class='category' href='/blog/categories/productivity/'>productivity</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/" data-via="siddharthp28" data-counturl="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/12/05/learn-how-to-build-html5-and-javascript/" title="Previous Post: Learn how to build HTML5 and JavaScript Apps with MVVM and Knockout (Part - 1)">&laquo; Learn how to build HTML5 and JavaScript Apps with MVVM and Knockout (Part - 1)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/01/03/extract-keyvalues-from-formcollection/" title="Next Post: Extract key/values from FormCollection in ASP.NET MVC action method">Extract key/values from FormCollection in ASP.NET MVC action method &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Siddharth Pandey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/';
+        var disqus_url = 'http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

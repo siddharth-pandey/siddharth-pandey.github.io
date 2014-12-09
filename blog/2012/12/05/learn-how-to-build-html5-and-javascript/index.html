@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Learn How to Build HTML5 and JavaScript Apps With MVVM and Knockout (Part - 1) - Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
+
+  
+  <meta name="description" content="One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application: The Structure i.e. HTML
+Presentation i.e. CSS &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
+  
+    <h2>(life => life.make_it_better)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:siddharth-pandey.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Learn How to Build HTML5 and JavaScript Apps With MVVM and Knockout (Part - 1)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-05'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application:</p>
+
+<ol>
+<li>The Structure i.e. HTML</li>
+<li>Presentation i.e. CSS</li>
+<li>Behaviour i.e. JavaScript</li>
+</ol>
+
+
+<p>Do we use any UI patterns with JavaScript development, like </p>
+
+<ol>
+<li>MVVM or</li>
+<li>Data binding structures</li>
+</ol>
+
+
+<p>How should be write structured JavaScript? Should we write in a modular pattern?</p>
+
+<!-- more -->
+
+
+<p></p>
+
+<p>Also, all apps love data, so, how should we care about data and bindings. Somehow, we need to load data from somewhere, such as using an Ajax service or loading JSON data on your screen and after getting the data how will you respect changes from the user</p>
+
+<p>Knockout is a JavaScript library that can solve the above issues in a very nice and efficient manner.</p>
+
+<p>So, what is Knockout?</p>
+
+<ol>
+<li>It allows you to have rich client-side interactivity for your UX provide a good pattern. </li>
+<li>It gives you a good separation of structure and behaviour.</li>
+<li>It provides you to use declarative bindings to be able to help you bind your UI elements, in case, HTML or even may be CSS styles and classes down to your source object. </li>
+<li>Offers you to work in MVVM pattern.</li>
+<li>It has a very good browser support. (IE6+, Firefox 2+, Chrome, Safari, Opera)</li>
+</ol>
+
+
+<p>Key Concepts of Knockout:</p>
+
+<ol>
+<li>Dependency Tracking via observables (eg: a property depending on another property and it is in sync with a UI control and vice-versa(optional).)</li>
+<li>Declarative Bindings (Instead of using JavaScript to go through DOM and find a particular control with certain ID use can bind the control from the html itself to push data to the UI and pull data from UI again from/to the source object.)</li>
+<li>Templating Support (eg: you might have repetitive structures in your webpage like list of abc or rows in a list box, rows in a table or li in a ul/ol. You can use templates to take care of those views. You can use jQuery templates with Knockout, or native templates of Knockout or any third party templating engine.)</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/ovrxL">Hello World Demo</a> (Open in a good browser as CodePen needs it.)</li>
+</ul>
+
+
+<p>The important factor is to understand the MVVM in terms of Knockout: the separation of concerns. </p>
+
+<ol>
+<li>MVVM is just a separation pattern and a way to organise your code structure to make it easier to maintain and to deal with separation and responsibilities.</li>
+<li>Model-View-ViewModel</li>
+<li>Not technology specific. ( you might have heard MVVM with XAML and now you are using with Knockout with JavaScript and HTML.)</li>
+<li>Works well with data bindings. (in this case its html)</li>
+</ol>
+
+
+<p>MVVM Components</p>
+
+<ol>
+<li>We have a view which is this case is HTML. ( is the user friendly presentation of information)</li>
+<li>We have our model which is in JSON. (javascript object in this case which has a property named as firstName)</li>
+<li><p>Between above two, we have logic to separate to how to  present that model JSON data into the view itself and that is our view model. </p></li>
+<li><p> It contains all the behaviour for the view that the view needs and can aggregate on or more models to show the data inside the view.</p></li>
+<li> Contains properties like firstName, methods and the Model.</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/tcuob">A quick demo using JavaScript&rsquo;s object literal notation</a></li>
+<li><a href="http://codepen.io/siddharth-pandey/full/dsmtH">A quick demo using JavaScript&rsquo;s function</a></li>
+<li><a href="http://a%20quick%20demo%20using%20javascript%27s%20function/">A quick demo</a></li>
+</ul>
+
+
+<p>Visual Studio Extensions for your productivity</p>
+
+<ul>
+<li>Nuget - to manage 3rd party libraries and references.</li>
+<li>Web Essentials - code collapsing, vendor specific css properties, etc.</li>
+<li>Web Standards Update - html intellisense and validation.</li>
+<li>WoVS Default Browser Switcher - quickly change the default browser from visual studio.</li>
+<li>JSLint - javascript code analysis.</li>
+<li>CSSCop - catches common CSS issues.</li>
+<li>Resharper 6 (trial version only) - javascript refactoring tools.</li>
+</ul>
+
+
+<p>Begin Coding with Knockout and Visual Studio</p>
+
+<ul>
+<li>Either download the JavaScript references from  <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>.</li>
+<li>Either get the debugger or minified version from Github.</li>
+<li>Use Nuget to install Knockout.</li>
+<li><p>Add intellisense for Knockout in Visual Studio for any *.js files by adding the following: &amp; lt; reference path=&ldquo;/scripts/knockout-2.2.0.debug.js&rdquo; / &amp; gt; at script-page level.</p>
+
+<ul>
+<li>After doing this, whenever you will type ko. you will see all the options that you can use from the Knockout library.</li>
+<li>It has to be the first line of code in the page and you have to comment it using &ldquo;///&rdquo;.</li>
+<li>Or use a tool like Resharper that will add the intellisense support for your project by its own.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Key Resources</p>
+
+<ul>
+<li>Knockout  - <a href="http://knockoutjs.com/">http://knockoutjs.com</a></li>
+<li>Source Code - <a href="https://github.com/SteveSanderson/knockout">https://github.com/SteveSanderson/knockout</a></li>
+<li>Documentation - <a href="http://jpapa.me/kodocs">http://jpapa.me/kodocs</a></li>
+<li>Forums - <a href="http://jpapa.me/koforum">http://jpapa.me/koforum</a></li>
+<li>Tutorials - <a href="http://learn.knockoutjs.com/">http://learn.knockoutjs.com</a></li>
+<li>Stackoverflow - <a href="http://jpapa.me/kostackoverflow">http://jpapa.me/kostackoverflow</a></li>
+<li>Ryan Niemeyer&rsquo;s Blog - <a href="http://www.knockmeout.net/">http://www.knockmeout.net</a></li>
+<li>jsFiddle - <a href="http://www.jsfiddle.net/">http://www.jsfiddle.net</a></li>
+<li>CodePen.io - <a href="http://codepen.io/">codepen.io</a></li>
+</ul>
+
+
+<p>Stay tuned for part - 2.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Siddharth Pandey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-12-05'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css3/'>css3</a>, <a class='category' href='/blog/categories/html5/'>html5</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/knockout/'>knockout</a>, <a class='category' href='/blog/categories/mvvm/'>mvvm</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/" data-via="siddharthp28" data-counturl="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/30/the-building-blocks-of-javascript/" title="Previous Post: The Building Blocks of JavaScript Programs">&laquo; The Building Blocks of JavaScript Programs</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/12/20/must-have-developer-tools-some-tricks/" title="Next Post: Must Have Developer Tools! Some tricks to develop quicker">Must Have Developer Tools! Some tricks to develop quicker &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Siddharth Pandey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/';
+        var disqus_url = 'http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

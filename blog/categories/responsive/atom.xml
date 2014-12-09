@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Responsive | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/responsive/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Our Users Always Remember the Website Experience That We Offer]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website/"/>
+    <updated>2012-11-23T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website</id>
+    <content type="html"><![CDATA[<p>I would like you to see some of the examples that I have in order to understand the advantages of a responsive web design.</p>
+
+<p>For a quick demo, I request you to click the links below. Those websites are very good and is already helping a business. The links below will demonstrate you a user’s experience when they are browsing our websites from different devices:</p>
+
+<!-- more -->
+
+
+<ul>
+<li><a href="http://www.responsinator.com/?url=https%3A%2F%2Fwww.quote-process.co.uk%2Fpostoffice%2Fpet%2Fapp%2F%28S%28g5zfio551el2c4bddyap2zmk%29%29%2Fstart.aspx">Website 1</a></li>
+<li><a href="http://www.responsinator.com/?url=https%3A%2F%2Fwww.quote-process.co.uk%2Fprotectyourbubble%2Fpet%2Fapp%2F%28S%281qoxjw45fkri00vcnovzta2c%29%29%2Fstart.aspx">Website 2</a></li>
+</ul>
+
+
+<p>Did you enjoyed moving the scroll-bars and finding the content that we want our users to see? If yes, then it’s time to stop reading here and go back to the page again and try completing a user journey. Come back and start reading here:</p>
+
+<p>When we create a website or any web solution for our users, we can’t guarantee that they will read these words on a printed page, holding a tiny paperback in their hands. Maybe they are sitting at desk with an electronic copy of the content on a screen. Perhaps, they are on morning commute, tapping through pages on a smart phone or swiping along a tablet. Or maybe they don’t even see the words as we blessed people do or may be their device or desktop is simply reading this book aloud.</p>
+
+<p>The best way to understand is to replace water with our websites and water’s container with device browser. I was working on a single page, just to demonstrate you a sample of website that is responsive. I have not spend any minute for the designing or for actual content because that will take a much amount of time and is not needed for this instance. Again, I would like you see and tell me about your experience by going through URLs below</p>
+
+<ul>
+<li><a href="http://www.responsinator.com/?url=codepen.io%2Fsiddharth-pandey%2Ffull%2FlHFCr">Prototype 1</a></li>
+<li><a href="http://www.responsinator.com/?url=www.siddharthkpandey.co.uk">Prototype 2</a> (This is my website which is in progress…) 
+The above prototype contains all User-Interface elements that we need like a form, slide show, images, navigation, header, footer, sample paragraph, etc.</li>
+</ul>
+
+
+<p>I am sure by now you have discovered the importance of a responsive web design and the fun behind it. Soon, I will be writing the main concepts for create a responsive design. Stay tuned!</p>
+]]></content>
+  </entry>
+  
+</feed>

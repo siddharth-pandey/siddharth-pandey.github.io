@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Fonts | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/fonts/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Use Your Own Font Everywhere]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere/"/>
+    <updated>2014-09-05T13:56:10+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere</id>
+    <content type="html"><![CDATA[<p>Have you spent any time thinking of which font to choose while writing a word or any other document either on your laptop, online, etc.? Will it not be easier to have your own handwriting available to you even when you don&rsquo;t hold a pen in hand and instead press keys on laptop?</p>
+
+<p>I answered it as ah yes, but that must be hard? No, its not. Some dev friends have created a free tool that can be used by anyone to create a font based on your handwriting.</p>
+
+<!-- more -->
+
+
+<p><a href="http://www.myscriptfont.com/">My Script Font</a> is the free service where you can download/print a template and then write with a pen and then upload it as in of the supporting formats: JPEG, TIFF or PNG. You may name your font and then select a formatL TTF, SVG or OTF to get the file.</p>
+
+<p>Your custom font&rsquo;s browser support: <a href="http://caniuse.com/#search=svg">SVG</a> &amp; <a href="http://caniuse.com/#search=ttf">TTF/OTF</a>. Once you grab your font file, just install on your local machine and you will be able to write any document in your own style as shown in the image below:</p>
+
+<p><img class="center" src="/images/custom_fonts.png" width="500" height="500" title="&lsquo;Sample custom font&rsquo; &lsquo;images&rsquo;" ></p>
+]]></content>
+  </entry>
+  
+</feed>

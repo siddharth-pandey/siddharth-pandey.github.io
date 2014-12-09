@@ -1,16 +1,1298 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2014-12-09T12:43:44+00:00</updated>
+  <updated>2014-12-09T13:03:08+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Siddharth Pandey]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Use Your Own Font Everywhere]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere/"/>
+    <updated>2014-09-05T13:56:10+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere</id>
+    <content type="html"><![CDATA[<p>Have you spent any time thinking of which font to choose while writing a word or any other document either on your laptop, online, etc.? Will it not be easier to have your own handwriting available to you even when you don&rsquo;t hold a pen in hand and instead press keys on laptop?</p>
+
+<p>I answered it as ah yes, but that must be hard? No, its not. Some dev friends have created a free tool that can be used by anyone to create a font based on your handwriting.</p>
+
+<!-- more -->
+
+
+<p><a href="http://www.myscriptfont.com/">My Script Font</a> is the free service where you can download/print a template and then write with a pen and then upload it as in of the supporting formats: JPEG, TIFF or PNG. You may name your font and then select a formatL TTF, SVG or OTF to get the file.</p>
+
+<p>Your custom font&rsquo;s browser support: <a href="http://caniuse.com/#search=svg">SVG</a> &amp; <a href="http://caniuse.com/#search=ttf">TTF/OTF</a>. Once you grab your font file, just install on your local machine and you will be able to write any document in your own style as shown in the image below:</p>
+
+<p><img class="center" src="http://siddharth-pandey.github.io/images/custom_fonts.png" width="500" height="500" title="Sample custom font" alt="images"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Get Version or Product Details From a .dll File or Running Application?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/"/>
+    <updated>2014-08-28T15:54:26+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application</id>
+    <content type="html"><![CDATA[<p>I came across a scenario where I had to access some information from a file with <code>.dll</code> extension. And then I thought to write this post. This information may include that assembly&rsquo;s product name, product version, file version etc.
+This scenario may be required either to read a <code>.dll</code> file from disk or from the current running application. The code below covers both the scenarios:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// From executing application.
+</span><span class='line'>string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+</span><span class='line'>
+</span><span class='line'>// From a physical file, provide full path to that file.
+</span><span class='line'>string assemblyVersion = Assembly.LoadFile('your assembly file').GetName().Version.ToString();
+</span><span class='line'>
+</span><span class='line'>// From executing application, gives file version.
+</span><span class='line'>string fileVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+</span><span class='line'>
+</span><span class='line'>// From executing application, gives product version.
+</span><span class='line'>string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 LocalStorage API to the Rescue]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/"/>
+    <updated>2014-08-25T12:34:12+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue</id>
+    <content type="html"><![CDATA[<p>Recently I had a need to use HTML5 LocalStorage API in my web application project. The requirement was to save the vertical scroll position of window when a user drills down to low level details by navigating to other view.
+I didn&rsquo;t wanted to cookies because cookies are sent on every request to the server and I have no need to send this detail to the server as it is just related to client.</p>
+
+<p>Then I was left with LocalStorage and SessionStorage as options. I found that SessionStorage is not maintained when the page reloads and when the browser is closed. <!-- more --> So, I opted to use LocalStorage API for this use case and came up with the code below which is a localStorageWrapper module that can be accessed as a module when using RequireJS (a module loader). A client consuming this wrapper is able to set, get, check the existence of a key and clear all the items in client&rsquo;s localStorage. An item that can be save is made up of a key and a value. This value can be just a string or an javascript object that can be JSON stringified and then saved. This can be seen in the set function of the localStorageWrapper module below.</p>
+
+<p>When using these fancy new HTML5 APIs, one should care about the browser support. You can use <a href="www.caniuse.com">CanIuse</a> website to check it. This is a very good resource to check support for everything and anything related to web.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>define([], function ($) {
+</span><span class='line'>    'use strict';
+</span><span class='line'>    var localStorageWrapper = {
+</span><span class='line'>
+</span><span class='line'>        /* add data to localStorage */
+</span><span class='line'>        set: function (key, value) {
+</span><span class='line'>
+</span><span class='line'>            /* if the value is an object, stringify it to save it in localStorage */
+</span><span class='line'>            if (typeof value === 'object') {
+</span><span class='line'>                value = JSON.stringify(value);
+</span><span class='line'>            }
+</span><span class='line'>
+</span><span class='line'>            localStorage.setItem(key, value);
+</span><span class='line'>        },
+</span><span class='line'>
+</span><span class='line'>        /* retrieve data from localStorage object */
+</span><span class='line'>        get: function (key) {
+</span><span class='line'>            var data;
+</span><span class='line'>
+</span><span class='line'>            if (!this.hasData(key)) {
+</span><span class='line'>                return false;
+</span><span class='line'>            }
+</span><span class='line'>
+</span><span class='line'>            data = localStorage[key];
+</span><span class='line'>
+</span><span class='line'>            /* if the data is JSON, try to parse */
+</span><span class='line'>            try {
+</span><span class='line'>                return JSON.parse(data);
+</span><span class='line'>            } catch (e) {
+</span><span class='line'>                return data;
+</span><span class='line'>            }
+</span><span class='line'>        },
+</span><span class='line'>
+</span><span class='line'>        /* check if the item exists and it has data */
+</span><span class='line'>        hasData: function (key) {
+</span><span class='line'>            return !!localStorage[key] && !!localStorage[key].length;
+</span><span class='line'>        },
+</span><span class='line'>
+</span><span class='line'>        /* clear all the saved items in client's localstorage */
+</span><span class='line'>        clear: function() {
+</span><span class='line'>            localStorage.clear();
+</span><span class='line'>        }
+</span><span class='line'>    };
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    return localStorageWrapper;
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To properly provide graceful degradation, you can use <a href="http://modernizr.com/">Modernizr</a> to check if client supports a particular HTML5 feature.
+When using Modernizr, the client code consuming the above module looks like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// using set member of localStorageWrapper
+</span><span class='line'>if (Modernizr.localstorage) 
+</span><span class='line'>{
+</span><span class='line'>    localStorage.set("uniqueKey1", "");
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>// using clear member of localStorageWrapper
+</span><span class='line'>if (Modernizr.localstorage) 
+</span><span class='line'>{
+</span><span class='line'>    localStorage.clear();
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>// using hasData and get member of localStorageWrapper
+</span><span class='line'>if (localStorage.hasData("uniqueKey1"))
+</span><span class='line'>{
+</span><span class='line'>    var value = localStorage.get("uniqueKey1");
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/"/>
+    <updated>2014-08-11T17:25:21+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve a ASP.NET MVC application that uses FormsAuthentication and this application gives single page application experience to users after a user is authenticated where it uses AJAX for all HTTP requests.</p>
+
+<p>The log out action that I have works fine if user uses the logout button in the user interface and the click handler than performs a HTTP POST to Logout action in Account controller.</p>
+
+<p>Today,I was testing some other feature by setting 1 minute timeout for forms authentication in web.config. After a minute, when I performs a POST action to view a different view in my application, I was shown the user login page as set in the web.config under forms configuration. But I was not able to understand why is this happening. Later I figured out that the FormsAuthentication is doing its work and it detects that this user is not authorized. It then redirects the user to the login url as defined in the configuration.</p>
+
+<!-- more -->
+
+
+<p>However, my client-side code to handle 401 HTTP status-code was in place but it was not being called at all. That was something to worry about because while writing this code, I tested it many a times. By looking at the Network tab of my Chrome browser, I saw that the response of that request was not 401, it was a 302 i.e. a redirect to login page. And this was the reason my client-side 401 handler was not getting executed. Well, the handler just redirects user to login page so that browser can read the expired cookies.</p>
+
+<p>To solve this issue, I added the code below in the <strong>Global.asax.cs</strong> which solved the FormsAuthentication redirect behaviour. The code below just resets the 302 back to 401 for AJAX requests.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected void Application_EndRequest()
+</span><span class='line'>{
+</span><span class='line'>    var context = new HttpContextWrapper(this.Context);
+</span><span class='line'>    if (FormsAuthentication.IsEnabled && context.Response.StatusCode == 302 
+</span><span class='line'>        && context.Request.IsAjaxRequest())
+</span><span class='line'>    {
+</span><span class='line'>        context.Response.Clear();
+</span><span class='line'>        context.Response.StatusCode = 401;
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you want to write a client-side handler to handle this HTTP status code, you can add the script below in your layout file. The code below assumes that you are using jQuery.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;script type="text/javascript"&gt;
+</span><span class='line'>    $(document).ajaxError(function (xhr, props) {
+</span><span class='line'>      if (props.status === 401) {
+</span><span class='line'>        location.reload();
+</span><span class='line'>      }
+</span><span class='line'>    });
+</span><span class='line'>&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>For applications running ASP.NET 4.5 can leverage </strong><code>HttpResponse.SuppressFormsAuthenticationRedirect</code> property and set it to true. When not using AJAX, this can be done in <code>Application_EndRequest</code> but if you are using AJAX then it should be done in <code>Application_BeginRequest</code> so as to immediately suppress the behaviour on every request. The code looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected void Application_BeginRequest()
+</span><span class='line'>{
+</span><span class='line'>    HttpRequestBase request = new HttpRequestWrapper(Context.Request);
+</span><span class='line'>    if (request.IsAjaxRequest())
+</span><span class='line'>    {
+</span><span class='line'>        Context.Response.SuppressFormsAuthenticationRedirect = true;
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With above changes and the client-side error handler, everything should work as expected.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cookie Issues With Internet Explorer.]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/"/>
+    <updated>2014-06-15T00:07:17+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer</id>
+    <content type="html"><![CDATA[<p>Recently, I was working on a ASP.NET MVC 5 web application that was using cookies to store some user specific data. This was done by first serializing that object into forms authentication ticket and then encrypting this serialized data and setting this encrypted value to a cookie.</p>
+
+<!-- more -->
+
+
+<p>While developing this application, I was using Chrome, Firefox, Internet Explorer 10 to test my application and I faced no issues.</p>
+
+<p>When this applicatoin was published on the testing environment, I again tested it on Chrome, Firefox to make sure nothing is broken. But when I tested it on Internet Explorer 10, I was not able to go to home page even after using the right credentials for user-login page. Before I thought it is a issue with user credentials but this was not the reason as the same credentials were working fine on other browsers. I then started my other virtual machines to test the app on IE 8 and 9 but without any success I found the same issue.</p>
+
+<p>I spent many hours checking the logic to create and set cookies, expiration time on it, etc. but nothing helped me to understand the issue that was only happening on IE.</p>
+
+<p>As per <a href="https://connect.microsoft.com/IE/feedback/details/905702/ie11-bug-cookies-fail-to-save-load-when-browsing-a-site-with-underscores-in-its-subdomain">this link</a> I came to know that this behaviour is by design how IE works. It won’t set a cookie when the hostname/domain contains an underscore. This applies to all version of IE. Below is a comment from Microsoft in the link above:</p>
+
+<blockquote><p>The behavior you are experiencing is &ldquo;by Design&rdquo;. IE won’t set a cookie when the hostname/domain contains an underscore.
+Technically, an underscore (like this _ ) is not a DNS character, and while Windows will let you use an underscore when naming your machine, it warns you that doing so may cause problems. Although other software may be more relaxed on whether to allow this, using an underscore in hostnames is not the RFC standard and we are committed to making our browser as standards compliant as possible.</p></blockquote>
+
+<p>However, this issue was resolved when I modified the domain to not to have underscore character. And as per this change, I was able to log in successfully and get to the home page as authentication cookie was saved by IE and was sent to the server on every request which means user was authenticated.</p>
+
+<p>Hope this post can save someone&rsquo;s time to solve cookie issues with Internet Explorer (all versions).</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Add a Set of Directories to Environment Variable $PATH on a Mac?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/"/>
+    <updated>2014-06-06T12:22:14+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac</id>
+    <content type="html"><![CDATA[<p>I often find myself installing a software or package for my projects while working on mac where I need to add a specific path to my $PATH variable.
+So, I thought to write this quick post. Below is the directions to achieve the above goals:</p>
+
+<!-- more -->
+
+
+<ul>
+<li>Open Terminal on Mac from Applications or Spotlight.</li>
+<li>Now run the command below:</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> sudo nano /etc/paths</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>When prompted, you need to enter your password and hit Enter.</li>
+<li>If your password is correct, you will be shown a file. Go to the bottom of the file and enter the new path.</li>
+<li>Hit control + x to quit.</li>
+<li>Enter &ldquo;Y&rdquo; to save the modified buffer.</li>
+</ul>
+
+
+<p>So, above are the steps you need to take in order to add a new path to $PATH variable on mac. To test it, open a new terminal window and type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> echo $PATH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will be able to see all the paths that exists including the one your have recently added. If in case, you don&rsquo;t see the path added by you then try following the above steps carefully.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & V6+ MVC Razor Cheatsheets]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/"/>
+    <updated>2013-11-12T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic</id>
+    <content type="html"><![CDATA[<p>Below are the links to download cheat sheets for umbraco which I have found really useful:</p>
+
+<ul>
+<li><a href="http://our.umbraco.org/projects/developer-tools/razor-dynamicnode-cheat-sheet">Razor DynamicNode Cheat Sheet</a></li>
+<li><a href="http://our.umbraco.org/projects/developer-tools/umbraco-v6-mvc-razor-cheatsheets">Umbraco v6 MVC Razor Cheat Sheet</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C# Razor Syntax Quick Reference]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/11/12/c-razor-syntax-quick-reference/"/>
+    <updated>2013-11-12T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/11/12/c-razor-syntax-quick-reference</id>
+    <content type="html"><![CDATA[<p>Below is a link to a resource that provides very good information on razor syntax.</p>
+
+<p>Reference: <a href="http://haacked.com/archive/2011/01/06/razor-syntax-quick-reference.aspx">http://haacked.com/archive/2011/01/06/razor-syntax-quick-reference.aspx</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC Application]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development/"/>
+    <updated>2013-10-17T00:00:00+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development</id>
+    <content type="html"><![CDATA[<p>This article aims to summarize the concept of testing which can help you while writing tests using any framework out there. I will be writing more on this topic and will also attach any relevant demo applications on github. </p>
+
+<h3>Types of Testing</h3>
+
+<p>There are many types of testing that you may want to apply to your application, namely:</p>
+
+<ul>
+<li>Unit Test &amp; Test Driven Development (TDD)</li>
+<li>User Interface Testing</li>
+<li>Integration Testing</li>
+<li>Acceptance Testing </li>
+<li>Performance Testing</li>
+<li>Accessibility Testing</li>
+<li>Security Testing</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Testing with ASP.NET Web Forms</h3>
+
+<p>If you are coming from ASP.NET Web Forms background and if you have done any testing in it, you may have find that it is not that easy to test your application because web forms aggregates and integrates the logic and the display i.e. view of your application. And this is what it makes testing very difficult.</p>
+
+<h3>Testing with ASP.NET MVC</h3>
+
+<p>The concept of Model View Controller (MVC) is designed by keeping testing in mind. The design of an application based on MVC concept makes an distinction to have a separate Model (data), the display of the application i.e. View and the Controller that has the logic to bind the Model to the View.</p>
+
+<p>Below are some resources that you will need to test your MVC application:</p>
+
+<ol>
+<li>Visual Studio 2010/2012/Express 2013 (RC)</li>
+<li>One of any testing software framework - nUnit or xUnit or MSTest.</li>
+<li>Mocking Framwork - There are many free frameworks available out there but I&rsquo;m going to use the free version of JustMock.</li>
+<li>You can also download nUnit Runner - that doesn&rsquo;t depend on Visual Studio and runs independently.</li>
+</ol>
+
+
+<h3>Caveat</h3>
+
+<p>There are couple of Caveat that we need to discuss before discussing the key concepts of testing an application:</p>
+
+<ol>
+<li>There is no one right way to test.</li>
+<li>Testing is something relatively new in the software development industry and people have different views to how to organize your tests, code, etc. This subject is open to discussion.</li>
+<li>There is no one right way to refactor. You &amp; your team should adapt the same pattern of the way to refactor so as to run on the same track and make a good design of your application.</li>
+<li>Best practices - even these are subjective. Stick to something what the community follows and then extend it as per your needs.</li>
+</ol>
+
+
+<h3>MVC and TDD</h3>
+
+<h4>Unit Testing</h4>
+
+<ol>
+<li>Test a single unit - a Class or (better) a method.</li>
+<li>Test in isolation of one another and to rest of the application. Test very small unit of functionality of your application.</li>
+</ol>
+
+
+<h4>TDD</h4>
+
+<ol>
+<li>Uses Unit Testing to drive the design of your application.</li>
+<li>Is all about Test-First approach.</li>
+<li><p>There is a term referred as Red Green Refactor, which means</p></li>
+<li><p>Red Phase - create a failed test.</p></li>
+<li>Green Phase - write just enough code to pass the above failed test.</li>
+<li>Refactor Phase - clean up you code and then retest it to make sure your refactoring has not affected your test and it runs well.</li>
+<li>Repeat  - repeat the above process again from Red - Green - Refactor phase.</li>
+</ol>
+
+
+<h4>Robert C. Martin&rsquo;s Laws - known as Uncle Bob in the community</h4>
+
+<p>Uncle Bob has mentioned three laws to keep in mind while writing a successful TDD:</p>
+
+<ol>
+<li>Write no production code until you have written a failing test.</li>
+<li>Write no more in your unit test then enough to make it fail.</li>
+<li>Write no more production code then enough to make it pass.</li>
+</ol>
+
+
+<h4>Key points to remember whilst you write your First Test</h4>
+
+<ol>
+<li>Test one feature only.</li>
+<li>Write the above test, run it and see it fail. It&rsquo;s very important to see it fail - because only by seeing it fail you can have the confidence when you see it pass that you have corrected the issue.</li>
+<li><p>Fix only enough so that your test can pass. It&rsquo;s very important - don&rsquo;t get ahead of yourself to make a pass for your test anyway. As,</p></li>
+<li><p>Remember <strong>YAGNI  </strong> - <strong>You Ain&rsquo;t Gonna Need It</strong> . Sometimes you often end up working and spending time on something that you won&rsquo;t need later, so, avoid that. </p></li>
+<li>If no. 3 above is not followed then you are writing something which is not tested and may be will not be tested in the future as well as many of the code that you have written just makes pass for the test very easily.</li>
+<li>Run your test and see it succeed.</li>
+<li>Refactor and retest - to see your refactor has not broken the test.</li>
+<li>Repeat the whole process from no. 1 above.</li>
+</ol>
+
+
+<h4>Asserts</h4>
+
+<ol>
+<li>It&rsquo;s a way to see if you have in fact succeed i.e. what you expect to be true.</li>
+<li>Normally using any testing framework, you will find the keyword - &ldquo;Assert&rdquo; to make an assert of what you expect to be true.</li>
+<li><strong>Rule to remember: You should have only one &ldquo;logical&rdquo; assert per test.</strong> It&rsquo;s fine to have on or more assert statement but logically you should test just one thing and to ensure what is reason that your test should fail.</li>
+<li><p>There are many aspects that you can check while asserting namely,</p></li>
+<li><p>Equality - AreEqual, AreNotEqual, etc.</p></li>
+<li>Identity - AreSame, AreNotSame, Contains, etc.</li>
+<li>Condition - IsTrue, IsFalse, IsNull, IsNotNull, IsNan, IsEmpty, IsNotEmpty, etc.</li>
+<li>Type Checking - IsInstanceOf<t>, IsNotInstanceOf<t>, IsAssignableFrom<t>, etc.</t></t></t></li>
+<li>Exception Throw or not thrown.</li>
+<li>String - Contains, StartsWith, EndsWith, AreEqualIgnoringCase, IsMatch (regex), etc.</li>
+<li>Collection - AllItemsAre&hellip; InstanceOfType, NotNull, Unique, Equal, Equivalent, etc.</li>
+<li>File - AreEqual, AreNotEqual, etc.</li>
+<li>Driectory - AreEqual, AreNotEqual, etc.</li>
+<li>Asserts to force a result - Assert.Pass, Assert.Fail, Assert.Ignore, etc.</li>
+</ol>
+
+
+<h4>Red - Green Refactoring Cycle</h4>
+
+<p><tbody>
+<tr><td style="text-align: center;"><a href="http://4.bp.blogspot.com/-Neui5RASyE8/Ul-5UoulcjI/AAAAAAAAA5w/n7AVKYI7aKw/s1600/rgr.PNG" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" height="162" src="http://4.bp.blogspot.com/-Neui5RASyE8/Ul-5UoulcjI/AAAAAAAAA5w/n7AVKYI7aKw/s400/rgr.PNG" width="400"></a></td></tr>
+<tr><td class="tr-caption" style="text-align: center;">Red - Green Refactoring Cycle</td></tr>
+</tbody></p>
+
+<h4>But how do you Refactor ?</h4>
+
+<p>Uncle Bob says - Follow <strong>SOLID</strong></p>
+
+<ol>
+<li><p><strong>Single Responsibility: </strong></p></li>
+<li><p>Exactly one reason for a Class/method to change.</p></li>
+<li>One responsibility per Class/method.</li>
+<li><p><strong>Open Closed Principle:</strong></p></li>
+<li><p>Your Class should be open for extension, closed for modification.</p></li>
+<li>Creates dependable api to your Class.</li>
+<li>Derive but don&rsquo;t modify internals of your Class.</li>
+<li><p><strong>Liskov Substitution Principle:</strong></p></li>
+<li><p>Ability to replace instances with their sub-types at run-time.</p></li>
+<li><p><strong>Interface Segregation Principle:</strong></p></li>
+<li><p>No client should be forced to depend on method it doesn&rsquo;t use.</p></li>
+<li>Create small interfaces.</li>
+<li><p><strong>Dependency Inversion Principle:</strong></p></li>
+<li><p>Depend on abstractions and not on concrete implementation. This is the art of dependency injection.</p></li>
+</ol>
+
+
+<h4>Key points to remember whilst Refactoring</h4>
+
+<ol>
+<li><p>Names matter</p></li>
+<li><p>Spend time while naming</p></li>
+<li>Renaming is very cheap - do it if you feel so.</li>
+<li>Use meaningful names.</li>
+<li>Don&rsquo;t be afraid of long names.</li>
+<li>Make names pronounceable.</li>
+<li>Classes = Nouns</li>
+<li>Methods = Verbs</li>
+<li>Collections are plural.</li>
+<li><p>Avoid encoding:</p>
+
+<ul>
+<li>No Hungarian Notation</li>
+<li>Interfaces do not begin with I.</li>
+</ul>
+</li>
+<li>Functions/Methods should be small.</li>
+<li>Do one thing &amp; do it well.</li>
+<li><p>Avoid Switch Statements</p></li>
+<li><p>Use derived types where possible.</p></li>
+<li>Use Descriptive names - don&rsquo;t be afraid of long names.</li>
+<li><p>Minimize number of parameters you pass to a method</p></li>
+<li><p>Zero is ideal</p></li>
+<li>One or two are workable</li>
+<li>Three or more are too much cognitive load of understanding how your method works and those parameters interact. </li>
+<li><strong>Don&rsquo;t Repeat Yourself (DRY)</strong></li>
+<li><strong>YAGNI</strong></li>
+<li>Structured Programming is dead - in a small method, multiple returns can clarify.</li>
+<li><p>Use fewer &amp; smarter comments</p></li>
+<li><p>To explain intent when obscure.</p></li>
+<li>Use <strong>ToDo</strong> comments but no in production code.</li>
+<li>Avoid most comments and fix the code instead.</li>
+<li><p><strong>The Law Of Demeter</strong></p></li>
+<li><p>Modules should not know about innards of objects.</p></li>
+<li>Objects hide their data.</li>
+<li>Objects expose their public methods.</li>
+<li><p>Use Exceptions, not errors</p></li>
+<li><p>Don&rsquo;t return null or pass null.</p></li>
+<li>Classes should be small.</li>
+<li>Single Responsibility should be applied to classes.</li>
+<li><p>Refactor your Tests by keeping <strong>FIRST</strong> in mind</p></li>
+<li><p><strong>Fast</strong></p>
+
+<ul>
+<li>Test should run quickly else you won&rsquo;t run it and then it has no value.</li>
+</ul>
+</li>
+<li><p><strong>Independent</strong></p>
+
+<ul>
+<li>Order of the tests must not matter.</li>
+<li>No dependencies between tests.</li>
+</ul>
+</li>
+<li><p><strong>Repeatable</strong></p>
+
+<ul>
+<li>Running the same test twice should yield the same answer reliably.</li>
+</ul>
+</li>
+<li><p><strong>Self-Validating</strong></p>
+
+<ul>
+<li>Tests should return Boolean: Pass or Fail but no ambiguity.</li>
+</ul>
+</li>
+<li><p><strong>Timely</strong></p>
+
+<ul>
+<li>Tests should be written just before production code.</li>
+</ul>
+</li>
+</ol>
+
+
+<p>This was all about the concepts that you should keep in your mind while writing programs. Practice the above in your daily work and you will notice the difference it makes in your way to write applications.</p>
+
+<p>Stay tuned for sample application to write tests with MVC.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Some Facts About All the Programmer or a Software Developer]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/01/20/some-facts-about-all-programmer-or/"/>
+    <updated>2013-01-20T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/01/20/some-facts-about-all-programmer-or</id>
+    <content type="html"><![CDATA[<p>No matter where you are in your software development career or what technologies you work with, there are couple to things we all have in common:</p>
+
+<ul>
+<li>Education (Everyone needs to go for education but the nature of that education can differ.)
+
+<ul>
+<li>Knowledge (the things we know)</li>
+<li>Skills (how we use the knowledge)</li>
+<li>Judgement (Choosing the right approach)</li>
+</ul>
+</li>
+<li>The challenge is - There are always new platforms, new tools, new languages as our field is growing rapidly.</li>
+</ul>
+
+
+<p>In case of any other profession, if you stop learning, things will still work. But in fields like software development and information technology, we need to make learning as our habit and a passion too as if you don&rsquo;t do it, your skills will be less valuable in the IT market.</p>
+
+<!-- more -->
+
+
+<p>But wait!!! you can&rsquo;t learn everything going on in the industry. One needs to develop a education  strategy to move ahead and choose what to learn and what not to learn. This is a very important step one needs to make in this field for their career. So, let us figure out how can we move ahead.</p>
+
+<p>We can move ahead to know about education strategy but think for a minute for the title that you are using for your career. There is a programmer  software developer, software engineer, software architect, computer scientist, etc. These title are for the human resources of many organisations. Let us divide our community into two groups or titles: The Programmers and the Software Developers. A software developer may have the skill of a programmer or software architect or software scientist, etc. </p>
+
+<p>If you ask a programmer to to write some code, you will get a quality code written if the programmer is confident with proper comments and following good practises. But if you ask a software developer to write some code, you will get questions like:</p>
+
+<ul>
+<li>How does it fit in the business process? Are the requirements thought out?</li>
+<li>Are you sure you understand what it will cost?</li>
+<li>What kind of documentation it will need? </li>
+<li>Many others&hellip;</li>
+</ul>
+
+
+<p>Both has different approach to deliver some code. Programmers will write the code for a problem and software developers will deliver the solution by sometimes writing the code. </p>
+
+<p><strong>Languages Don&rsquo;t Matter</strong></p>
+
+<p>We discuss a lot about the languages that we use like pros and cons or which is better c# or vb.net or someone might say python/ruby/PHP/javascript is good, etc. But the point is, Languages Don&rsquo;t Matter.</p>
+
+<ul>
+<li>Programmers care about individual languages and </li>
+<li><p>Software developers care about language characteristics:</p>
+
+<ul>
+<li>Strong or loose typing?</li>
+<li>Case sensitivity?</li>
+<li>Object oriented? Inheritance? Interfaces? Properties?</li>
+<li>Functional?</li>
+<li>Datatypes?</li>
+<li>Platform Integration?</li>
+<li>Interpreted, compiled, or something in between?</li>
+<li>Control Structures?</li>
+</ul>
+</li>
+<li>Languages are secondary to platforms.</li>
+<li>Language doesn&rsquo;t matter from a technical perspective, but it really do matters from a business perspective. If a business works with a language that is not liked by many there might be a huge risk or cost to find someone to support the systems in future.</li>
+<li><p>A typical software life cycle cost can be like (may vary):</p>
+
+<ul>
+<li>Requirements and Design - 20% of the cost.</li>
+<li>Code and unit test - 10% of the cost.</li>
+<li>QA/deployment - 10% of the cost.</li>
+<li>Maintenance - 60% of the cost.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Keeping the above table in our mind if we compare language A and language B below:</p>
+
+<ul>
+<li>Language A - 50% reduction in coding costs, better tooling but not popular and hard to find develoeprs.</li>
+<li>Language B -  very popular - developers are 50% cheaper.</li>
+</ul>
+
+
+<p>Which one would you go for?</p>
+
+<ul>
+<li>From technical perspective, A is the better choice. But you should choose B, as it is good for long term cycle of your system.</li>
+</ul>
+
+
+<p><strong>Formal Education</strong></p>
+
+<p>There are some important points like software development life cycle, what to ask before starting a project, how to learn  a computer language and just not use it to complete a project, etc. One can learn all this by having a good experience but a formal education in college and universities, a graduate is more close to become a software developer.<br/>
+Going to college or university has many advantages. You might find yourself creating a network of friends which is another source of learning and enjoying! It also gives you credibility i.e. your education provider gives you a certificate at the end of your course that you have learned a particular module or subject and this will show to your future employers about your abilities. It is also common to not to join a college for a degree and start working directly in this industry but to have a better knowledge about this industry, one should attend a degree course from college or university.</p>
+
+<p><strong>Which School is Best?</strong></p>
+
+<p>For computer science at undergraduate level, they all teach the same thing. They use the same resources, text-books. So, choose the course wisely like don&rsquo;t go to a college where they are teaching computer programming instead go for computer science. Employers are keen to know where you did your graduation from but in this industry this is not that important as once you get your first job, they only want to know what you did in your job. You should ignore the college rankings.</p>
+
+<p><strong>So, What does Matter?</strong></p>
+
+<ul>
+<li>Go somewhere you like (culture and atmosphere)</li>
+<li>Look for Reasonable cost. (Fees for the course, living cost, etc)</li>
+<li>Consider the level of competition</li>
+<li>Location and Industry connections (As local organisations will be interested to invite students to join them or placement or internships, etc)</li>
+</ul>
+
+
+<p><strong>Building a Foundation</strong></p>
+
+<p>There are some facts that everyone needs to know and remember we all are in the same boat:</p>
+
+<ul>
+<li>You can&rsquo;t know everything.</li>
+<li>You can&rsquo;t keep up with what&rsquo;s new.</li>
+</ul>
+
+
+<p>What do you about it?</p>
+
+<ul>
+<li>Learn how to learn </li>
+<li>Learn what not to learn and where to stop</li>
+<li><strong>Learn the fundamentals</strong></li>
+<li><strong>Learning on demand</strong></li>
+</ul>
+
+
+<p>The last two points above are very important. Say suppose you searching for a code sample to work with A and B as technology. You might find a code that works and you just use it by modifying some lines of code as per your need. But wait, this is the best time to learn about the fundamentals of those technologies or languages A and B. This will help you to learn about them and making your own solution. Also, if you practise this in your daily routine, you can be a just-in time programmer.</p>
+
+<p><strong>Resources</strong></p>
+
+<p>Where can you go to learn technologies? In college&hellip;? No, going back to college again is not the answer.</p>
+
+<ul>
+<li>Classes (schools or training companies) - but they might not be working in real environment to deliver production code.</li>
+<li>Conferences</li>
+<li>Documentation for those technologies are the best material to look at.</li>
+<li>Search (articles, blogs, forums and references)</li>
+<li>Forums in questions ans answers format.</li>
+<li>Books</li>
+<li>Create them for yourself - make your own notes, etc.</li>
+</ul>
+
+
+<p><strong>Study Workflow</strong></p>
+
+<ul>
+<li><p>Breadth vs. Depth</p>
+
+<ul>
+<li>Breadth - build a foundation in multiple subject area</li>
+<li>Depth - specialise in targeted subjects as needed</li>
+</ul>
+</li>
+<li>Don&rsquo;t let your specialisation become your identity. As in our field, all technologies have a time frame and you might not find your specialised technology to be as good in the market as it was 8 years before.</li>
+</ul>
+
+
+<p><strong>Choosing Technologies</strong></p>
+
+<p>If you are an employee, you management might have the preference to select a technology or if you are an consultant, your client might have the preference to do so. But it is important for you to decide, which technologies, you want to work with.</p>
+
+<ul>
+<li>The key is to look at the supply and demand.</li>
+<li>Try to pick the survivor.</li>
+<li>Don&rsquo;t believe marketing hype.</li>
+<li>Don&rsquo;t always follow the money.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Career of a Software Developer and Some Strategies to Survive]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/01/10/career-of-software-developer-and-some/"/>
+    <updated>2013-01-10T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/01/10/career-of-software-developer-and-some</id>
+    <content type="html"><![CDATA[<h2></h2>
+
+<p>If you are an software developer by profession or have hobby to develop in some languages, I guess you spend most of your time working on different technologies and updating your skills either by attending conferences, books and other sources. There are many things to learn and by the time we learn some of them, we again have lots of other new things in queue, that never ends! It is sometimes very difficult to how to work in such environment and keep learning and updating your skills. Everyone has this issue but very few talk about this! Geeks can talk a lot about comparing different technologies or the competition going on between Microsoft, Google or any other organisation. But wait, is this all a software developer can think of or should do? No, we are not taking care of many important factors that I am going to talk about here.</p>
+
+<!-- more -->
+
+
+<p>There are some points that really means to be a software developer. There are many things that no one teaches us in school or university. Here are some challenges that a software developer has to face, but very few talk about:</p>
+
+<ul>
+<li>Technical - is about keeping up with the rapid change in our field and to choose wisely which one to go for&hellip;!</li>
+<li>Professional - related with the politics going in the company or dealing with managers or struggling to become an manager of which you don&rsquo;t have any knowledge or experience.</li>
+<li>Financial - Interpreting the job offer or should we invest only in our company&rsquo;s stock.</li>
+</ul>
+
+
+<p>I don&rsquo;t know about you how you introduce yourself as a software developer or a programmer who codes but I introduce myself as I ship production/release code. Yeah, it is different then yours but in a good way because it says that you are just not writing codes as part of your side projects or while working on a open-source project, it just says that do something that people use in real life on their computers. And yeah, to find a solution for a problem, a solution that makes life easy for an end user. </p>
+
+<p>Hey! Will you stop writing code in future or will you change your field? Think again, as there are many reason for which someone may go into the software development field. Reason can be programming is fun, you like challenges, doing something creative or it tends to pay well or may be we are sometimes better with machines than with people, etc. I hope you have you reason with you as this is very important whether its love towards learning, technology or money or you don&rsquo;t like to deal with people (against managerial role) or anything else. You need to be clear with yourself as this will help you to move towards success.</p>
+
+<h3><strong>How do you measure Success? </strong></h3>
+
+<p>For some, its</p>
+
+<ul>
+<li>Money&hellip;?</li>
+<li>Friends and Family&hellip;?</li>
+<li>Recognition&hellip;?</li>
+<li>Fame&hellip;?</li>
+<li>Making a difference&hellip;?</li>
+<li>Anything else&hellip;????</li>
+</ul>
+
+
+<p>Find yours wisely so that your priority drives your career path.</p>
+
+<h3><strong>Goals</strong> - </h3>
+
+<p>Now, you have a priority to climb the ladder of succes but will you be able to do it without defining a Goal? No way! If you are not aware what you want, you won&rsquo;t get it. If you don&rsquo;t have any idea at the starting, atleast try to define a generic goal for you. Another question that someone might ask   to himself is how technical I want to be? Software development can be a path to many related careers. </p>
+
+<p>Somehow, your work will take the priority of more number of hours from the 24 hours and you will get  very less time to spend only for you! So, you would not choose something as your goal that you don&rsquo;t enjoy or that is boring! Choose something, that you love and enjoy and even getting paid for that enjoyment. If you are doing this, then someone is not stealing your life! Instead they are paying you to do something that you would be doing if you don&rsquo;t had a job. Also, everyone one has financial needs, so choose wisely if money is your main reason for success. </p>
+
+<p><strong>Try to answer the above questions taking your case in your mind. Write it down and keep reading. I will be coming with the next part - <a href="http://learnwithsid.blogspot.co.uk/2013/01/some-facts-about-all-programmer-or.html">Some facts about all the Programmers or Software Developers</a>.</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What if I Don’t Have SQL Express Installed?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express/"/>
+    <updated>2013-01-03T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express</id>
+    <content type="html"><![CDATA[<h4> what if I don’t have SQL Express installed?</h4>
+
+<p>If you don’t have SQL Express installed and running, you may have got the following error when your code tried to read or write some data:</p>
+
+<blockquote><p><em>A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Blah blah blah…</em>
+No problem! You can quickly switch to use the new SQL Server Compact – a lightweight, in-process database – without having to download or install anything manually. Simply add SQL Server Compact to your project by issuing the following command in the Package Manager Console:</p></blockquote>
+
+<pre><code>Install-Package EFCodeFirst.SqlServerCompact
+</code></pre>
+
+<!-- more -->
+
+
+<p>Ta da – no more external database required. Run your project again (Shift-F5) and this time it will create and connect to a file-based database (a .sdf file will appear in your ~/App_Data folder). The EFCodeFirst.SqlServerCompact package adds a file to your project called AppStart_SQLCEEntityFramework.cs, which configures the runtime to use SQL CE.</p>
+
+<p>Of course you probably still want the proper version of SQL Server when you eventually deploy your application for public use, but for small applications or for learning, SQL CE is really handy.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Extract Key/values From FormCollection in ASP.NET MVC Action Method]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection/"/>
+    <updated>2013-01-03T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection</id>
+    <content type="html"><![CDATA[<p>To avoid you from having to chase for the same information: here&rsquo;s how you extract key / value pairs from the FormCollection that comes as an argument in an ASP.NET MVC action method:</p>
+
+<pre><code>public ActionResult Create(FormCollection formCollection){ foreach (var key in formCollection.AllKeys) { var value = formCollection[key]; // etc. } foreach (var key in formCollection.Keys) { var value = formCollection[key.ToString()]; // etc. }}
+</code></pre>
+
+<!-- more -->
+
+
+<p>Also, a final tip: If you find that the formCollection does not contain the key/value pairs you expected, check that </p>
+
+<ol>
+<li>Your controls reside within the correct form (you can have more than one)</li>
+<li>Your controls have names (just having an id is not returning values in the formCollection)
+Hope this helps. </li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Must Have Developer Tools! Some Tricks to Develop Quicker]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/"/>
+    <updated>2012-12-20T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks</id>
+    <content type="html"><![CDATA[<p><strong>Google Developer Tools, Some tricks to develop quicker</strong></p>
+
+<ol>
+<li>View Source => By going through menu navigation or Ctrl-Shit-I on windows or Cmd-option(alt)-I on mac.</li>
+<li>Or for particular element, just right click on it and choose inspect element.</li>
+<li>For fast navigation, prefer keyboard arrow keys to collapse or expand DOM elements. You will find the width and height of that active element as you move in Developer Tool.</li>
+<li>To get the full view of the page, try Ctrl - (minus) to zoom out so as to see your whole page with developer tools open without scrolling. Sometimes useful to me.</li>
+</ol>
+
+
+<!-- more -->
+
+
+<ol>
+<li>You can copy the the content or the DOM elements by using your mouse, but you might like to do this by using console&rsquo;s copy() method. For example, copy(document.body.innerText) and then paste that anywhere. Its handy if you know the DOM element and may help for productivity.</li>
+<li>Use clear(); function to clear the console, however the developer tool has a GUI for that.</li>
+<li>Use inspect(body) to inspect body element of the DOM, just pass any element in the function.</li>
+<li>Also, you can use $0 to access the element that is selected in the DOM in a console. So,  you can pass $( $0 ) for jquery method where an anchor tag was selected in your DOM, so it means you are accessing that anchor method.</li>
+<li>Under Network tab, the blue line in the waterfall chart shows that the DOM is ready or the DOMContentLoaded Event fire and the read line shows the windows load event which waits for the documents to load images, iframes, etc.</li>
+<li>You an see the cookies information by going through the Network tab and then selecting Header or Cookies tab.</li>
+<li>For javascript debugging, we can edit the script file of the page on the fly and it will render it as this feature is unique to Chrome because of its V8 JavaScript engine.</li>
+<li>Sometimes, its hard for us to find where the error is in our script, so you might want to open the script in developer tools and then click the pause button, now chrome will set a breakpoint when it find the statement because of which the error is being logged in console.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn How to Build HTML5 and JavaScript Apps With MVVM and Knockout (Part - 1)]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/"/>
+    <updated>2012-12-05T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript</id>
+    <content type="html"><![CDATA[<p>One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application:</p>
+
+<ol>
+<li>The Structure i.e. HTML</li>
+<li>Presentation i.e. CSS</li>
+<li>Behaviour i.e. JavaScript</li>
+</ol>
+
+
+<p>Do we use any UI patterns with JavaScript development, like </p>
+
+<ol>
+<li>MVVM or</li>
+<li>Data binding structures</li>
+</ol>
+
+
+<p>How should be write structured JavaScript? Should we write in a modular pattern?</p>
+
+<!-- more -->
+
+
+<p></p>
+
+<p>Also, all apps love data, so, how should we care about data and bindings. Somehow, we need to load data from somewhere, such as using an Ajax service or loading JSON data on your screen and after getting the data how will you respect changes from the user</p>
+
+<p>Knockout is a JavaScript library that can solve the above issues in a very nice and efficient manner.</p>
+
+<p>So, what is Knockout?</p>
+
+<ol>
+<li>It allows you to have rich client-side interactivity for your UX provide a good pattern. </li>
+<li>It gives you a good separation of structure and behaviour.</li>
+<li>It provides you to use declarative bindings to be able to help you bind your UI elements, in case, HTML or even may be CSS styles and classes down to your source object. </li>
+<li>Offers you to work in MVVM pattern.</li>
+<li>It has a very good browser support. (IE6+, Firefox 2+, Chrome, Safari, Opera)</li>
+</ol>
+
+
+<p>Key Concepts of Knockout:</p>
+
+<ol>
+<li>Dependency Tracking via observables (eg: a property depending on another property and it is in sync with a UI control and vice-versa(optional).)</li>
+<li>Declarative Bindings (Instead of using JavaScript to go through DOM and find a particular control with certain ID use can bind the control from the html itself to push data to the UI and pull data from UI again from/to the source object.)</li>
+<li>Templating Support (eg: you might have repetitive structures in your webpage like list of abc or rows in a list box, rows in a table or li in a ul/ol. You can use templates to take care of those views. You can use jQuery templates with Knockout, or native templates of Knockout or any third party templating engine.)</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/ovrxL">Hello World Demo</a> (Open in a good browser as CodePen needs it.)</li>
+</ul>
+
+
+<p>The important factor is to understand the MVVM in terms of Knockout: the separation of concerns. </p>
+
+<ol>
+<li>MVVM is just a separation pattern and a way to organise your code structure to make it easier to maintain and to deal with separation and responsibilities.</li>
+<li>Model-View-ViewModel</li>
+<li>Not technology specific. ( you might have heard MVVM with XAML and now you are using with Knockout with JavaScript and HTML.)</li>
+<li>Works well with data bindings. (in this case its html)</li>
+</ol>
+
+
+<p>MVVM Components</p>
+
+<ol>
+<li>We have a view which is this case is HTML. ( is the user friendly presentation of information)</li>
+<li>We have our model which is in JSON. (javascript object in this case which has a property named as firstName)</li>
+<li><p>Between above two, we have logic to separate to how to  present that model JSON data into the view itself and that is our view model. </p></li>
+<li><p> It contains all the behaviour for the view that the view needs and can aggregate on or more models to show the data inside the view.</p></li>
+<li> Contains properties like firstName, methods and the Model.</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/tcuob">A quick demo using JavaScript&rsquo;s object literal notation</a></li>
+<li><a href="http://codepen.io/siddharth-pandey/full/dsmtH">A quick demo using JavaScript&rsquo;s function</a></li>
+<li><a href="http://a%20quick%20demo%20using%20javascript%27s%20function/">A quick demo</a></li>
+</ul>
+
+
+<p>Visual Studio Extensions for your productivity</p>
+
+<ul>
+<li>Nuget - to manage 3rd party libraries and references.</li>
+<li>Web Essentials - code collapsing, vendor specific css properties, etc.</li>
+<li>Web Standards Update - html intellisense and validation.</li>
+<li>WoVS Default Browser Switcher - quickly change the default browser from visual studio.</li>
+<li>JSLint - javascript code analysis.</li>
+<li>CSSCop - catches common CSS issues.</li>
+<li>Resharper 6 (trial version only) - javascript refactoring tools.</li>
+</ul>
+
+
+<p>Begin Coding with Knockout and Visual Studio</p>
+
+<ul>
+<li>Either download the JavaScript references from  <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>.</li>
+<li>Either get the debugger or minified version from Github.</li>
+<li>Use Nuget to install Knockout.</li>
+<li><p>Add intellisense for Knockout in Visual Studio for any *.js files by adding the following: &amp; lt; reference path=&ldquo;/scripts/knockout-2.2.0.debug.js&rdquo; / &amp; gt; at script-page level.</p>
+
+<ul>
+<li>After doing this, whenever you will type ko. you will see all the options that you can use from the Knockout library.</li>
+<li>It has to be the first line of code in the page and you have to comment it using &ldquo;///&rdquo;.</li>
+<li>Or use a tool like Resharper that will add the intellisense support for your project by its own.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Key Resources</p>
+
+<ul>
+<li>Knockout  - <a href="http://knockoutjs.com/">http://knockoutjs.com</a></li>
+<li>Source Code - <a href="https://github.com/SteveSanderson/knockout">https://github.com/SteveSanderson/knockout</a></li>
+<li>Documentation - <a href="http://jpapa.me/kodocs">http://jpapa.me/kodocs</a></li>
+<li>Forums - <a href="http://jpapa.me/koforum">http://jpapa.me/koforum</a></li>
+<li>Tutorials - <a href="http://learn.knockoutjs.com/">http://learn.knockoutjs.com</a></li>
+<li>Stackoverflow - <a href="http://jpapa.me/kostackoverflow">http://jpapa.me/kostackoverflow</a></li>
+<li>Ryan Niemeyer&rsquo;s Blog - <a href="http://www.knockmeout.net/">http://www.knockmeout.net</a></li>
+<li>jsFiddle - <a href="http://www.jsfiddle.net/">http://www.jsfiddle.net</a></li>
+<li>CodePen.io - <a href="http://codepen.io/">codepen.io</a></li>
+</ul>
+
+
+<p>Stay tuned for part - 2.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Building Blocks of JavaScript Programs]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript/"/>
+    <updated>2012-11-30T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript</id>
+    <content type="html"><![CDATA[<p>This post is second is series of learning JavaSciprt fundamentals. You may like to visit this article to go through all the posts in the series.</p>
+
+<p>Now, we will learn some building blocks the bits and pieces, that one should know to write JavaScript code.</p>
+
+<p><strong>The working demo for this post is <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></p>
+
+<h3>Outline</h3>
+
+<ul>
+<li>Comments - using which you can write some hints for a piece of code.</li>
+<li>Variables</li>
+<li>Null - a special object in JavaScript programs</li>
+<li>Undefined - which is slightly different primitive type in JavaScript.</li>
+<li>Finding Help - we will see where we can go for any assistance/docs for JavaScript.</li>
+<li>Objects</li>
+<li>Equality - how things are compared in JavaScript which one should be aware of it.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Comments</h3>
+
+<ul>
+<li>The comments in JavaScript is kind of similar to comments syntax available in Java.</li>
+<li>Comments is something that won&rsquo;t output anything as a result like your other piece of code, it is just for your use as it doesn&rsquo;t get rendered by the JavaScript interpreter. </li>
+<li>Single line Comment - &ldquo;//&rdquo;, this two forward slash characters is used for single line comments followed by any single line sentence. For example, &ldquo;// this is a single line comment&rdquo;.</li>
+<li>Multiline Comment - &ldquo;/*  your content */&rdquo;, the syntax for this comment is forward slash and star to start with, put your multiline sentence after that and close it with start and forward slash. For example - /* As you know this is a multiline comment, in which you can break the sentence into n number of lines.*/.</li>
+<li>You might want to use comments for any piece of code in order to instruct yourself or to any other developer in the team that what that code does, etc.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Variables</h3>
+
+<ul>
+<li>Variables in JavaScript are declared with &lsquo;var&rsquo; keyword.</li>
+<li>Variables type is inferred, i.e. they don&rsquo;t have a type until a value has been assigned to a variable. When assigned, the type is then defined from type of value specified.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Null</h3>
+
+<ul>
+<li>Is one of the JavaScript primitive types.</li>
+<li>Null means the absence of a value.</li>
+<li>But when null is used in any boolean expression like in case of a if condition, it evaluates to false.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Undefined</h3>
+
+<ul>
+<li>Is also one of the JavaScript primitive types.</li>
+<li>It represents an unknown value i.e. a variable that has not been assigned anything.</li>
+<li>We encounter undefined when a non-existence object property is called.</li>
+<li>But when undefined is used in any boolean expression like in case of a if condition, it evaluates to false.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Finding Help</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla Developer Network</a></li>
+</ul>
+
+
+<h3>Objects</h3>
+
+<ul>
+<li>Everything in JavaScript is an object except for the simple types like string, number, boolean, null and undefined.</li>
+<li>Objects are collection of properties and the values of those properties can be of any type.</li>
+<li><p>Objects are declared with the object literal notation. <br/>
+<code>var anobject = { firstValue: 'a', secondValue: 2 };</code></p>
+
+<ul>
+<li>In the above example, we have created a anobject object, with two properties - firstValue with a string value and secondValue with a numeric value.</li>
+</ul>
+</li>
+<li>In JavaScript, there is no class construct but we can define our objects and properties.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Equality</h3>
+
+<ul>
+<li>Objects are only equal to them-self.</li>
+<li>Primitives are equal only if the values matches like (&ldquo;Dog&rdquo;===&ldquo;Dog&rdquo;).</li>
+<li><p>There are two types of equality operators in JavaScript:</p>
+
+<ul>
+<li>==</li>
+<li><hr /></li>
+<li>The difference between the two is type coercion.</li>
+<li>== only checks for values but === check for values and also for the type.</li>
+<li>Use === over == and !== over != as it gives a proper answer comparing value and the type. Although, the decision is yours. </li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+</li>
+</ul>
+
+
+<p>  <a href="http://learnwithsid.blogspot.com/2012/11/learning-javascript-fundamentals.html"><strong>Keep reading the other post in this series to learn JavaScript.</strong></a> Happy Learning!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn Modernizr Library With Some Quick Demo]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick/"/>
+    <updated>2012-11-28T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick</id>
+    <content type="html"><![CDATA[<p>If you are reading this article you might already know what <a href="http://modernizr.com/">Modernizr</a> has to offer but the post aims to give you some working demo instead of a content based approach. If you are looking for a documentation it is available on their website and it offers a step-by-step guide. But while using it, I have found that there was a lack of demo that how to really use its features in real world, so, I thought of creating a <a href="http://codepen.io/siddharth-pandey/full/JbKhC">demo</a> which you can fork it and keep it for your own reference.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Our Users Always Remember the Website Experience That We Offer]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website/"/>
+    <updated>2012-11-23T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website</id>
+    <content type="html"><![CDATA[<p>I would like you to see some of the examples that I have in order to understand the advantages of a responsive web design.</p>
+
+<p>For a quick demo, I request you to click the links below. Those websites are very good and is already helping a business. The links below will demonstrate you a user’s experience when they are browsing our websites from different devices:</p>
+
+<!-- more -->
+
+
+<ul>
+<li><a href="http://www.responsinator.com/?url=https%3A%2F%2Fwww.quote-process.co.uk%2Fpostoffice%2Fpet%2Fapp%2F%28S%28g5zfio551el2c4bddyap2zmk%29%29%2Fstart.aspx">Website 1</a></li>
+<li><a href="http://www.responsinator.com/?url=https%3A%2F%2Fwww.quote-process.co.uk%2Fprotectyourbubble%2Fpet%2Fapp%2F%28S%281qoxjw45fkri00vcnovzta2c%29%29%2Fstart.aspx">Website 2</a></li>
+</ul>
+
+
+<p>Did you enjoyed moving the scroll-bars and finding the content that we want our users to see? If yes, then it’s time to stop reading here and go back to the page again and try completing a user journey. Come back and start reading here:</p>
+
+<p>When we create a website or any web solution for our users, we can’t guarantee that they will read these words on a printed page, holding a tiny paperback in their hands. Maybe they are sitting at desk with an electronic copy of the content on a screen. Perhaps, they are on morning commute, tapping through pages on a smart phone or swiping along a tablet. Or maybe they don’t even see the words as we blessed people do or may be their device or desktop is simply reading this book aloud.</p>
+
+<p>The best way to understand is to replace water with our websites and water’s container with device browser. I was working on a single page, just to demonstrate you a sample of website that is responsive. I have not spend any minute for the designing or for actual content because that will take a much amount of time and is not needed for this instance. Again, I would like you see and tell me about your experience by going through URLs below</p>
+
+<ul>
+<li><a href="http://www.responsinator.com/?url=codepen.io%2Fsiddharth-pandey%2Ffull%2FlHFCr">Prototype 1</a></li>
+<li><a href="http://www.responsinator.com/?url=www.siddharthkpandey.co.uk">Prototype 2</a> (This is my website which is in progress…) 
+The above prototype contains all User-Interface elements that we need like a form, slide show, images, navigation, header, footer, sample paragraph, etc.</li>
+</ul>
+
+
+<p>I am sure by now you have discovered the importance of a responsive web design and the fun behind it. Soon, I will be writing the main concepts for create a responsive design. Stay tuned!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Some Tools to Instantly Code Faster...]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster/"/>
+    <updated>2012-11-22T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster</id>
+    <content type="html"><![CDATA[<p>I thought it would be great if I share the knowledge that I have with you. This  is my attempt to share my knowledge that can help you code in a better way and it would be great if you also share the tools you have in your arsenal. 
+1. Let us take a demo. If I ask you create this piece of html,</p>
+
+<pre><code>&lt;div id="page"&gt; &lt;div class="logo"&gt;&lt;/div&gt; &lt;ul id="navigation"&gt; &lt;li&gt;&lt;a href=""&gt;Item 1&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 2&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 3&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 4&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 5&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/div&gt;
+</code></pre>
+
+<p>​<!-- more --></p>
+
+<p><strong>I am sure you will go on create element by element and will type a lot. Ever wondered how you can boost your coding skills?</strong></p>
+
+<p>Well, I can create the above mark-up by following code:<br/>
+<strong>#page>div.logo+ul#navigation>li*5>a{Item $} and this will expand to the above mark-up! Cool. Right?</strong></p>
+
+<p>Just imagine, you will be able to create a whole basic webpage structure with in seconds. You can do many such stuff just by going through here:  <a href="http://docs.emmet.io/">http://docs.emmet.io</a>/ </p>
+
+<ol>
+<li></li>
+<li><p>I also save all my projects on <strong>github</strong> through which I can access it from anywhere I go.  <a href="https://github.com/">https://github.com/</a></p></li>
+<li>I find myself <strong>writing the same piece of code</strong> many times and yeah, it is sometimes odd to remember the code that I discovered few days back. Thus, I use tools like  <a href="https://gist.github.com/">https://gist.github.com/</a> to save all my <strong>snippets which I can access it anywhere.</strong></li>
+<li>There is <strong>no need to create a page and add html, css, js etc</strong> in your pages and creating a project structure. Just go to  <a href="http://jsfiddle.net/">http://jsfiddle.net/</a> and  <a href="http://codepen.io/">http://codepen.io/</a> and <strong>start writing your code and share</strong> it with your team members anywhere on the globe!</li>
+<li>You may find yourself very productive if you <strong>start using a CSS pre-processor like LESS, SCSS or SASS</strong> . They extends CSS with dynamic behaviour such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.</li>
+<li>Choose a <strong>good code editor</strong> . Visual Studio (for those who work with Microsoft technologies) is very good but sometimes there are more better alternatives if you love working with HTML, CSS, JavaScript.</li>
+<li>Expertise in the <strong>web developer tools</strong> either the <strong>Firebug or Chrome developer tools</strong> or the one in IE or Safari. </li>
+</ol>
+
+
+<p>I will keep extending this list of tools that can help you to be more productive and I am sure you will like the tools that I have listed above and you might remember me :) if you are totally new to these tools. </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learning JavaScript Fundamentals]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/22/learning-javascript-fundamentals/"/>
+    <updated>2012-11-22T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/22/learning-javascript-fundamentals</id>
+    <content type="html"><![CDATA[<p>I was about to start a project which is heavily based on JavaScript. I thought it will be a good approach if I also start learning JavaScript fundamentals for my bad memory! And thought, if I am learning something from scratch, I should write it somewhere for me and for others. Though from scratch, but this series fo learning JavaScript fundamentals will be jump start tutorial. I will try to cover all the basic stuff. Let us start now.</p>
+
+<!-- more -->
+
+
+<p> Below you may find the links to all the part of this series:</p>
+
+<ul>
+<li><a href="http://learnwithsid.blogspot.com/2012/11/an-introduction-to-javascript.html">An Introduction to JavaScript</a></li>
+<li><a href="http://learnwithsid.blogspot.com/2012/11/the-building-blocks-of-javascript.html">The Building Blocks of JavaScript Programs</a></li>
+<li>Functions</li>
+<li>Control Flow</li>
+<li>Types &amp; Libraries</li>
+<li>Firebug</li>
+<li>Testing JavaScript.</li>
+</ul>
+
+
+<p>Be patient to go through above topics. Hope this series will help you to learn one of the scripting languages that many developers enjoy! :)  </p>
+]]></content>
+  </entry>
   
 </feed>

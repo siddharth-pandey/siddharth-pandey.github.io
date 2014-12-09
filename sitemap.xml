@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere/</loc>
+    <lastmod>2014-09-05T13:56:10+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/</loc>
+    <lastmod>2014-08-28T15:54:26+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/</loc>
+    <lastmod>2014-08-25T12:34:12+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/</loc>
+    <lastmod>2014-08-11T17:25:21+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/</loc>
+    <lastmod>2014-06-15T00:07:17+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/</loc>
+    <lastmod>2014-06-06T12:22:14+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/</loc>
+    <lastmod>2013-11-12T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2013/11/12/c-razor-syntax-quick-reference/</loc>
+    <lastmod>2013-11-12T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development/</loc>
+    <lastmod>2013-10-17T00:00:00+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2013/01/20/some-facts-about-all-programmer-or/</loc>
+    <lastmod>2013-01-20T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2013/01/10/career-of-software-developer-and-some/</loc>
+    <lastmod>2013-01-10T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express/</loc>
+    <lastmod>2013-01-03T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection/</loc>
+    <lastmod>2013-01-03T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/</loc>
+    <lastmod>2012-12-20T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/</loc>
+    <lastmod>2012-12-05T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript/</loc>
+    <lastmod>2012-11-30T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick/</loc>
+    <lastmod>2012-11-28T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website/</loc>
+    <lastmod>2012-11-23T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster/</loc>
+    <lastmod>2012-11-22T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/11/22/learning-javascript-fundamentals/</loc>
+    <lastmod>2012-11-22T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/11/22/an-introduction-to-javascript/</loc>
+    <lastmod>2012-11-22T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://siddharth-pandey.github.io/blog/2012/11/21/why-coding-style-matters/</loc>
+    <lastmod>2012-11-21T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://siddharth-pandey.github.io/blog/archives/</loc>
-    <lastmod>2014-12-09T12:43:44+00:00</lastmod>
+    <lastmod>2014-12-09T13:03:08+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://siddharth-pandey.github.io/</loc>
-    <lastmod>2014-12-09T12:43:44+00:00</lastmod>
+    <lastmod>2014-12-09T13:03:08+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

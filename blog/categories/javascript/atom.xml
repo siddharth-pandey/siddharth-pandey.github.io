@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 LocalStorage API to the Rescue]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/"/>
+    <updated>2014-08-25T12:34:12+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue</id>
+    <content type="html"><![CDATA[<p>Recently I had a need to use HTML5 LocalStorage API in my web application project. The requirement was to save the vertical scroll position of window when a user drills down to low level details by navigating to other view.
+I didn&rsquo;t wanted to cookies because cookies are sent on every request to the server and I have no need to send this detail to the server as it is just related to client.</p>
+
+<p>Then I was left with LocalStorage and SessionStorage as options. I found that SessionStorage is not maintained when the page reloads and when the browser is closed. <!-- more --> So, I opted to use LocalStorage API for this use case and came up with the code below which is a localStorageWrapper module that can be accessed as a module when using RequireJS (a module loader). A client consuming this wrapper is able to set, get, check the existence of a key and clear all the items in client&rsquo;s localStorage. An item that can be save is made up of a key and a value. This value can be just a string or an javascript object that can be JSON stringified and then saved. This can be seen in the set function of the localStorageWrapper module below.</p>
+
+<p>When using these fancy new HTML5 APIs, one should care about the browser support. You can use <a href="www.caniuse.com">CanIuse</a> website to check it. This is a very good resource to check support for everything and anything related to web.</p>
+
+<pre><code>define([], function ($) {
+    'use strict';
+    var localStorageWrapper = {
+
+        /* add data to localStorage */
+        set: function (key, value) {
+
+            /* if the value is an object, stringify it to save it in localStorage */
+            if (typeof value === 'object') {
+                value = JSON.stringify(value);
+            }
+
+            localStorage.setItem(key, value);
+        },
+
+        /* retrieve data from localStorage object */
+        get: function (key) {
+            var data;
+
+            if (!this.hasData(key)) {
+                return false;
+            }
+
+            data = localStorage[key];
+
+            /* if the data is JSON, try to parse */
+            try {
+                return JSON.parse(data);
+            } catch (e) {
+                return data;
+            }
+        },
+
+        /* check if the item exists and it has data */
+        hasData: function (key) {
+            return !!localStorage[key] &amp;&amp; !!localStorage[key].length;
+        },
+
+        /* clear all the saved items in client's localstorage */
+        clear: function() {
+            localStorage.clear();
+        }
+    };
+
+
+    return localStorageWrapper;
+});
+</code></pre>
+
+<p>To properly provide graceful degradation, you can use <a href="http://modernizr.com/">Modernizr</a> to check if client supports a particular HTML5 feature.
+When using Modernizr, the client code consuming the above module looks like:</p>
+
+<pre><code>    // using set member of localStorageWrapper
+    if (Modernizr.localstorage) 
+    {
+        localStorage.set("uniqueKey1", "");
+    }
+
+    // using clear member of localStorageWrapper
+    if (Modernizr.localstorage) 
+    {
+        localStorage.clear();
+    }
+
+    // using hasData and get member of localStorageWrapper
+    if (localStorage.hasData("uniqueKey1"))
+    {
+        var value = localStorage.get("uniqueKey1");
+    }
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Must Have Developer Tools! Some Tricks to Develop Quicker]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/"/>
+    <updated>2012-12-20T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks</id>
+    <content type="html"><![CDATA[<p><strong>Google Developer Tools, Some tricks to develop quicker</strong></p>
+
+<ol>
+<li>View Source => By going through menu navigation or Ctrl-Shit-I on windows or Cmd-option(alt)-I on mac.</li>
+<li>Or for particular element, just right click on it and choose inspect element.</li>
+<li>For fast navigation, prefer keyboard arrow keys to collapse or expand DOM elements. You will find the width and height of that active element as you move in Developer Tool.</li>
+<li>To get the full view of the page, try Ctrl - (minus) to zoom out so as to see your whole page with developer tools open without scrolling. Sometimes useful to me.</li>
+</ol>
+
+
+<!-- more -->
+
+
+<ol>
+<li>You can copy the the content or the DOM elements by using your mouse, but you might like to do this by using console&rsquo;s copy() method. For example, copy(document.body.innerText) and then paste that anywhere. Its handy if you know the DOM element and may help for productivity.</li>
+<li>Use clear(); function to clear the console, however the developer tool has a GUI for that.</li>
+<li>Use inspect(body) to inspect body element of the DOM, just pass any element in the function.</li>
+<li>Also, you can use $0 to access the element that is selected in the DOM in a console. So,  you can pass $( $0 ) for jquery method where an anchor tag was selected in your DOM, so it means you are accessing that anchor method.</li>
+<li>Under Network tab, the blue line in the waterfall chart shows that the DOM is ready or the DOMContentLoaded Event fire and the read line shows the windows load event which waits for the documents to load images, iframes, etc.</li>
+<li>You an see the cookies information by going through the Network tab and then selecting Header or Cookies tab.</li>
+<li>For javascript debugging, we can edit the script file of the page on the fly and it will render it as this feature is unique to Chrome because of its V8 JavaScript engine.</li>
+<li>Sometimes, its hard for us to find where the error is in our script, so you might want to open the script in developer tools and then click the pause button, now chrome will set a breakpoint when it find the statement because of which the error is being logged in console.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn How to Build HTML5 and JavaScript Apps With MVVM and Knockout (Part - 1)]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/"/>
+    <updated>2012-12-05T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript</id>
+    <content type="html"><![CDATA[<p>One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application:</p>
+
+<ol>
+<li>The Structure i.e. HTML</li>
+<li>Presentation i.e. CSS</li>
+<li>Behaviour i.e. JavaScript</li>
+</ol>
+
+
+<p>Do we use any UI patterns with JavaScript development, like </p>
+
+<ol>
+<li>MVVM or</li>
+<li>Data binding structures</li>
+</ol>
+
+
+<p>How should be write structured JavaScript? Should we write in a modular pattern?</p>
+
+<!-- more -->
+
+
+<p></p>
+
+<p>Also, all apps love data, so, how should we care about data and bindings. Somehow, we need to load data from somewhere, such as using an Ajax service or loading JSON data on your screen and after getting the data how will you respect changes from the user</p>
+
+<p>Knockout is a JavaScript library that can solve the above issues in a very nice and efficient manner.</p>
+
+<p>So, what is Knockout?</p>
+
+<ol>
+<li>It allows you to have rich client-side interactivity for your UX provide a good pattern. </li>
+<li>It gives you a good separation of structure and behaviour.</li>
+<li>It provides you to use declarative bindings to be able to help you bind your UI elements, in case, HTML or even may be CSS styles and classes down to your source object. </li>
+<li>Offers you to work in MVVM pattern.</li>
+<li>It has a very good browser support. (IE6+, Firefox 2+, Chrome, Safari, Opera)</li>
+</ol>
+
+
+<p>Key Concepts of Knockout:</p>
+
+<ol>
+<li>Dependency Tracking via observables (eg: a property depending on another property and it is in sync with a UI control and vice-versa(optional).)</li>
+<li>Declarative Bindings (Instead of using JavaScript to go through DOM and find a particular control with certain ID use can bind the control from the html itself to push data to the UI and pull data from UI again from/to the source object.)</li>
+<li>Templating Support (eg: you might have repetitive structures in your webpage like list of abc or rows in a list box, rows in a table or li in a ul/ol. You can use templates to take care of those views. You can use jQuery templates with Knockout, or native templates of Knockout or any third party templating engine.)</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/ovrxL">Hello World Demo</a> (Open in a good browser as CodePen needs it.)</li>
+</ul>
+
+
+<p>The important factor is to understand the MVVM in terms of Knockout: the separation of concerns. </p>
+
+<ol>
+<li>MVVM is just a separation pattern and a way to organise your code structure to make it easier to maintain and to deal with separation and responsibilities.</li>
+<li>Model-View-ViewModel</li>
+<li>Not technology specific. ( you might have heard MVVM with XAML and now you are using with Knockout with JavaScript and HTML.)</li>
+<li>Works well with data bindings. (in this case its html)</li>
+</ol>
+
+
+<p>MVVM Components</p>
+
+<ol>
+<li>We have a view which is this case is HTML. ( is the user friendly presentation of information)</li>
+<li>We have our model which is in JSON. (javascript object in this case which has a property named as firstName)</li>
+<li><p>Between above two, we have logic to separate to how to  present that model JSON data into the view itself and that is our view model. </p></li>
+<li><p> It contains all the behaviour for the view that the view needs and can aggregate on or more models to show the data inside the view.</p></li>
+<li> Contains properties like firstName, methods and the Model.</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/tcuob">A quick demo using JavaScript&rsquo;s object literal notation</a></li>
+<li><a href="http://codepen.io/siddharth-pandey/full/dsmtH">A quick demo using JavaScript&rsquo;s function</a></li>
+<li><a href="http://a%20quick%20demo%20using%20javascript%27s%20function/">A quick demo</a></li>
+</ul>
+
+
+<p>Visual Studio Extensions for your productivity</p>
+
+<ul>
+<li>Nuget - to manage 3rd party libraries and references.</li>
+<li>Web Essentials - code collapsing, vendor specific css properties, etc.</li>
+<li>Web Standards Update - html intellisense and validation.</li>
+<li>WoVS Default Browser Switcher - quickly change the default browser from visual studio.</li>
+<li>JSLint - javascript code analysis.</li>
+<li>CSSCop - catches common CSS issues.</li>
+<li>Resharper 6 (trial version only) - javascript refactoring tools.</li>
+</ul>
+
+
+<p>Begin Coding with Knockout and Visual Studio</p>
+
+<ul>
+<li>Either download the JavaScript references from  <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>.</li>
+<li>Either get the debugger or minified version from Github.</li>
+<li>Use Nuget to install Knockout.</li>
+<li><p>Add intellisense for Knockout in Visual Studio for any *.js files by adding the following: &amp; lt; reference path=&ldquo;/scripts/knockout-2.2.0.debug.js&rdquo; / &amp; gt; at script-page level.</p>
+
+<ul>
+<li>After doing this, whenever you will type ko. you will see all the options that you can use from the Knockout library.</li>
+<li>It has to be the first line of code in the page and you have to comment it using &ldquo;///&rdquo;.</li>
+<li>Or use a tool like Resharper that will add the intellisense support for your project by its own.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Key Resources</p>
+
+<ul>
+<li>Knockout  - <a href="http://knockoutjs.com/">http://knockoutjs.com</a></li>
+<li>Source Code - <a href="https://github.com/SteveSanderson/knockout">https://github.com/SteveSanderson/knockout</a></li>
+<li>Documentation - <a href="http://jpapa.me/kodocs">http://jpapa.me/kodocs</a></li>
+<li>Forums - <a href="http://jpapa.me/koforum">http://jpapa.me/koforum</a></li>
+<li>Tutorials - <a href="http://learn.knockoutjs.com/">http://learn.knockoutjs.com</a></li>
+<li>Stackoverflow - <a href="http://jpapa.me/kostackoverflow">http://jpapa.me/kostackoverflow</a></li>
+<li>Ryan Niemeyer&rsquo;s Blog - <a href="http://www.knockmeout.net/">http://www.knockmeout.net</a></li>
+<li>jsFiddle - <a href="http://www.jsfiddle.net/">http://www.jsfiddle.net</a></li>
+<li>CodePen.io - <a href="http://codepen.io/">codepen.io</a></li>
+</ul>
+
+
+<p>Stay tuned for part - 2.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn Modernizr Library With Some Quick Demo]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick/"/>
+    <updated>2012-11-28T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick</id>
+    <content type="html"><![CDATA[<p>If you are reading this article you might already know what <a href="http://modernizr.com/">Modernizr</a> has to offer but the post aims to give you some working demo instead of a content based approach. If you are looking for a documentation it is available on their website and it offers a step-by-step guide. But while using it, I have found that there was a lack of demo that how to really use its features in real world, so, I thought of creating a <a href="http://codepen.io/siddharth-pandey/full/JbKhC">demo</a> which you can fork it and keep it for your own reference.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Some Tools to Instantly Code Faster...]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster/"/>
+    <updated>2012-11-22T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster</id>
+    <content type="html"><![CDATA[<p>I thought it would be great if I share the knowledge that I have with you. This  is my attempt to share my knowledge that can help you code in a better way and it would be great if you also share the tools you have in your arsenal. 
+1. Let us take a demo. If I ask you create this piece of html,</p>
+
+<pre><code>&lt;div id="page"&gt; &lt;div class="logo"&gt;&lt;/div&gt; &lt;ul id="navigation"&gt; &lt;li&gt;&lt;a href=""&gt;Item 1&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 2&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 3&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 4&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 5&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/div&gt;
+</code></pre>
+
+<p>​<!-- more --></p>
+
+<p><strong>I am sure you will go on create element by element and will type a lot. Ever wondered how you can boost your coding skills?</strong></p>
+
+<p>Well, I can create the above mark-up by following code:<br/>
+<strong>#page>div.logo+ul#navigation>li*5>a{Item $} and this will expand to the above mark-up! Cool. Right?</strong></p>
+
+<p>Just imagine, you will be able to create a whole basic webpage structure with in seconds. You can do many such stuff just by going through here:  <a href="http://docs.emmet.io/">http://docs.emmet.io</a>/ </p>
+
+<ol>
+<li></li>
+<li><p>I also save all my projects on <strong>github</strong> through which I can access it from anywhere I go.  <a href="https://github.com/">https://github.com/</a></p></li>
+<li>I find myself <strong>writing the same piece of code</strong> many times and yeah, it is sometimes odd to remember the code that I discovered few days back. Thus, I use tools like  <a href="https://gist.github.com/">https://gist.github.com/</a> to save all my <strong>snippets which I can access it anywhere.</strong></li>
+<li>There is <strong>no need to create a page and add html, css, js etc</strong> in your pages and creating a project structure. Just go to  <a href="http://jsfiddle.net/">http://jsfiddle.net/</a> and  <a href="http://codepen.io/">http://codepen.io/</a> and <strong>start writing your code and share</strong> it with your team members anywhere on the globe!</li>
+<li>You may find yourself very productive if you <strong>start using a CSS pre-processor like LESS, SCSS or SASS</strong> . They extends CSS with dynamic behaviour such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.</li>
+<li>Choose a <strong>good code editor</strong> . Visual Studio (for those who work with Microsoft technologies) is very good but sometimes there are more better alternatives if you love working with HTML, CSS, JavaScript.</li>
+<li>Expertise in the <strong>web developer tools</strong> either the <strong>Firebug or Chrome developer tools</strong> or the one in IE or Safari. </li>
+</ol>
+
+
+<p>I will keep extending this list of tools that can help you to be more productive and I am sure you will like the tools that I have listed above and you might remember me :) if you are totally new to these tools. </p>
+]]></content>
+  </entry>
+  
+</feed>

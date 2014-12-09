@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="Have you spent any time thinking of which font to choose while writing a word or any other document either on your laptop, online, etc.? Will it not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://siddharth-pandey.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -31,14 +31,26 @@
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>(life => life.make_it_better)</h2>
   
 </hgroup>
 
@@ -66,7 +78,411 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-05T13:56:10+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:56 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Have you spent any time thinking of which font to choose while writing a word or any other document either on your laptop, online, etc.? Will it not be easier to have your own handwriting available to you even when you don&rsquo;t hold a pen in hand and instead press keys on laptop?</p>
+
+<p>I answered it as ah yes, but that must be hard? No, its not. Some dev friends have created a free tool that can be used by anyone to create a font based on your handwriting.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/05/use-your-own-font-everywhere/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-28T15:54:26+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:54 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I came across a scenario where I had to access some information from a file with <code>.dll</code> extension. And then I thought to write this post. This information may include that assembly&rsquo;s product name, product version, file version etc.
+This scenario may be required either to read a <code>.dll</code> file from disk or from the current running application. The code below covers both the scenarios:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// From executing application.
+</span><span class='line'>string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+</span><span class='line'>
+</span><span class='line'>// From a physical file, provide full path to that file.
+</span><span class='line'>string assemblyVersion = Assembly.LoadFile('your assembly file').GetName().Version.ToString();
+</span><span class='line'>
+</span><span class='line'>// From executing application, gives file version.
+</span><span class='line'>string fileVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+</span><span class='line'>
+</span><span class='line'>// From executing application, gives product version.
+</span><span class='line'>string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-25T12:34:12+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:34 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I had a need to use HTML5 LocalStorage API in my web application project. The requirement was to save the vertical scroll position of window when a user drills down to low level details by navigating to other view.
+I didn&rsquo;t wanted to cookies because cookies are sent on every request to the server and I have no need to send this detail to the server as it is just related to client.</p>
+
+<p>Then I was left with LocalStorage and SessionStorage as options. I found that SessionStorage is not maintained when the page reloads and when the browser is closed. </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-11T17:25:21+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:25 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve a ASP.NET MVC application that uses FormsAuthentication and this application gives single page application experience to users after a user is authenticated where it uses AJAX for all HTTP requests.</p>
+
+<p>The log out action that I have works fine if user uses the logout button in the user interface and the click handler than performs a HTTP POST to Logout action in Account controller.</p>
+
+<p>Today,I was testing some other feature by setting 1 minute timeout for forms authentication in web.config. After a minute, when I performs a POST action to view a different view in my application, I was shown the user login page as set in the web.config under forms configuration. But I was not able to understand why is this happening. Later I figured out that the FormsAuthentication is doing its work and it detects that this user is not authorized. It then redirects the user to the login url as defined in the configuration.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-15T00:07:17+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:07 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently, I was working on a ASP.NET MVC 5 web application that was using cookies to store some user specific data. This was done by first serializing that object into forms authentication ticket and then encrypting this serialized data and setting this encrypted value to a cookie.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/">How to Add a Set of Directories to Environment Variable $PATH on a Mac?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-06T12:22:14+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I often find myself installing a software or package for my projects while working on mac where I need to add a specific path to my $PATH variable.
+So, I thought to write this quick post. Below is the directions to achieve the above goals:</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/">Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & V6+ MVC Razor Cheatsheets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-12'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Below are the links to download cheat sheets for umbraco which I have found really useful:</p>
+
+<ul>
+<li><a href="http://our.umbraco.org/projects/developer-tools/razor-dynamicnode-cheat-sheet">Razor DynamicNode Cheat Sheet</a></li>
+<li><a href="http://our.umbraco.org/projects/developer-tools/umbraco-v6-mvc-razor-cheatsheets">Umbraco v6 MVC Razor Cheat Sheet</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/12/c-razor-syntax-quick-reference/">C# Razor Syntax Quick Reference</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-12'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Below is a link to a resource that provides very good information on razor syntax.</p>
+
+<p>Reference: <a href="http://haacked.com/archive/2011/01/06/razor-syntax-quick-reference.aspx">http://haacked.com/archive/2011/01/06/razor-syntax-quick-reference.aspx</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/17/unit-test-and-test-driven-development/">Unit Test and Test Driven Development in ASP.NET MVC Application</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-10-17'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This article aims to summarize the concept of testing which can help you while writing tests using any framework out there. I will be writing more on this topic and will also attach any relevant demo applications on github. </p>
+
+<h3>Types of Testing</h3>
+
+<p>There are many types of testing that you may want to apply to your application, namely:</p>
+
+<ul>
+<li>Unit Test &amp; Test Driven Development (TDD)</li>
+<li>User Interface Testing</li>
+<li>Integration Testing</li>
+<li>Acceptance Testing </li>
+<li>Performance Testing</li>
+<li>Accessibility Testing</li>
+<li>Security Testing</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/17/unit-test-and-test-driven-development/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/20/some-facts-about-all-programmer-or/">Some Facts About All the Programmer or a Software Developer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-01-20'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>No matter where you are in your software development career or what technologies you work with, there are couple to things we all have in common:</p>
+
+<ul>
+<li>Education (Everyone needs to go for education but the nature of that education can differ.)
+
+<ul>
+<li>Knowledge (the things we know)</li>
+<li>Skills (how we use the knowledge)</li>
+<li>Judgement (Choosing the right approach)</li>
+</ul>
+</li>
+<li>The challenge is - There are always new platforms, new tools, new languages as our field is growing rapidly.</li>
+</ul>
+
+
+<p>In case of any other profession, if you stop learning, things will still work. But in fields like software development and information technology, we need to make learning as our habit and a passion too as if you don&rsquo;t do it, your skills will be less valuable in the IT market.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/01/20/some-facts-about-all-programmer-or/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -78,9 +494,36 @@
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
   </ul>
 </section>
 
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
 
 
 
@@ -91,16 +534,46 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Your Name -
+  Copyright &copy; 2014 - Siddharth Pandey -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
   
 
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
 
 

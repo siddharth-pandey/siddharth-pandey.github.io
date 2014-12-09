@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Html5 | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/html5/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 LocalStorage API to the Rescue]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/"/>
+    <updated>2014-08-25T12:34:12+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue</id>
+    <content type="html"><![CDATA[<p>Recently I had a need to use HTML5 LocalStorage API in my web application project. The requirement was to save the vertical scroll position of window when a user drills down to low level details by navigating to other view.
+I didn&rsquo;t wanted to cookies because cookies are sent on every request to the server and I have no need to send this detail to the server as it is just related to client.</p>
+
+<p>Then I was left with LocalStorage and SessionStorage as options. I found that SessionStorage is not maintained when the page reloads and when the browser is closed. <!-- more --> So, I opted to use LocalStorage API for this use case and came up with the code below which is a localStorageWrapper module that can be accessed as a module when using RequireJS (a module loader). A client consuming this wrapper is able to set, get, check the existence of a key and clear all the items in client&rsquo;s localStorage. An item that can be save is made up of a key and a value. This value can be just a string or an javascript object that can be JSON stringified and then saved. This can be seen in the set function of the localStorageWrapper module below.</p>
+
+<p>When using these fancy new HTML5 APIs, one should care about the browser support. You can use <a href="www.caniuse.com">CanIuse</a> website to check it. This is a very good resource to check support for everything and anything related to web.</p>
+
+<pre><code>define([], function ($) {
+    'use strict';
+    var localStorageWrapper = {
+
+        /* add data to localStorage */
+        set: function (key, value) {
+
+            /* if the value is an object, stringify it to save it in localStorage */
+            if (typeof value === 'object') {
+                value = JSON.stringify(value);
+            }
+
+            localStorage.setItem(key, value);
+        },
+
+        /* retrieve data from localStorage object */
+        get: function (key) {
+            var data;
+
+            if (!this.hasData(key)) {
+                return false;
+            }
+
+            data = localStorage[key];
+
+            /* if the data is JSON, try to parse */
+            try {
+                return JSON.parse(data);
+            } catch (e) {
+                return data;
+            }
+        },
+
+        /* check if the item exists and it has data */
+        hasData: function (key) {
+            return !!localStorage[key] &amp;&amp; !!localStorage[key].length;
+        },
+
+        /* clear all the saved items in client's localstorage */
+        clear: function() {
+            localStorage.clear();
+        }
+    };
+
+
+    return localStorageWrapper;
+});
+</code></pre>
+
+<p>To properly provide graceful degradation, you can use <a href="http://modernizr.com/">Modernizr</a> to check if client supports a particular HTML5 feature.
+When using Modernizr, the client code consuming the above module looks like:</p>
+
+<pre><code>    // using set member of localStorageWrapper
+    if (Modernizr.localstorage) 
+    {
+        localStorage.set("uniqueKey1", "");
+    }
+
+    // using clear member of localStorageWrapper
+    if (Modernizr.localstorage) 
+    {
+        localStorage.clear();
+    }
+
+    // using hasData and get member of localStorageWrapper
+    if (localStorage.hasData("uniqueKey1"))
+    {
+        var value = localStorage.get("uniqueKey1");
+    }
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Must Have Developer Tools! Some Tricks to Develop Quicker]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/"/>
+    <updated>2012-12-20T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks</id>
+    <content type="html"><![CDATA[<p><strong>Google Developer Tools, Some tricks to develop quicker</strong></p>
+
+<ol>
+<li>View Source => By going through menu navigation or Ctrl-Shit-I on windows or Cmd-option(alt)-I on mac.</li>
+<li>Or for particular element, just right click on it and choose inspect element.</li>
+<li>For fast navigation, prefer keyboard arrow keys to collapse or expand DOM elements. You will find the width and height of that active element as you move in Developer Tool.</li>
+<li>To get the full view of the page, try Ctrl - (minus) to zoom out so as to see your whole page with developer tools open without scrolling. Sometimes useful to me.</li>
+</ol>
+
+
+<!-- more -->
+
+
+<ol>
+<li>You can copy the the content or the DOM elements by using your mouse, but you might like to do this by using console&rsquo;s copy() method. For example, copy(document.body.innerText) and then paste that anywhere. Its handy if you know the DOM element and may help for productivity.</li>
+<li>Use clear(); function to clear the console, however the developer tool has a GUI for that.</li>
+<li>Use inspect(body) to inspect body element of the DOM, just pass any element in the function.</li>
+<li>Also, you can use $0 to access the element that is selected in the DOM in a console. So,  you can pass $( $0 ) for jquery method where an anchor tag was selected in your DOM, so it means you are accessing that anchor method.</li>
+<li>Under Network tab, the blue line in the waterfall chart shows that the DOM is ready or the DOMContentLoaded Event fire and the read line shows the windows load event which waits for the documents to load images, iframes, etc.</li>
+<li>You an see the cookies information by going through the Network tab and then selecting Header or Cookies tab.</li>
+<li>For javascript debugging, we can edit the script file of the page on the fly and it will render it as this feature is unique to Chrome because of its V8 JavaScript engine.</li>
+<li>Sometimes, its hard for us to find where the error is in our script, so you might want to open the script in developer tools and then click the pause button, now chrome will set a breakpoint when it find the statement because of which the error is being logged in console.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn How to Build HTML5 and JavaScript Apps With MVVM and Knockout (Part - 1)]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/"/>
+    <updated>2012-12-05T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript</id>
+    <content type="html"><![CDATA[<p>One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application:</p>
+
+<ol>
+<li>The Structure i.e. HTML</li>
+<li>Presentation i.e. CSS</li>
+<li>Behaviour i.e. JavaScript</li>
+</ol>
+
+
+<p>Do we use any UI patterns with JavaScript development, like </p>
+
+<ol>
+<li>MVVM or</li>
+<li>Data binding structures</li>
+</ol>
+
+
+<p>How should be write structured JavaScript? Should we write in a modular pattern?</p>
+
+<!-- more -->
+
+
+<p></p>
+
+<p>Also, all apps love data, so, how should we care about data and bindings. Somehow, we need to load data from somewhere, such as using an Ajax service or loading JSON data on your screen and after getting the data how will you respect changes from the user</p>
+
+<p>Knockout is a JavaScript library that can solve the above issues in a very nice and efficient manner.</p>
+
+<p>So, what is Knockout?</p>
+
+<ol>
+<li>It allows you to have rich client-side interactivity for your UX provide a good pattern. </li>
+<li>It gives you a good separation of structure and behaviour.</li>
+<li>It provides you to use declarative bindings to be able to help you bind your UI elements, in case, HTML or even may be CSS styles and classes down to your source object. </li>
+<li>Offers you to work in MVVM pattern.</li>
+<li>It has a very good browser support. (IE6+, Firefox 2+, Chrome, Safari, Opera)</li>
+</ol>
+
+
+<p>Key Concepts of Knockout:</p>
+
+<ol>
+<li>Dependency Tracking via observables (eg: a property depending on another property and it is in sync with a UI control and vice-versa(optional).)</li>
+<li>Declarative Bindings (Instead of using JavaScript to go through DOM and find a particular control with certain ID use can bind the control from the html itself to push data to the UI and pull data from UI again from/to the source object.)</li>
+<li>Templating Support (eg: you might have repetitive structures in your webpage like list of abc or rows in a list box, rows in a table or li in a ul/ol. You can use templates to take care of those views. You can use jQuery templates with Knockout, or native templates of Knockout or any third party templating engine.)</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/ovrxL">Hello World Demo</a> (Open in a good browser as CodePen needs it.)</li>
+</ul>
+
+
+<p>The important factor is to understand the MVVM in terms of Knockout: the separation of concerns. </p>
+
+<ol>
+<li>MVVM is just a separation pattern and a way to organise your code structure to make it easier to maintain and to deal with separation and responsibilities.</li>
+<li>Model-View-ViewModel</li>
+<li>Not technology specific. ( you might have heard MVVM with XAML and now you are using with Knockout with JavaScript and HTML.)</li>
+<li>Works well with data bindings. (in this case its html)</li>
+</ol>
+
+
+<p>MVVM Components</p>
+
+<ol>
+<li>We have a view which is this case is HTML. ( is the user friendly presentation of information)</li>
+<li>We have our model which is in JSON. (javascript object in this case which has a property named as firstName)</li>
+<li><p>Between above two, we have logic to separate to how to  present that model JSON data into the view itself and that is our view model. </p></li>
+<li><p> It contains all the behaviour for the view that the view needs and can aggregate on or more models to show the data inside the view.</p></li>
+<li> Contains properties like firstName, methods and the Model.</li>
+</ol>
+
+
+<p>Demo</p>
+
+<ul>
+<li><a href="http://codepen.io/siddharth-pandey/full/tcuob">A quick demo using JavaScript&rsquo;s object literal notation</a></li>
+<li><a href="http://codepen.io/siddharth-pandey/full/dsmtH">A quick demo using JavaScript&rsquo;s function</a></li>
+<li><a href="http://a%20quick%20demo%20using%20javascript%27s%20function/">A quick demo</a></li>
+</ul>
+
+
+<p>Visual Studio Extensions for your productivity</p>
+
+<ul>
+<li>Nuget - to manage 3rd party libraries and references.</li>
+<li>Web Essentials - code collapsing, vendor specific css properties, etc.</li>
+<li>Web Standards Update - html intellisense and validation.</li>
+<li>WoVS Default Browser Switcher - quickly change the default browser from visual studio.</li>
+<li>JSLint - javascript code analysis.</li>
+<li>CSSCop - catches common CSS issues.</li>
+<li>Resharper 6 (trial version only) - javascript refactoring tools.</li>
+</ul>
+
+
+<p>Begin Coding with Knockout and Visual Studio</p>
+
+<ul>
+<li>Either download the JavaScript references from  <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>.</li>
+<li>Either get the debugger or minified version from Github.</li>
+<li>Use Nuget to install Knockout.</li>
+<li><p>Add intellisense for Knockout in Visual Studio for any *.js files by adding the following: &amp; lt; reference path=&ldquo;/scripts/knockout-2.2.0.debug.js&rdquo; / &amp; gt; at script-page level.</p>
+
+<ul>
+<li>After doing this, whenever you will type ko. you will see all the options that you can use from the Knockout library.</li>
+<li>It has to be the first line of code in the page and you have to comment it using &ldquo;///&rdquo;.</li>
+<li>Or use a tool like Resharper that will add the intellisense support for your project by its own.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Key Resources</p>
+
+<ul>
+<li>Knockout  - <a href="http://knockoutjs.com/">http://knockoutjs.com</a></li>
+<li>Source Code - <a href="https://github.com/SteveSanderson/knockout">https://github.com/SteveSanderson/knockout</a></li>
+<li>Documentation - <a href="http://jpapa.me/kodocs">http://jpapa.me/kodocs</a></li>
+<li>Forums - <a href="http://jpapa.me/koforum">http://jpapa.me/koforum</a></li>
+<li>Tutorials - <a href="http://learn.knockoutjs.com/">http://learn.knockoutjs.com</a></li>
+<li>Stackoverflow - <a href="http://jpapa.me/kostackoverflow">http://jpapa.me/kostackoverflow</a></li>
+<li>Ryan Niemeyer&rsquo;s Blog - <a href="http://www.knockmeout.net/">http://www.knockmeout.net</a></li>
+<li>jsFiddle - <a href="http://www.jsfiddle.net/">http://www.jsfiddle.net</a></li>
+<li>CodePen.io - <a href="http://codepen.io/">codepen.io</a></li>
+</ul>
+
+
+<p>Stay tuned for part - 2.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn Modernizr Library With Some Quick Demo]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick/"/>
+    <updated>2012-11-28T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick</id>
+    <content type="html"><![CDATA[<p>If you are reading this article you might already know what <a href="http://modernizr.com/">Modernizr</a> has to offer but the post aims to give you some working demo instead of a content based approach. If you are looking for a documentation it is available on their website and it offers a step-by-step guide. But while using it, I have found that there was a lack of demo that how to really use its features in real world, so, I thought of creating a <a href="http://codepen.io/siddharth-pandey/full/JbKhC">demo</a> which you can fork it and keep it for your own reference.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Our Users Always Remember the Website Experience That We Offer]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website/"/>
+    <updated>2012-11-23T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website</id>
+    <content type="html"><![CDATA[<p>I would like you to see some of the examples that I have in order to understand the advantages of a responsive web design.</p>
+
+<p>For a quick demo, I request you to click the links below. Those websites are very good and is already helping a business. The links below will demonstrate you a user’s experience when they are browsing our websites from different devices:</p>
+
+<!-- more -->
+
+
+<ul>
+<li><a href="http://www.responsinator.com/?url=https%3A%2F%2Fwww.quote-process.co.uk%2Fpostoffice%2Fpet%2Fapp%2F%28S%28g5zfio551el2c4bddyap2zmk%29%29%2Fstart.aspx">Website 1</a></li>
+<li><a href="http://www.responsinator.com/?url=https%3A%2F%2Fwww.quote-process.co.uk%2Fprotectyourbubble%2Fpet%2Fapp%2F%28S%281qoxjw45fkri00vcnovzta2c%29%29%2Fstart.aspx">Website 2</a></li>
+</ul>
+
+
+<p>Did you enjoyed moving the scroll-bars and finding the content that we want our users to see? If yes, then it’s time to stop reading here and go back to the page again and try completing a user journey. Come back and start reading here:</p>
+
+<p>When we create a website or any web solution for our users, we can’t guarantee that they will read these words on a printed page, holding a tiny paperback in their hands. Maybe they are sitting at desk with an electronic copy of the content on a screen. Perhaps, they are on morning commute, tapping through pages on a smart phone or swiping along a tablet. Or maybe they don’t even see the words as we blessed people do or may be their device or desktop is simply reading this book aloud.</p>
+
+<p>The best way to understand is to replace water with our websites and water’s container with device browser. I was working on a single page, just to demonstrate you a sample of website that is responsive. I have not spend any minute for the designing or for actual content because that will take a much amount of time and is not needed for this instance. Again, I would like you see and tell me about your experience by going through URLs below</p>
+
+<ul>
+<li><a href="http://www.responsinator.com/?url=codepen.io%2Fsiddharth-pandey%2Ffull%2FlHFCr">Prototype 1</a></li>
+<li><a href="http://www.responsinator.com/?url=www.siddharthkpandey.co.uk">Prototype 2</a> (This is my website which is in progress…) 
+The above prototype contains all User-Interface elements that we need like a form, slide show, images, navigation, header, footer, sample paragraph, etc.</li>
+</ul>
+
+
+<p>I am sure by now you have discovered the importance of a responsive web design and the fun behind it. Soon, I will be writing the main concepts for create a responsive design. Stay tuned!</p>
+]]></content>
+  </entry>
+  
+</feed>

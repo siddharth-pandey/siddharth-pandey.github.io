@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>An Introduction to JavaScript - Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
+
+  
+  <meta name="description" content="We will focus on JavaScript as a programming language rather than its usage in web or ajax based applications. Because, one should know the building &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://siddharth-pandey.github.io/blog/2012/11/22/an-introduction-to-javascript">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
+  
+    <h2>(life => life.make_it_better)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:siddharth-pandey.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">An Introduction to JavaScript</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-22'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>We will focus on JavaScript as a programming language rather than its usage in web or ajax based applications. Because, one should know the building blocks of a language to really make most out of it.</p>
+
+<h3><strong>Overview</strong></h3>
+
+<ul>
+<li>What is JavaScript?</li>
+<li>Why is JavaScript important?</li>
+<li>History</li>
+<li>An Hello World demo</li>
+<li><a href="http://jsbin.com/">JS Bin</a> / <a href="http://codepen.io/">CodePen</a> / <a href="http://www.jsfiddle.net/">JSFiddle</a> / <a href="http://www.jsdb.org/">JSDB</a>- a handy tool for you.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>What is JavaScript?</h3>
+
+<ul>
+<li>It is a scripting language with no static/void/main.</li>
+<li>The language of the browser to handle scripting activities.</li>
+<li>Its a dynamic language which means that one can modify the objects/types on the fly.</li>
+<li>It supports function programming and object-oriented features like other languages for example - Ruby, C#, etc.</li>
+<li>If you are aware of Java syntax, you might find learning JavaScript easy as the syntax is somewhat same because it appeared around the same time when Java was very popular and had lot of buzz in the market.</li>
+<li>Other than the syntax, JavaScript as a language is more close to languages like Scheme and Self semantics.</li>
+<li>It is very simple to learn and is very small/compact.</li>
+</ul>
+
+
+<h3>Why is JavaScript important?</h3>
+
+<ul>
+<li>Almost all the computers on the planet have JavaScript interpreter. It is possibly the most used language on the planet.</li>
+<li>It has good browser support and vendor like Microsoft, Mozilla, Google, Apple, etc are researching continuously for JavaScript interpreters.</li>
+<li>AJAX/Rich Clients - You might have heard about these terms which uses JavaScript heavily. This was a turning point for this language as people then started focusing more on JavaScript to achieve more and more rich activity in the browser.</li>
+<li>It is a powerful and highly flexible language.</li>
+<li>The usage of JavaScript at server-side is also increasing because of the interest people have in JavaScript and the powerful interpreters.</li>
+</ul>
+
+
+<h4>To boost your interest to learn this language:</h4>
+
+<ul>
+<li>A good example of a rich client interfaces in the the browser that you might be aware of or have used is Google Docs Interface where you can just start typing, give formatting from the toolbars, use drawing tools to draw different shapes, etc. </li>
+<li>Another example can be <a href="http://processingjs.org/">Processingjs</a>, if you love animation. Try spending some time on the demos available on Processingjs website.</li>
+<li>Go to <a href="http://balldroppings.com/js/">BallDropping website</a> and play with small white balls. It&rsquo;s a Chrome Experiment.</li>
+<li>Also, when playing with above demos, don&rsquo;t forget to open your system&rsquo;s task manager to see the CPU usage (especially for ball dropping animation, if you add many balls). You must know that even though it is possible to create such animations but sometimes, it&rsquo;s not the efficient way to achieve those animations.</li>
+</ul>
+
+
+<h3>History</h3>
+
+<ul>
+<li>Netscape wanted to have scripting capability to the browser &amp; JavaScript was born.</li>
+<li>Developed by Brendan Eich. </li>
+<li>First version - Netscape 2.0 (1995)</li>
+<li>Microsoft then implement their own version and named it as JScript (named differently to avoid issues with Javascript trademark).</li>
+<li>In 1996, JavaScript was submitted by Netscape to ECMA International to standardise it as ECMAScript in the ECMS 262 standard.</li>
+<li>Working with DOM within browser was somewhat odd because of different browser notations.</li>
+<li>People discovered JavaScript&rsquo;s brillance while working with Ajax/Web 2.0.</li>
+<li>To ease the cross-browser development, frameworks like prototype and jQuery were and still are a great help.</li>
+<li>The usage of JavaScript at server-side is also increasing. Example: Node.js, the event based web server and CommonJS,  the JavaScript standard library.</li>
+</ul>
+
+
+<h3>An Hello World demo</h3>
+
+<ul>
+<li>You can find the demo <a href="http://codepen.io/siddharth-pandey/full/nEbBw">here</a>. I will be using <a href="http://codepen.io/">CodePen</a> to show all the demos. I like CodePen as it allows you to write HTML, CSS, JavaScript and run the sample within the browser. There are different alternatives as well that are listed above at the starting of this post. Feel free to try as they are free.</li>
+<li>Also, one needs to understand that all the browsers renders a webpage from top to bottom, so if you write a heavy script block or which needs some action by a user as in demo above, you won&rsquo;t be able to see the rest of the content below the script tag because it has not been rendered it. </li>
+<li>To avoid the above problem, you should practise to include all your scripts just above the body end tag which will help in better performance of your webpage as it will load fast. Alternatively, you can run a script when the webpage has finished loading in the browser (example - <em>window.onLoad() or jQuery&rsquo;s ready() method</em>).</li>
+</ul>
+
+
+<p>I think this is enough for a quick introduction to JavaScript and believe me, JavaScript is very important for developer and yeah, it is different to some of our mainstream languages like C# or Java. Also, it is easy to learn and powerful too. <a href="http://learnwithsid.blogspot.com/2012/11/learning-javascript-fundamentals.html"><strong>Keep reading the other post in this series to learn JavaScript.</strong></a> Happy Learning!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Siddharth Pandey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-11-22'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://siddharth-pandey.github.io/blog/2012/11/22/an-introduction-to-javascript/" data-via="siddharthp28" data-counturl="http://siddharth-pandey.github.io/blog/2012/11/22/an-introduction-to-javascript/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/21/why-coding-style-matters/" title="Previous Post: Does your code communicate with other Dev's?">&laquo; Does your code communicate with other Dev&#8217;s?</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/22/learning-javascript-fundamentals/" title="Next Post: Learning JavaScript Fundamentals">Learning JavaScript Fundamentals &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Siddharth Pandey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://siddharth-pandey.github.io/blog/2012/11/22/an-introduction-to-javascript/';
+        var disqus_url = 'http://siddharth-pandey.github.io/blog/2012/11/22/an-introduction-to-javascript/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

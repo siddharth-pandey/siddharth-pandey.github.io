@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mvc | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/mvc/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC Application]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development/"/>
+    <updated>2013-10-17T00:00:00+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development</id>
+    <content type="html"><![CDATA[<p>This article aims to summarize the concept of testing which can help you while writing tests using any framework out there. I will be writing more on this topic and will also attach any relevant demo applications on github. </p>
+
+<h3>Types of Testing</h3>
+
+<p>There are many types of testing that you may want to apply to your application, namely:</p>
+
+<ul>
+<li>Unit Test &amp; Test Driven Development (TDD)</li>
+<li>User Interface Testing</li>
+<li>Integration Testing</li>
+<li>Acceptance Testing </li>
+<li>Performance Testing</li>
+<li>Accessibility Testing</li>
+<li>Security Testing</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Testing with ASP.NET Web Forms</h3>
+
+<p>If you are coming from ASP.NET Web Forms background and if you have done any testing in it, you may have find that it is not that easy to test your application because web forms aggregates and integrates the logic and the display i.e. view of your application. And this is what it makes testing very difficult.</p>
+
+<h3>Testing with ASP.NET MVC</h3>
+
+<p>The concept of Model View Controller (MVC) is designed by keeping testing in mind. The design of an application based on MVC concept makes an distinction to have a separate Model (data), the display of the application i.e. View and the Controller that has the logic to bind the Model to the View.</p>
+
+<p>Below are some resources that you will need to test your MVC application:</p>
+
+<ol>
+<li>Visual Studio 2010/2012/Express 2013 (RC)</li>
+<li>One of any testing software framework - nUnit or xUnit or MSTest.</li>
+<li>Mocking Framwork - There are many free frameworks available out there but I&rsquo;m going to use the free version of JustMock.</li>
+<li>You can also download nUnit Runner - that doesn&rsquo;t depend on Visual Studio and runs independently.</li>
+</ol>
+
+
+<h3>Caveat</h3>
+
+<p>There are couple of Caveat that we need to discuss before discussing the key concepts of testing an application:</p>
+
+<ol>
+<li>There is no one right way to test.</li>
+<li>Testing is something relatively new in the software development industry and people have different views to how to organize your tests, code, etc. This subject is open to discussion.</li>
+<li>There is no one right way to refactor. You &amp; your team should adapt the same pattern of the way to refactor so as to run on the same track and make a good design of your application.</li>
+<li>Best practices - even these are subjective. Stick to something what the community follows and then extend it as per your needs.</li>
+</ol>
+
+
+<h3>MVC and TDD</h3>
+
+<h4>Unit Testing</h4>
+
+<ol>
+<li>Test a single unit - a Class or (better) a method.</li>
+<li>Test in isolation of one another and to rest of the application. Test very small unit of functionality of your application.</li>
+</ol>
+
+
+<h4>TDD</h4>
+
+<ol>
+<li>Uses Unit Testing to drive the design of your application.</li>
+<li>Is all about Test-First approach.</li>
+<li><p>There is a term referred as Red Green Refactor, which means</p></li>
+<li><p>Red Phase - create a failed test.</p></li>
+<li>Green Phase - write just enough code to pass the above failed test.</li>
+<li>Refactor Phase - clean up you code and then retest it to make sure your refactoring has not affected your test and it runs well.</li>
+<li>Repeat  - repeat the above process again from Red - Green - Refactor phase.</li>
+</ol>
+
+
+<h4>Robert C. Martin&rsquo;s Laws - known as Uncle Bob in the community</h4>
+
+<p>Uncle Bob has mentioned three laws to keep in mind while writing a successful TDD:</p>
+
+<ol>
+<li>Write no production code until you have written a failing test.</li>
+<li>Write no more in your unit test then enough to make it fail.</li>
+<li>Write no more production code then enough to make it pass.</li>
+</ol>
+
+
+<h4>Key points to remember whilst you write your First Test</h4>
+
+<ol>
+<li>Test one feature only.</li>
+<li>Write the above test, run it and see it fail. It&rsquo;s very important to see it fail - because only by seeing it fail you can have the confidence when you see it pass that you have corrected the issue.</li>
+<li><p>Fix only enough so that your test can pass. It&rsquo;s very important - don&rsquo;t get ahead of yourself to make a pass for your test anyway. As,</p></li>
+<li><p>Remember <strong>YAGNI  </strong> - <strong>You Ain&rsquo;t Gonna Need It</strong> . Sometimes you often end up working and spending time on something that you won&rsquo;t need later, so, avoid that. </p></li>
+<li>If no. 3 above is not followed then you are writing something which is not tested and may be will not be tested in the future as well as many of the code that you have written just makes pass for the test very easily.</li>
+<li>Run your test and see it succeed.</li>
+<li>Refactor and retest - to see your refactor has not broken the test.</li>
+<li>Repeat the whole process from no. 1 above.</li>
+</ol>
+
+
+<h4>Asserts</h4>
+
+<ol>
+<li>It&rsquo;s a way to see if you have in fact succeed i.e. what you expect to be true.</li>
+<li>Normally using any testing framework, you will find the keyword - &ldquo;Assert&rdquo; to make an assert of what you expect to be true.</li>
+<li><strong>Rule to remember: You should have only one &ldquo;logical&rdquo; assert per test.</strong> It&rsquo;s fine to have on or more assert statement but logically you should test just one thing and to ensure what is reason that your test should fail.</li>
+<li><p>There are many aspects that you can check while asserting namely,</p></li>
+<li><p>Equality - AreEqual, AreNotEqual, etc.</p></li>
+<li>Identity - AreSame, AreNotSame, Contains, etc.</li>
+<li>Condition - IsTrue, IsFalse, IsNull, IsNotNull, IsNan, IsEmpty, IsNotEmpty, etc.</li>
+<li>Type Checking - IsInstanceOf<t>, IsNotInstanceOf<t>, IsAssignableFrom<t>, etc.</t></t></t></li>
+<li>Exception Throw or not thrown.</li>
+<li>String - Contains, StartsWith, EndsWith, AreEqualIgnoringCase, IsMatch (regex), etc.</li>
+<li>Collection - AllItemsAre&hellip; InstanceOfType, NotNull, Unique, Equal, Equivalent, etc.</li>
+<li>File - AreEqual, AreNotEqual, etc.</li>
+<li>Driectory - AreEqual, AreNotEqual, etc.</li>
+<li>Asserts to force a result - Assert.Pass, Assert.Fail, Assert.Ignore, etc.</li>
+</ol>
+
+
+<h4>Red - Green Refactoring Cycle</h4>
+
+<p><tbody>
+<tr><td style="text-align: center;"><a href="http://4.bp.blogspot.com/-Neui5RASyE8/Ul-5UoulcjI/AAAAAAAAA5w/n7AVKYI7aKw/s1600/rgr.PNG" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" height="162" src="http://4.bp.blogspot.com/-Neui5RASyE8/Ul-5UoulcjI/AAAAAAAAA5w/n7AVKYI7aKw/s400/rgr.PNG" width="400"></a></td></tr>
+<tr><td class="tr-caption" style="text-align: center;">Red - Green Refactoring Cycle</td></tr>
+</tbody></p>
+
+<h4>But how do you Refactor ?</h4>
+
+<p>Uncle Bob says - Follow <strong>SOLID</strong></p>
+
+<ol>
+<li><p><strong>Single Responsibility: </strong></p></li>
+<li><p>Exactly one reason for a Class/method to change.</p></li>
+<li>One responsibility per Class/method.</li>
+<li><p><strong>Open Closed Principle:</strong></p></li>
+<li><p>Your Class should be open for extension, closed for modification.</p></li>
+<li>Creates dependable api to your Class.</li>
+<li>Derive but don&rsquo;t modify internals of your Class.</li>
+<li><p><strong>Liskov Substitution Principle:</strong></p></li>
+<li><p>Ability to replace instances with their sub-types at run-time.</p></li>
+<li><p><strong>Interface Segregation Principle:</strong></p></li>
+<li><p>No client should be forced to depend on method it doesn&rsquo;t use.</p></li>
+<li>Create small interfaces.</li>
+<li><p><strong>Dependency Inversion Principle:</strong></p></li>
+<li><p>Depend on abstractions and not on concrete implementation. This is the art of dependency injection.</p></li>
+</ol>
+
+
+<h4>Key points to remember whilst Refactoring</h4>
+
+<ol>
+<li><p>Names matter</p></li>
+<li><p>Spend time while naming</p></li>
+<li>Renaming is very cheap - do it if you feel so.</li>
+<li>Use meaningful names.</li>
+<li>Don&rsquo;t be afraid of long names.</li>
+<li>Make names pronounceable.</li>
+<li>Classes = Nouns</li>
+<li>Methods = Verbs</li>
+<li>Collections are plural.</li>
+<li><p>Avoid encoding:</p>
+
+<ul>
+<li>No Hungarian Notation</li>
+<li>Interfaces do not begin with I.</li>
+</ul>
+</li>
+<li>Functions/Methods should be small.</li>
+<li>Do one thing &amp; do it well.</li>
+<li><p>Avoid Switch Statements</p></li>
+<li><p>Use derived types where possible.</p></li>
+<li>Use Descriptive names - don&rsquo;t be afraid of long names.</li>
+<li><p>Minimize number of parameters you pass to a method</p></li>
+<li><p>Zero is ideal</p></li>
+<li>One or two are workable</li>
+<li>Three or more are too much cognitive load of understanding how your method works and those parameters interact. </li>
+<li><strong>Don&rsquo;t Repeat Yourself (DRY)</strong></li>
+<li><strong>YAGNI</strong></li>
+<li>Structured Programming is dead - in a small method, multiple returns can clarify.</li>
+<li><p>Use fewer &amp; smarter comments</p></li>
+<li><p>To explain intent when obscure.</p></li>
+<li>Use <strong>ToDo</strong> comments but no in production code.</li>
+<li>Avoid most comments and fix the code instead.</li>
+<li><p><strong>The Law Of Demeter</strong></p></li>
+<li><p>Modules should not know about innards of objects.</p></li>
+<li>Objects hide their data.</li>
+<li>Objects expose their public methods.</li>
+<li><p>Use Exceptions, not errors</p></li>
+<li><p>Don&rsquo;t return null or pass null.</p></li>
+<li>Classes should be small.</li>
+<li>Single Responsibility should be applied to classes.</li>
+<li><p>Refactor your Tests by keeping <strong>FIRST</strong> in mind</p></li>
+<li><p><strong>Fast</strong></p>
+
+<ul>
+<li>Test should run quickly else you won&rsquo;t run it and then it has no value.</li>
+</ul>
+</li>
+<li><p><strong>Independent</strong></p>
+
+<ul>
+<li>Order of the tests must not matter.</li>
+<li>No dependencies between tests.</li>
+</ul>
+</li>
+<li><p><strong>Repeatable</strong></p>
+
+<ul>
+<li>Running the same test twice should yield the same answer reliably.</li>
+</ul>
+</li>
+<li><p><strong>Self-Validating</strong></p>
+
+<ul>
+<li>Tests should return Boolean: Pass or Fail but no ambiguity.</li>
+</ul>
+</li>
+<li><p><strong>Timely</strong></p>
+
+<ul>
+<li>Tests should be written just before production code.</li>
+</ul>
+</li>
+</ol>
+
+
+<p>This was all about the concepts that you should keep in your mind while writing programs. Practice the above in your daily work and you will notice the difference it makes in your way to write applications.</p>
+
+<p>Stay tuned for sample application to write tests with MVC.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Extract Key/values From FormCollection in ASP.NET MVC Action Method]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection/"/>
+    <updated>2013-01-03T00:00:00+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection</id>
+    <content type="html"><![CDATA[<p>To avoid you from having to chase for the same information: here&rsquo;s how you extract key / value pairs from the FormCollection that comes as an argument in an ASP.NET MVC action method:</p>
+
+<pre><code>public ActionResult Create(FormCollection formCollection){ foreach (var key in formCollection.AllKeys) { var value = formCollection[key]; // etc. } foreach (var key in formCollection.Keys) { var value = formCollection[key.ToString()]; // etc. }}
+</code></pre>
+
+<!-- more -->
+
+
+<p>Also, a final tip: If you find that the formCollection does not contain the key/value pairs you expected, check that </p>
+
+<ol>
+<li>Your controls reside within the correct form (you can have more than one)</li>
+<li>Your controls have names (just having an id is not returning values in the formCollection)
+Hope this helps. </li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

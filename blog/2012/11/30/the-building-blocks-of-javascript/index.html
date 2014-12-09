@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>The Building Blocks of JavaScript Programs - Sid&#8217;s Blog</title>
+  <meta name="author" content="Siddharth Pandey">
+
+  
+  <meta name="description" content="This post is second is series of learning JavaSciprt fundamentals. You may like to visit this article to go through all the posts in the series. Now &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sid's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53425567-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sid&#8217;s Blog</a></h1>
+  
+    <h2>(life => life.make_it_better)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:siddharth-pandey.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">The Building Blocks of JavaScript Programs</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This post is second is series of learning JavaSciprt fundamentals. You may like to visit this article to go through all the posts in the series.</p>
+
+<p>Now, we will learn some building blocks the bits and pieces, that one should know to write JavaScript code.</p>
+
+<p><strong>The working demo for this post is <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></p>
+
+<h3>Outline</h3>
+
+<ul>
+<li>Comments - using which you can write some hints for a piece of code.</li>
+<li>Variables</li>
+<li>Null - a special object in JavaScript programs</li>
+<li>Undefined - which is slightly different primitive type in JavaScript.</li>
+<li>Finding Help - we will see where we can go for any assistance/docs for JavaScript.</li>
+<li>Objects</li>
+<li>Equality - how things are compared in JavaScript which one should be aware of it.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Comments</h3>
+
+<ul>
+<li>The comments in JavaScript is kind of similar to comments syntax available in Java.</li>
+<li>Comments is something that won&rsquo;t output anything as a result like your other piece of code, it is just for your use as it doesn&rsquo;t get rendered by the JavaScript interpreter. </li>
+<li>Single line Comment - &ldquo;//&rdquo;, this two forward slash characters is used for single line comments followed by any single line sentence. For example, &ldquo;// this is a single line comment&rdquo;.</li>
+<li>Multiline Comment - &ldquo;/*  your content */&rdquo;, the syntax for this comment is forward slash and star to start with, put your multiline sentence after that and close it with start and forward slash. For example - /* As you know this is a multiline comment, in which you can break the sentence into n number of lines.*/.</li>
+<li>You might want to use comments for any piece of code in order to instruct yourself or to any other developer in the team that what that code does, etc.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Variables</h3>
+
+<ul>
+<li>Variables in JavaScript are declared with &lsquo;var&rsquo; keyword.</li>
+<li>Variables type is inferred, i.e. they don&rsquo;t have a type until a value has been assigned to a variable. When assigned, the type is then defined from type of value specified.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Null</h3>
+
+<ul>
+<li>Is one of the JavaScript primitive types.</li>
+<li>Null means the absence of a value.</li>
+<li>But when null is used in any boolean expression like in case of a if condition, it evaluates to false.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Undefined</h3>
+
+<ul>
+<li>Is also one of the JavaScript primitive types.</li>
+<li>It represents an unknown value i.e. a variable that has not been assigned anything.</li>
+<li>We encounter undefined when a non-existence object property is called.</li>
+<li>But when undefined is used in any boolean expression like in case of a if condition, it evaluates to false.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Finding Help</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla Developer Network</a></li>
+</ul>
+
+
+<h3>Objects</h3>
+
+<ul>
+<li>Everything in JavaScript is an object except for the simple types like string, number, boolean, null and undefined.</li>
+<li>Objects are collection of properties and the values of those properties can be of any type.</li>
+<li><p>Objects are declared with the object literal notation. <br/>
+<code>var anobject = { firstValue: 'a', secondValue: 2 };</code></p>
+
+<ul>
+<li>In the above example, we have created a anobject object, with two properties - firstValue with a string value and secondValue with a numeric value.</li>
+</ul>
+</li>
+<li>In JavaScript, there is no class construct but we can define our objects and properties.</li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+
+
+<h3>Equality</h3>
+
+<ul>
+<li>Objects are only equal to them-self.</li>
+<li>Primitives are equal only if the values matches like (&ldquo;Dog&rdquo;===&ldquo;Dog&rdquo;).</li>
+<li><p>There are two types of equality operators in JavaScript:</p>
+
+<ul>
+<li>==</li>
+<li><hr /></li>
+<li>The difference between the two is type coercion.</li>
+<li>== only checks for values but === check for values and also for the type.</li>
+<li>Use === over == and !== over != as it gives a proper answer comparing value and the type. Although, the decision is yours. </li>
+<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
+</ul>
+</li>
+</ul>
+
+
+<p>  <a href="http://learnwithsid.blogspot.com/2012/11/learning-javascript-fundamentals.html"><strong>Keep reading the other post in this series to learn JavaScript.</strong></a> Happy Learning!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Siddharth Pandey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-11-30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript/" data-via="siddharthp28" data-counturl="http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/28/learn-modernizr-library-with-some-quick/" title="Previous Post: Learn Modernizr Library with some quick Demo">&laquo; Learn Modernizr Library with some quick Demo</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/12/05/learn-how-to-build-html5-and-javascript/" title="Next Post: Learn how to build HTML5 and JavaScript Apps with MVVM and Knockout (Part - 1)">Learn how to build HTML5 and JavaScript Apps with MVVM and Knockout (Part - 1) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/05/use-your-own-font-everywhere/">Use Your Own Font Everywhere</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to Get Version or Product Details From a .dll File or Running Application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/cookie-issues-with-internet-explorer/">Cookie Issues With Internet Explorer.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/SiddharthP?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/SiddharthP">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Siddharth Pandey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Sid';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript/';
+        var disqus_url = 'http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

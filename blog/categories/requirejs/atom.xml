@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Requirejs | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/requirejs/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2014-12-09T13:03:08+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 LocalStorage API to the Rescue]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/"/>
+    <updated>2014-08-25T12:34:12+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue</id>
+    <content type="html"><![CDATA[<p>Recently I had a need to use HTML5 LocalStorage API in my web application project. The requirement was to save the vertical scroll position of window when a user drills down to low level details by navigating to other view.
+I didn&rsquo;t wanted to cookies because cookies are sent on every request to the server and I have no need to send this detail to the server as it is just related to client.</p>
+
+<p>Then I was left with LocalStorage and SessionStorage as options. I found that SessionStorage is not maintained when the page reloads and when the browser is closed. <!-- more --> So, I opted to use LocalStorage API for this use case and came up with the code below which is a localStorageWrapper module that can be accessed as a module when using RequireJS (a module loader). A client consuming this wrapper is able to set, get, check the existence of a key and clear all the items in client&rsquo;s localStorage. An item that can be save is made up of a key and a value. This value can be just a string or an javascript object that can be JSON stringified and then saved. This can be seen in the set function of the localStorageWrapper module below.</p>
+
+<p>When using these fancy new HTML5 APIs, one should care about the browser support. You can use <a href="www.caniuse.com">CanIuse</a> website to check it. This is a very good resource to check support for everything and anything related to web.</p>
+
+<pre><code>define([], function ($) {
+    'use strict';
+    var localStorageWrapper = {
+
+        /* add data to localStorage */
+        set: function (key, value) {
+
+            /* if the value is an object, stringify it to save it in localStorage */
+            if (typeof value === 'object') {
+                value = JSON.stringify(value);
+            }
+
+            localStorage.setItem(key, value);
+        },
+
+        /* retrieve data from localStorage object */
+        get: function (key) {
+            var data;
+
+            if (!this.hasData(key)) {
+                return false;
+            }
+
+            data = localStorage[key];
+
+            /* if the data is JSON, try to parse */
+            try {
+                return JSON.parse(data);
+            } catch (e) {
+                return data;
+            }
+        },
+
+        /* check if the item exists and it has data */
+        hasData: function (key) {
+            return !!localStorage[key] &amp;&amp; !!localStorage[key].length;
+        },
+
+        /* clear all the saved items in client's localstorage */
+        clear: function() {
+            localStorage.clear();
+        }
+    };
+
+
+    return localStorageWrapper;
+});
+</code></pre>
+
+<p>To properly provide graceful degradation, you can use <a href="http://modernizr.com/">Modernizr</a> to check if client supports a particular HTML5 feature.
+When using Modernizr, the client code consuming the above module looks like:</p>
+
+<pre><code>    // using set member of localStorageWrapper
+    if (Modernizr.localstorage) 
+    {
+        localStorage.set("uniqueKey1", "");
+    }
+
+    // using clear member of localStorageWrapper
+    if (Modernizr.localstorage) 
+    {
+        localStorage.clear();
+    }
+
+    // using hasData and get member of localStorageWrapper
+    if (localStorage.hasData("uniqueKey1"))
+    {
+        var value = localStorage.get("uniqueKey1");
+    }
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
