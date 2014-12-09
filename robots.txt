@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://siddharth-pandey.github.io/sitemap.xml 
