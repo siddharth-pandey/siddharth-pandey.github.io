@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tips & Tricks | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/tips-and-tricks/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2014-12-09T16:08:10+00:00</updated>
+  <updated>2014-12-10T09:53:41+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Customize Chrome Developer Tools?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/09/10/how-to-customize-chrome-developer-tools/"/>
+    <updated>2014-09-10T10:22:10+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/09/10/how-to-customize-chrome-developer-tools</id>
+    <content type="html"><![CDATA[<p>I spend most of my programming time within Visual Studio and I never liked the white theme that came out of the box. Same is with the Chrome Developer Tools. I use Dark theme for Visual Studio and want something similar for Chrome as well.</p>
+
+<p>In version 32, custom.css was removed from Chrome. I&rsquo;ll be using an theme extension to setup a custom theme. The old way was to play with a local css file that you can rely on or add your own files.</p>
+
+<!-- more -->
+
+
+<p>There are many extensions which can help you to have this customization. For my purpose, I&rsquo;m going to use <a href="https://chrome.google.com/webstore/detail/devtools-theme-zero-dark/bomhdjeadceaggdgfoefmpeafkjhegbo">DevTools Theme: Zero Dark Matrix</a>. Click on the link and install it to add it to Chrome.</p>
+
+<p>Follow the steps below:
+ - You need to enable a feature by navigating to <a href="chrome://flags/#enable-devtools-experiments">chrome://flags/#enable-devtools-experiments</a>.
+ - Once enabled, restart chrome.
+ - Open Developer Tools and select Settings or gear icon at top right corner.
+ - You should see an Experiments tab there, now enable <strong>Allow Custom User Themes.</strong>
+ - Reload Developer Tools and you should now have the extension theme enabled.</p>
+
+<p>See it was that easy to have a dark theme. However, if you want to create your own custom style, you will need to create your own extension. You could of course also just change the installed extension stylesheet, but you might want to check the licensing for whether its allowed or not!</p>
+
+<p>If you have followed all the steps above, your developer tools will look like:</p>
+
+<p><img class="center" src="/images/chrome_dev_tools_dark_theme.png" title="&lsquo;Dark Theme for Chrome Dev Tools&rsquo; &lsquo;images&rsquo;" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Use Your Own Font Everywhere]]></title>
