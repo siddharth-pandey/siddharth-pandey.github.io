@@ -3,6 +3,7 @@ layout: post
 title: "How to customize Chrome Developer Tools?"
 date: 2014-09-10 09:22:10 +0000
 comments: true
+sharing: true
 categories: [Developer Tools, Tips & Tricks]
 ---
 
