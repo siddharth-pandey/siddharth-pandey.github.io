@@ -9,7 +9,7 @@
   <meta name="author" content="Siddharth Pandey">
 
   
-  <meta name="description" content="I spend most of my programming time within Visual Studio and I never liked the white theme that came out of the box. Same is with the Chrome &hellip;">
+  <meta name="description" content="I recently had a scenario where my application was sending raw json data to send to the browser in string format. This data was used as a viewstate &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,42 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/">How to Compress, Decompress a String in C# Using GZipStream?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-15T12:37:12+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:37 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently had a scenario where my application was sending raw json data to send to the browser in string format. This data was used as a viewstate by using hidden input element. When the app started to run in production envrionment, we realised that this raw data is very big in size and needs to be compressed.</p>
+
+<p>So, the only solution available here was to compress the raw data and decompress it when app wants to access the data. Both needs to happen server-side. My app uses .NET v4.5, so I thought to use the out of the box classL <a href="http://msdn.microsoft.com/en-us/library/system.io.compression.gzipstream.aspx">GZipStream</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -418,55 +454,6 @@ So, I thought to write this quick post. Below is the directions to achieve the a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/17/unit-test-and-test-driven-development/">Unit Test and Test Driven Development in ASP.NET MVC Application</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-10-17'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This article aims to summarize the concept of testing which can help you while writing tests using any framework out there. I will be writing more on this topic and will also attach any relevant demo applications on github. </p>
-
-<h3>Types of Testing</h3>
-
-<p>There are many types of testing that you may want to apply to your application, namely:</p>
-
-<ul>
-<li>Unit Test &amp; Test Driven Development (TDD)</li>
-<li>User Interface Testing</li>
-<li>Integration Testing</li>
-<li>Acceptance Testing </li>
-<li>Performance Testing</li>
-<li>Accessibility Testing</li>
-<li>Security Testing</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/17/unit-test-and-test-driven-development/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -482,6 +469,10 @@ So, I thought to write this quick post. Below is the directions to achieve the a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/">How to Compress, Decompress a String in C# Using GZipStream?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/10/how-to-customize-chrome-developer-tools/">How to Customize Chrome Developer Tools?</a>
       </li>
     
@@ -495,10 +486,6 @@ So, I thought to write this quick post. Below is the directions to achieve the a
     
       <li class="post">
         <a href="/blog/2014/08/25/html5-localstorage-api-to-the-rescue/">HTML5 LocalStorage API to the Rescue</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/">How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?</a>
       </li>
     
   </ul>

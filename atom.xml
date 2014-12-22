@@ -4,7 +4,7 @@
   <title><![CDATA[Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2014-12-10T09:53:41+00:00</updated>
+  <updated>2014-12-22T12:13:39+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,139 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Compress, Decompress a String in C# Using GZipStream?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/"/>
+    <updated>2014-09-15T12:37:12+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream</id>
+    <content type="html"><![CDATA[<p>I recently had a scenario where my application was sending raw json data to send to the browser in string format. This data was used as a viewstate by using hidden input element. When the app started to run in production envrionment, we realised that this raw data is very big in size and needs to be compressed.</p>
+
+<p>So, the only solution available here was to compress the raw data and decompress it when app wants to access the data. Both needs to happen server-side. My app uses .NET v4.5, so I thought to use the out of the box classL <a href="http://msdn.microsoft.com/en-us/library/system.io.compression.gzipstream.aspx">GZipStream</a></p>
+
+<!-- more -->
+
+
+<p>Below is the code for compress and decompress feature:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/// &lt;summary&gt;
+</span><span class='line'>/// Represents a class that can be consumed to compress/decompress string.
+</span><span class='line'>/// &lt;/summary&gt;
+</span><span class='line'>public static class Compressor
+</span><span class='line'>{
+</span><span class='line'>    /// &lt;summary&gt;
+</span><span class='line'>    /// Use this to compress UTF-8 string to Base-64 string.
+</span><span class='line'>    /// &lt;/summary&gt;
+</span><span class='line'>    /// &lt;param name="text"&gt;The string value to compress.&lt;/param&gt;
+</span><span class='line'>    /// &lt;returns&gt;&lt;/returns&gt;
+</span><span class='line'>    public static string Compress(this string text)
+</span><span class='line'>    {
+</span><span class='line'>        var buffer = Encoding.UTF8.GetBytes(text);
+</span><span class='line'>        var memoryStream = new MemoryStream();
+</span><span class='line'>        using (var stream = new GZipStream(memoryStream, CompressionMode.Compress, true))
+</span><span class='line'>        {
+</span><span class='line'>            stream.Write(buffer, 0, buffer.Length);
+</span><span class='line'>        }
+</span><span class='line'>        memoryStream.Position = 0;
+</span><span class='line'>        var compressed = new byte[memoryStream.Length];
+</span><span class='line'>        memoryStream.Read(compressed, 0, compressed.Length);
+</span><span class='line'>        var gZipBuffer = new byte[compressed.Length + 4];
+</span><span class='line'>        Buffer.BlockCopy(compressed, 0, gZipBuffer, 4, compressed.Length);
+</span><span class='line'>        Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gZipBuffer, 0, 4);
+</span><span class='line'>        return Convert.ToBase64String(gZipBuffer);
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    /// &lt;summary&gt;
+</span><span class='line'>    /// Use this to decompress Base-64 string to UTF-8 string.
+</span><span class='line'>    /// &lt;/summary&gt;
+</span><span class='line'>    /// &lt;param name="compressedText"&gt;&lt;/param&gt;
+</span><span class='line'>    /// &lt;returns&gt;&lt;/returns&gt;
+</span><span class='line'>    public static string Decompress(this string compressedText)
+</span><span class='line'>    {
+</span><span class='line'>        var gZipBuffer = Convert.FromBase64String(compressedText);
+</span><span class='line'>        using (var memoryStream = new MemoryStream())
+</span><span class='line'>        {
+</span><span class='line'>            int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
+</span><span class='line'>            memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
+</span><span class='line'>            var buffer = new byte[dataLength];
+</span><span class='line'>            memoryStream.Position = 0;
+</span><span class='line'>            using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+</span><span class='line'>            {
+</span><span class='line'>                gZipStream.Read(buffer, 0, buffer.Length);
+</span><span class='line'>            }
+</span><span class='line'>            return Encoding.UTF8.GetString(buffer);
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above utitlity helper can be used in following way:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// to compress rawData object's value.
+</span><span class='line'>var dataToPersist = Compressor.Compress(JsonConvert.SerializeObject(rawData));
+</span><span class='line'>
+</span><span class='line'>// to decompress the dataToPersist in particular type.
+</span><span class='line'>var data = JsonConvert.DeserializeObject&lt;Type&gt;(Compressor.Decompress(dataToPersist));
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Customize Chrome Developer Tools?]]></title>
@@ -1259,41 +1392,6 @@ The above prototype contains all User-Interface elements that we need like a for
 
 
 <p>I am sure by now you have discovered the importance of a responsive web design and the fun behind it. Soon, I will be writing the main concepts for create a responsive design. Stay tuned!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some Tools to Instantly Code Faster...]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster/"/>
-    <updated>2012-11-22T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster</id>
-    <content type="html"><![CDATA[<p>I thought it would be great if I share the knowledge that I have with you. This  is my attempt to share my knowledge that can help you code in a better way and it would be great if you also share the tools you have in your arsenal. 
-1. Let us take a demo. If I ask you create this piece of html,</p>
-
-<pre><code>&lt;div id="page"&gt; &lt;div class="logo"&gt;&lt;/div&gt; &lt;ul id="navigation"&gt; &lt;li&gt;&lt;a href=""&gt;Item 1&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 2&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 3&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 4&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=""&gt;Item 5&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/div&gt;
-</code></pre>
-
-<p>​<!-- more --></p>
-
-<p><strong>I am sure you will go on create element by element and will type a lot. Ever wondered how you can boost your coding skills?</strong></p>
-
-<p>Well, I can create the above mark-up by following code:<br/>
-<strong>#page>div.logo+ul#navigation>li*5>a{Item $} and this will expand to the above mark-up! Cool. Right?</strong></p>
-
-<p>Just imagine, you will be able to create a whole basic webpage structure with in seconds. You can do many such stuff just by going through here:  <a href="http://docs.emmet.io/">http://docs.emmet.io</a>/ </p>
-
-<ol>
-<li></li>
-<li><p>I also save all my projects on <strong>github</strong> through which I can access it from anywhere I go.  <a href="https://github.com/">https://github.com/</a></p></li>
-<li>I find myself <strong>writing the same piece of code</strong> many times and yeah, it is sometimes odd to remember the code that I discovered few days back. Thus, I use tools like  <a href="https://gist.github.com/">https://gist.github.com/</a> to save all my <strong>snippets which I can access it anywhere.</strong></li>
-<li>There is <strong>no need to create a page and add html, css, js etc</strong> in your pages and creating a project structure. Just go to  <a href="http://jsfiddle.net/">http://jsfiddle.net/</a> and  <a href="http://codepen.io/">http://codepen.io/</a> and <strong>start writing your code and share</strong> it with your team members anywhere on the globe!</li>
-<li>You may find yourself very productive if you <strong>start using a CSS pre-processor like LESS, SCSS or SASS</strong> . They extends CSS with dynamic behaviour such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.</li>
-<li>Choose a <strong>good code editor</strong> . Visual Studio (for those who work with Microsoft technologies) is very good but sometimes there are more better alternatives if you love working with HTML, CSS, JavaScript.</li>
-<li>Expertise in the <strong>web developer tools</strong> either the <strong>Firebug or Chrome developer tools</strong> or the one in IE or Safari. </li>
-</ol>
-
-
-<p>I will keep extending this list of tools that can help you to be more productive and I am sure you will like the tools that I have listed above and you might remember me :) if you are totally new to these tools. </p>
 ]]></content>
   </entry>
   

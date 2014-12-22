@@ -4,7 +4,7 @@
   <title><![CDATA[Category: asp.net | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/asp-dot-net/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2014-12-10T09:53:41+00:00</updated>
+  <updated>2014-12-22T12:13:39+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Compress, Decompress a String in C# Using GZipStream?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/"/>
+    <updated>2014-09-15T12:37:12+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream</id>
+    <content type="html"><![CDATA[<p>I recently had a scenario where my application was sending raw json data to send to the browser in string format. This data was used as a viewstate by using hidden input element. When the app started to run in production envrionment, we realised that this raw data is very big in size and needs to be compressed.</p>
+
+<p>So, the only solution available here was to compress the raw data and decompress it when app wants to access the data. Both needs to happen server-side. My app uses .NET v4.5, so I thought to use the out of the box classL <a href="http://msdn.microsoft.com/en-us/library/system.io.compression.gzipstream.aspx">GZipStream</a></p>
+
+<!-- more -->
+
+
+<p>Below is the code for compress and decompress feature:</p>
+
+<pre><code>    /// &lt;summary&gt;
+    /// Represents a class that can be consumed to compress/decompress string.
+    /// &lt;/summary&gt;
+    public static class Compressor
+    {
+        /// &lt;summary&gt;
+        /// Use this to compress UTF-8 string to Base-64 string.
+        /// &lt;/summary&gt;
+        /// &lt;param name="text"&gt;The string value to compress.&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static string Compress(this string text)
+        {
+            var buffer = Encoding.UTF8.GetBytes(text);
+            var memoryStream = new MemoryStream();
+            using (var stream = new GZipStream(memoryStream, CompressionMode.Compress, true))
+            {
+                stream.Write(buffer, 0, buffer.Length);
+            }
+            memoryStream.Position = 0;
+            var compressed = new byte[memoryStream.Length];
+            memoryStream.Read(compressed, 0, compressed.Length);
+            var gZipBuffer = new byte[compressed.Length + 4];
+            Buffer.BlockCopy(compressed, 0, gZipBuffer, 4, compressed.Length);
+            Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gZipBuffer, 0, 4);
+            return Convert.ToBase64String(gZipBuffer);
+        }
+
+        /// &lt;summary&gt;
+        /// Use this to decompress Base-64 string to UTF-8 string.
+        /// &lt;/summary&gt;
+        /// &lt;param name="compressedText"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static string Decompress(this string compressedText)
+        {
+            var gZipBuffer = Convert.FromBase64String(compressedText);
+            using (var memoryStream = new MemoryStream())
+            {
+                int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
+                memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
+                var buffer = new byte[dataLength];
+                memoryStream.Position = 0;
+                using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+                {
+                    gZipStream.Read(buffer, 0, buffer.Length);
+                }
+                return Encoding.UTF8.GetString(buffer);
+            }
+        }
+
+    }
+</code></pre>
+
+<p>The above utitlity helper can be used in following way:</p>
+
+<pre><code>    // to compress rawData object's value.
+    var dataToPersist = Compressor.Compress(JsonConvert.SerializeObject(rawData));
+
+    // to decompress the dataToPersist in particular type.
+    var data = JsonConvert.DeserializeObject&lt;Type&gt;(Compressor.Decompress(dataToPersist));
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Get Version or Product Details From a .dll File or Running Application?]]></title>

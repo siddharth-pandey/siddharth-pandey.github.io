@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/c-number/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2014-12-10T09:53:41+00:00</updated>
+  <updated>2014-12-22T12:13:39+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Compress, Decompress a String in C# Using GZipStream?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/"/>
+    <updated>2014-09-15T12:37:12+01:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream</id>
+    <content type="html"><![CDATA[<p>I recently had a scenario where my application was sending raw json data to send to the browser in string format. This data was used as a viewstate by using hidden input element. When the app started to run in production envrionment, we realised that this raw data is very big in size and needs to be compressed.</p>
+
+<p>So, the only solution available here was to compress the raw data and decompress it when app wants to access the data. Both needs to happen server-side. My app uses .NET v4.5, so I thought to use the out of the box classL <a href="http://msdn.microsoft.com/en-us/library/system.io.compression.gzipstream.aspx">GZipStream</a></p>
+
+<!-- more -->
+
+
+<p>Below is the code for compress and decompress feature:</p>
+
+<pre><code>    /// &lt;summary&gt;
+    /// Represents a class that can be consumed to compress/decompress string.
+    /// &lt;/summary&gt;
+    public static class Compressor
+    {
+        /// &lt;summary&gt;
+        /// Use this to compress UTF-8 string to Base-64 string.
+        /// &lt;/summary&gt;
+        /// &lt;param name="text"&gt;The string value to compress.&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static string Compress(this string text)
+        {
+            var buffer = Encoding.UTF8.GetBytes(text);
+            var memoryStream = new MemoryStream();
+            using (var stream = new GZipStream(memoryStream, CompressionMode.Compress, true))
+            {
+                stream.Write(buffer, 0, buffer.Length);
+            }
+            memoryStream.Position = 0;
+            var compressed = new byte[memoryStream.Length];
+            memoryStream.Read(compressed, 0, compressed.Length);
+            var gZipBuffer = new byte[compressed.Length + 4];
+            Buffer.BlockCopy(compressed, 0, gZipBuffer, 4, compressed.Length);
+            Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gZipBuffer, 0, 4);
+            return Convert.ToBase64String(gZipBuffer);
+        }
+
+        /// &lt;summary&gt;
+        /// Use this to decompress Base-64 string to UTF-8 string.
+        /// &lt;/summary&gt;
+        /// &lt;param name="compressedText"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static string Decompress(this string compressedText)
+        {
+            var gZipBuffer = Convert.FromBase64String(compressedText);
+            using (var memoryStream = new MemoryStream())
+            {
+                int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
+                memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
+                var buffer = new byte[dataLength];
+                memoryStream.Position = 0;
+                using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+                {
+                    gZipStream.Read(buffer, 0, buffer.Length);
+                }
+                return Encoding.UTF8.GetString(buffer);
+            }
+        }
+
+    }
+</code></pre>
+
+<p>The above utitlity helper can be used in following way:</p>
+
+<pre><code>    // to compress rawData object's value.
+    var dataToPersist = Compressor.Compress(JsonConvert.SerializeObject(rawData));
+
+    // to decompress the dataToPersist in particular type.
+    var data = JsonConvert.DeserializeObject&lt;Type&gt;(Compressor.Decompress(dataToPersist));
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Get Version or Product Details From a .dll File or Running Application?]]></title>
@@ -309,40 +386,6 @@ string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAsse
 <li>Your controls reside within the correct form (you can have more than one)</li>
 <li>Your controls have names (just having an id is not returning values in the formCollection)
 Hope this helps. </li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Does Your Code Communicate With Other Dev's?]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2012/11/21/why-coding-style-matters/"/>
-    <updated>2012-11-21T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2012/11/21/why-coding-style-matters</id>
-    <content type="html"><![CDATA[<p><strong>In a team atmosphere, the personal nature of coding style is a challenge. </strong></p>
-
-<p>The following <strong>example</strong> might explain the importance of coding style:</p>
-
-<blockquote><p>&ldquo;The situation of a group of musicians trying to form a band. Each one comes in believing that their way of doing things is best (their &#8220;method&rdquo; or &ldquo;process&rdquo;). The band will struggle so long as everyone is trying to do their own thing. It&rsquo;s impossible to create good music unless everyone in the band agrees on the tempo, the style and who should take lead during a song. Anyone who has ever heard a high school band perform knows this to be true. Unless everyone is on the same page, you aren&rsquo;t going to accomplish much.&ldquo;Thus, we should start following a style guide. Following are the few style guides that I have in my list and I try to follow them.</p></blockquote>
-
-<!-- more -->
-
-
-<ol>
-<li><a href="http://docs.jquery.com/JQuery_Core_Style_Guidelines">http://docs.jquery.com/JQuery_Core_Style_Guidelines</a> </li>
-<li><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml">http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml </a></li>
-<li><a href="http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml">http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml</a></li>
-<li><a href="https://github.com/necolas/idiomatic-css">https://github.com/necolas/idiomatic-css</a> </li>
-<li><a href="https://github.com/styleguide/">https://github.com/styleguide/ </a></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/ms229042.aspx">http://msdn.microsoft.com/en-us/library/ms229042.aspx </a> <em>Microsoft - Design Guidelines for Class Library Developers.</em></li>
-<li><a href="http://www.idesign.net/idesign/download/IDesign%20CSharp%20Coding%20Standard.zip">http://www.idesign.net/idesign/download/IDesign CSharp Coding Standard.zip </a> <em>IDesign C# Coding Standard.</em></li>
-<li><a href="http://www.danrigsby.com/Files/csharpcodingstandards.doc">http://www.danrigsby.com/Files/csharpcodingstandards.doc</a> <em>Dan Rigsby C# Coding Standards.</em></li>
-<li><a href="http://submain.com/products/guidelines.aspx">http://submain.com/products/guidelines.aspx</a> SubMain C# / VB.NET Coding Guidelines.</li>
-<li><a href="http://weblogs.asp.net/lhunt/archive/2004/08/17/CSharpCodingStandardsv113.aspx">http://weblogs.asp.net/lhunt/archive/2004/08/17/CSharpCodingStandardsv113.aspx</a> <em>Lance Hunt - C# Coding Standards.</em></li>
-<li><a href="http://www.dotnetspider.com/tutorials/BestPractices.aspx">http://www.dotnetspider.com/tutorials/BestPractices.aspx </a> <em>DotNetSpider - C# Coding Standards and Best Programming Practices.</em></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/67ef8sbd.aspx">http://msdn.microsoft.com/en-us/library/67ef8sbd.aspx</a> <em>Microsoft - C# Programming Guide.</em></li>
-<li><a href="http://www.tiobe.com/content/paperinfo/gemrcsharpcs.pdf">http://www.tiobe.com/content/paperinfo/gemrcsharpcs.pdf</a> <em>Phillips Medical Systems - Coding Standard C#.</em>
-You can opt one and start extending it. Also, you might also have some experience or resources under your arsenal :D which you can share with team members.</li>
 </ol>
 
 ]]></content>
