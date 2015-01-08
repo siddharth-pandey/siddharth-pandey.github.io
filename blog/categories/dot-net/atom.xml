@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .net | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/dot-net/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2014-12-24T18:41:57+00:00</updated>
+  <updated>2015-01-08T10:39:42+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,10 +14,39 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Introduction to Inversion of Control]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/06/introduction-to-inversion-of-control/"/>
+    <updated>2015-01-06T19:42:43+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/06/introduction-to-inversion-of-control</id>
+    <content type="html"><![CDATA[<p><strong>What is Inversion of Control (IoC)?</strong>
+IoC is basically a pattern that we use to apply Depenency Inversion Principle.
+Most people mix DIP, IoC and DI together! Its good to have your concepts clear.</p>
+
+<p><strong>How does IoC relate to DIP?</strong>
+Please read <a href="http://siddharth-pandey.github.io/blog/2014/12/23/Introduction-to-dependency-inversion-principle/">my post about DIP</a>. This priciple says that the high level module should not depend on low level module.</p>
+
+<!-- more -->
+
+
+<p>It doesn&rsquo;t really says how to do it.
+Basically, as discussed above, IoC is the concept or pattern(ish) that we use to define how DIP can be achieved.</p>
+
+<p>Types of Inversion that can be used:</p>
+
+<ul>
+<li>Control over the interface between two systems or components: Interface Inversion</li>
+<li>Control over the flow of an application: Flow Inversion</li>
+<li>Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection is one of the way to invert control under this Dependency Creation type.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Introduction to Dependency Inversion Principle]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2014/12/23/Introduction-to-dependency-inversion-principle/"/>
-    <updated>2014-12-23T22:40:12+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2014/12/23/Introduction-to-dependency-inversion-principle</id>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/03/Introduction-to-dependency-inversion-principle/"/>
+    <updated>2015-01-03T22:40:12+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/03/Introduction-to-dependency-inversion-principle</id>
     <content type="html"><![CDATA[<p>Vocabulary required for this article:</p>
 
 <ul>
@@ -403,40 +432,6 @@ string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAsse
 <p>This was all about the concepts that you should keep in your mind while writing programs. Practice the above in your daily work and you will notice the difference it makes in your way to write applications.</p>
 
 <p>Stay tuned for sample application to write tests with MVC.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Does Your Code Communicate With Other Dev's?]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2012/11/21/why-coding-style-matters/"/>
-    <updated>2012-11-21T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2012/11/21/why-coding-style-matters</id>
-    <content type="html"><![CDATA[<p><strong>In a team atmosphere, the personal nature of coding style is a challenge. </strong></p>
-
-<p>The following <strong>example</strong> might explain the importance of coding style:</p>
-
-<blockquote><p>&ldquo;The situation of a group of musicians trying to form a band. Each one comes in believing that their way of doing things is best (their &#8220;method&rdquo; or &ldquo;process&rdquo;). The band will struggle so long as everyone is trying to do their own thing. It&rsquo;s impossible to create good music unless everyone in the band agrees on the tempo, the style and who should take lead during a song. Anyone who has ever heard a high school band perform knows this to be true. Unless everyone is on the same page, you aren&rsquo;t going to accomplish much.&ldquo;Thus, we should start following a style guide. Following are the few style guides that I have in my list and I try to follow them.</p></blockquote>
-
-<!-- more -->
-
-
-<ol>
-<li><a href="http://docs.jquery.com/JQuery_Core_Style_Guidelines">http://docs.jquery.com/JQuery_Core_Style_Guidelines</a> </li>
-<li><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml">http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml </a></li>
-<li><a href="http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml">http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml</a></li>
-<li><a href="https://github.com/necolas/idiomatic-css">https://github.com/necolas/idiomatic-css</a> </li>
-<li><a href="https://github.com/styleguide/">https://github.com/styleguide/ </a></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/ms229042.aspx">http://msdn.microsoft.com/en-us/library/ms229042.aspx </a> <em>Microsoft - Design Guidelines for Class Library Developers.</em></li>
-<li><a href="http://www.idesign.net/idesign/download/IDesign%20CSharp%20Coding%20Standard.zip">http://www.idesign.net/idesign/download/IDesign CSharp Coding Standard.zip </a> <em>IDesign C# Coding Standard.</em></li>
-<li><a href="http://www.danrigsby.com/Files/csharpcodingstandards.doc">http://www.danrigsby.com/Files/csharpcodingstandards.doc</a> <em>Dan Rigsby C# Coding Standards.</em></li>
-<li><a href="http://submain.com/products/guidelines.aspx">http://submain.com/products/guidelines.aspx</a> SubMain C# / VB.NET Coding Guidelines.</li>
-<li><a href="http://weblogs.asp.net/lhunt/archive/2004/08/17/CSharpCodingStandardsv113.aspx">http://weblogs.asp.net/lhunt/archive/2004/08/17/CSharpCodingStandardsv113.aspx</a> <em>Lance Hunt - C# Coding Standards.</em></li>
-<li><a href="http://www.dotnetspider.com/tutorials/BestPractices.aspx">http://www.dotnetspider.com/tutorials/BestPractices.aspx </a> <em>DotNetSpider - C# Coding Standards and Best Programming Practices.</em></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/67ef8sbd.aspx">http://msdn.microsoft.com/en-us/library/67ef8sbd.aspx</a> <em>Microsoft - C# Programming Guide.</em></li>
-<li><a href="http://www.tiobe.com/content/paperinfo/gemrcsharpcs.pdf">http://www.tiobe.com/content/paperinfo/gemrcsharpcs.pdf</a> <em>Phillips Medical Systems - Coding Standard C#.</em>
-You can opt one and start extending it. Also, you might also have some experience or resources under your arsenal :D which you can share with team members.</li>
-</ol>
-
 ]]></content>
   </entry>
   

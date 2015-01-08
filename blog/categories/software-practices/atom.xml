@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Software Practices | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/software-practices/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2014-12-24T18:41:57+00:00</updated>
+  <updated>2015-01-08T10:39:42+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,10 +14,39 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Introduction to Inversion of Control]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/06/introduction-to-inversion-of-control/"/>
+    <updated>2015-01-06T19:42:43+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/06/introduction-to-inversion-of-control</id>
+    <content type="html"><![CDATA[<p><strong>What is Inversion of Control (IoC)?</strong>
+IoC is basically a pattern that we use to apply Depenency Inversion Principle.
+Most people mix DIP, IoC and DI together! Its good to have your concepts clear.</p>
+
+<p><strong>How does IoC relate to DIP?</strong>
+Please read <a href="http://siddharth-pandey.github.io/blog/2014/12/23/Introduction-to-dependency-inversion-principle/">my post about DIP</a>. This priciple says that the high level module should not depend on low level module.</p>
+
+<!-- more -->
+
+
+<p>It doesn&rsquo;t really says how to do it.
+Basically, as discussed above, IoC is the concept or pattern(ish) that we use to define how DIP can be achieved.</p>
+
+<p>Types of Inversion that can be used:</p>
+
+<ul>
+<li>Control over the interface between two systems or components: Interface Inversion</li>
+<li>Control over the flow of an application: Flow Inversion</li>
+<li>Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection is one of the way to invert control under this Dependency Creation type.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Introduction to Dependency Inversion Principle]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2014/12/23/Introduction-to-dependency-inversion-principle/"/>
-    <updated>2014-12-23T22:40:12+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2014/12/23/Introduction-to-dependency-inversion-principle</id>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/03/Introduction-to-dependency-inversion-principle/"/>
+    <updated>2015-01-03T22:40:12+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/03/Introduction-to-dependency-inversion-principle</id>
     <content type="html"><![CDATA[<p>Vocabulary required for this article:</p>
 
 <ul>
