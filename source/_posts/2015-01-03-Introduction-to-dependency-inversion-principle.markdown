@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introduction to Dependency Inversion Principle"
-date: 2014-12-23 22:40:12 +0000
+date: 2015-01-03 22:40:12 +0000
 comments: true
 categories: [Software Practices, .NET, C#]
 sharing: true
