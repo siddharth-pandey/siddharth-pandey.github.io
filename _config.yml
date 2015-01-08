@@ -87,12 +87,12 @@ pinboard_user:
 pinboard_count: 3
 
 # Delicious
-delicious_user: SiddharthP
-delicious_count: 3
+delicious_user:
+delicious_count: 
 
 # Disqus Comments
 disqus_short_name: Sid
-disqus_show_comment_count: false
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id: UA-53425567-1
