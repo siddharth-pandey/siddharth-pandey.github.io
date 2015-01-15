@@ -22,8 +22,5 @@ Types of Inversion that can be used:
 
  - Control over the interface between two systems or components: Interface Inversion
  - Control over the flow of an application: Flow Inversion
- - Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection is one of the way to invert control under this Dependency Creation type.
-
-
-
+ - Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection, Factory Pattern, Service Locator, etc are different types of Creation Inversion.
 
