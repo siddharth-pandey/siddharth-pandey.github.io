@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/c-number/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-08T11:19:53+00:00</updated>
+  <updated>2015-01-15T17:06:40+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,137 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Introduction to Dependency Injection]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/12/introduction-to-dependency-injection/"/>
+    <updated>2015-01-12T19:42:43+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/12/introduction-to-dependency-injection</id>
+    <content type="html"><![CDATA[<h2>What is Dependency Injection?</h2>
+
+<p>In simple words, Dependency Injection (DI), is a type of IoC where the creation and binding of a dependency is moved outside of the class that depends on it.</p>
+
+<p>Say suppose when you pack your lunch, you know what you have packed inside it. But when you know that the food will be provided, you know that you need not to worry about lunch, it will just be served when you need it.</p>
+
+<p>Similar to above example, when you don&rsquo;t use DI, your class will have the creation and binding of dependencies inside it. But when you use DI, your class will just work taking into consideration that the required dependencies will be provided by a service.</p>
+
+<!-- more -->
+
+
+<h2>Where do dependencies come from?</h2>
+
+<p>For example, in your class <code>MyClass</code>, you have a dependency on say class <code>Dependency</code>. Let us assume that <code>MyClass</code> directly depends on <code>Dependency</code>. Now, to follow DIP, we create an interface <code>IDependency</code> that <code>Dependency</code> implements. So our class now looks like this:</p>
+
+<pre><code>public class MyClass
+{
+    private IDependency _depencency = new Dependency();  
+}
+</code></pre>
+
+<p>Even after creating an interface, <code>MyClass</code> still creates an object of class <code>Dependency</code> inside it and it means it is controlling the the creation of it.</p>
+
+<p>So we can introduce an <code>Injector</code> which will take care of the issue above and it will have knowledge of <code>MyClass</code> &amp; <code>IDependency</code>. Using this <code>Injector</code>, we can make <code>MyClass</code> have no knowledge about <code>Dependency</code> class.</p>
+
+<h2>Types of Dependency Injection</h2>
+
+<ul>
+<li><p>Constructor Injection</p>
+
+<ul>
+<li>is very common and simple.</li>
+<li>pass the dependency into dependent class via constructor of the class.</li>
+<li><p>example of constructor injection:</p>
+
+<pre><code class="``">  // usage
+  ICreditCard creditCard = new MasterCard();
+  Shopper shopper = new Shopper(creditCard);
+
+  public class Shopper
+  {
+      private readonly ICreditCard creditCard;
+
+      public Shopper(ICreditCard creditCard)
+      {
+          this.creditCard = creditCard;
+      }
+  }
+</code></pre></li>
+</ul>
+</li>
+<li><p>Setter Injection</p>
+
+<ul>
+<li>Instead of passing dependency via a constructor, create a setter (property in C#) on the dependent class.</li>
+<li>Use the setter to set the dependency.</li>
+<li>Order of usage of this setter is very important because unlike Constructor Injection, you can create an object of class and may or may not set the dependency.</li>
+<li>The dependency may be modified even after creating an object of class which gives us flexibility but its risky at the same time.</li>
+<li><p>example of setter injection:</p>
+
+<pre><code class="``">  // usage 
+  ICreditCard creditCard = new MasterCard();
+  Shopper shopper = new Shopper();
+  shopper.CreditCard = creditCard;
+
+  public class Shopper
+  {
+      public ICreditCard CreditCard { get; set; }
+  }
+</code></pre></li>
+</ul>
+</li>
+<li><p>Interface Injection</p>
+
+<ul>
+<li>Dependent class implements an interface.</li>
+<li>Injector uses the interface to set the dependency.</li>
+<li>not so common as the other types above but comparetively is complex.</li>
+<li><p>example of interface injection:</p>
+
+<pre><code class="`"> // usage 
+ ICreditCard creditCard = new MasterCard();
+ Shopper shopper = new Shopper();
+ ((IDependOnCreditCard)shopper).Inject(creditCard);
+
+ public class Shopper : IDependOnCreditCard
+ {
+     private ICreditCard creditCard;
+     public void Inject(ICreditCard creditCard)
+     {
+         this.creditCard = creditCard;
+     }
+ }
+
+ public interface IDependOnCreditCard
+ {
+     void Inject(ICreditCard creditCard);
+ }
+</code></pre></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Cautions</h2>
+
+<ul>
+<li>Leaks the internal implementation details of a class
+
+<ul>
+<li>Violates encapsulation</li>
+</ul>
+</li>
+<li>Prevents deferred creation
+
+<ul>
+<li>Dependencies created before needed so that it can be passed to the class that needs it.</li>
+<li>Watch out for large object graphs as your dependencies as it may lead to memory issues if its created without any requirements.</li>
+</ul>
+</li>
+<li>DI makes easier to unit tests classes because you don&rsquo;t care about dependencies that a particular class needs! So, watch out for too many dependencies.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Introduction to Inversion of Control]]></title>
@@ -36,7 +167,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
 <ul>
 <li>Control over the interface between two systems or components: Interface Inversion</li>
 <li>Control over the flow of an application: Flow Inversion</li>
-<li>Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection is one of the way to invert control under this Dependency Creation type.</li>
+<li>Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection, Factory Pattern, Service Locator, etc are different types of Creation Inversion.</li>
 </ul>
 
 ]]></content>
@@ -195,21 +326,6 @@ string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAsse
 </code></pre>
 
 <!-- more -->
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & V6+ MVC Razor Cheatsheets]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/"/>
-    <updated>2013-11-12T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic</id>
-    <content type="html"><![CDATA[<p>Below are the links to download cheat sheets for umbraco which I have found really useful:</p>
-
-<ul>
-<li><a href="http://our.umbraco.org/projects/developer-tools/razor-dynamicnode-cheat-sheet">Razor DynamicNode Cheat Sheet</a></li>
-<li><a href="http://our.umbraco.org/projects/developer-tools/umbraco-v6-mvc-razor-cheatsheets">Umbraco v6 MVC Razor Cheat Sheet</a></li>
-</ul>
 
 ]]></content>
   </entry>

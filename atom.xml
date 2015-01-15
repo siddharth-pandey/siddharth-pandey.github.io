@@ -4,7 +4,7 @@
   <title><![CDATA[Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-08T11:19:53+00:00</updated>
+  <updated>2015-01-15T17:06:40+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,141 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Introduction to Dependency Injection]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/12/introduction-to-dependency-injection/"/>
+    <updated>2015-01-12T19:42:43+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/12/introduction-to-dependency-injection</id>
+    <content type="html"><![CDATA[<h2>What is Dependency Injection?</h2>
+
+<p>In simple words, Dependency Injection (DI), is a type of IoC where the creation and binding of a dependency is moved outside of the class that depends on it.</p>
+
+<p>Say suppose when you pack your lunch, you know what you have packed inside it. But when you know that the food will be provided, you know that you need not to worry about lunch, it will just be served when you need it.</p>
+
+<p>Similar to above example, when you don&rsquo;t use DI, your class will have the creation and binding of dependencies inside it. But when you use DI, your class will just work taking into consideration that the required dependencies will be provided by a service.</p>
+
+<!-- more -->
+
+
+<h2>Where do dependencies come from?</h2>
+
+<p>For example, in your class <code>MyClass</code>, you have a dependency on say class <code>Dependency</code>. Let us assume that <code>MyClass</code> directly depends on <code>Dependency</code>. Now, to follow DIP, we create an interface <code>IDependency</code> that <code>Dependency</code> implements. So our class now looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public class MyClass
+</span><span class='line'>{
+</span><span class='line'>    private IDependency _depencency = new Dependency();  
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Even after creating an interface, <code>MyClass</code> still creates an object of class <code>Dependency</code> inside it and it means it is controlling the the creation of it.</p>
+
+<p>So we can introduce an <code>Injector</code> which will take care of the issue above and it will have knowledge of <code>MyClass</code> &amp; <code>IDependency</code>. Using this <code>Injector</code>, we can make <code>MyClass</code> have no knowledge about <code>Dependency</code> class.</p>
+
+<h2>Types of Dependency Injection</h2>
+
+<ul>
+<li><p>Constructor Injection</p>
+
+<ul>
+<li>is very common and simple.</li>
+<li>pass the dependency into dependent class via constructor of the class.</li>
+<li><p>example of constructor injection:</p>
+
+<pre><code class="``">  // usage
+  ICreditCard creditCard = new MasterCard();
+  Shopper shopper = new Shopper(creditCard);
+
+  public class Shopper
+  {
+      private readonly ICreditCard creditCard;
+
+      public Shopper(ICreditCard creditCard)
+      {
+          this.creditCard = creditCard;
+      }
+  }
+</code></pre></li>
+</ul>
+</li>
+<li><p>Setter Injection</p>
+
+<ul>
+<li>Instead of passing dependency via a constructor, create a setter (property in C#) on the dependent class.</li>
+<li>Use the setter to set the dependency.</li>
+<li>Order of usage of this setter is very important because unlike Constructor Injection, you can create an object of class and may or may not set the dependency.</li>
+<li>The dependency may be modified even after creating an object of class which gives us flexibility but its risky at the same time.</li>
+<li><p>example of setter injection:</p>
+
+<pre><code class="``">  // usage 
+  ICreditCard creditCard = new MasterCard();
+  Shopper shopper = new Shopper();
+  shopper.CreditCard = creditCard;
+
+  public class Shopper
+  {
+      public ICreditCard CreditCard { get; set; }
+  }
+</code></pre></li>
+</ul>
+</li>
+<li><p>Interface Injection</p>
+
+<ul>
+<li>Dependent class implements an interface.</li>
+<li>Injector uses the interface to set the dependency.</li>
+<li>not so common as the other types above but comparetively is complex.</li>
+<li><p>example of interface injection:</p>
+
+<pre><code class="`"> // usage 
+ ICreditCard creditCard = new MasterCard();
+ Shopper shopper = new Shopper();
+ ((IDependOnCreditCard)shopper).Inject(creditCard);
+
+ public class Shopper : IDependOnCreditCard
+ {
+     private ICreditCard creditCard;
+     public void Inject(ICreditCard creditCard)
+     {
+         this.creditCard = creditCard;
+     }
+ }
+
+ public interface IDependOnCreditCard
+ {
+     void Inject(ICreditCard creditCard);
+ }
+</code></pre></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Cautions</h2>
+
+<ul>
+<li>Leaks the internal implementation details of a class
+
+<ul>
+<li>Violates encapsulation</li>
+</ul>
+</li>
+<li>Prevents deferred creation
+
+<ul>
+<li>Dependencies created before needed so that it can be passed to the class that needs it.</li>
+<li>Watch out for large object graphs as your dependencies as it may lead to memory issues if its created without any requirements.</li>
+</ul>
+</li>
+<li>DI makes easier to unit tests classes because you don&rsquo;t care about dependencies that a particular class needs! So, watch out for too many dependencies.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Introduction to Inversion of Control]]></title>
@@ -36,7 +171,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
 <ul>
 <li>Control over the interface between two systems or components: Interface Inversion</li>
 <li>Control over the flow of an application: Flow Inversion</li>
-<li>Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection is one of the way to invert control under this Dependency Creation type.</li>
+<li>Control over dependency creating and binding: Dependency Creation or Binding Inversion. Dependency Injection, Factory Pattern, Service Locator, etc are different types of Creation Inversion.</li>
 </ul>
 
 ]]></content>
@@ -1315,122 +1450,6 @@ Hope this helps. </li>
 
 
 <p>Stay tuned for part - 2.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The Building Blocks of JavaScript Programs]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript/"/>
-    <updated>2012-11-30T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2012/11/30/the-building-blocks-of-javascript</id>
-    <content type="html"><![CDATA[<p>This post is second is series of learning JavaSciprt fundamentals. You may like to visit this article to go through all the posts in the series.</p>
-
-<p>Now, we will learn some building blocks the bits and pieces, that one should know to write JavaScript code.</p>
-
-<p><strong>The working demo for this post is <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></p>
-
-<h3>Outline</h3>
-
-<ul>
-<li>Comments - using which you can write some hints for a piece of code.</li>
-<li>Variables</li>
-<li>Null - a special object in JavaScript programs</li>
-<li>Undefined - which is slightly different primitive type in JavaScript.</li>
-<li>Finding Help - we will see where we can go for any assistance/docs for JavaScript.</li>
-<li>Objects</li>
-<li>Equality - how things are compared in JavaScript which one should be aware of it.</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h3>Comments</h3>
-
-<ul>
-<li>The comments in JavaScript is kind of similar to comments syntax available in Java.</li>
-<li>Comments is something that won&rsquo;t output anything as a result like your other piece of code, it is just for your use as it doesn&rsquo;t get rendered by the JavaScript interpreter. </li>
-<li>Single line Comment - &ldquo;//&rdquo;, this two forward slash characters is used for single line comments followed by any single line sentence. For example, &ldquo;// this is a single line comment&rdquo;.</li>
-<li>Multiline Comment - &ldquo;/*  your content */&rdquo;, the syntax for this comment is forward slash and star to start with, put your multiline sentence after that and close it with start and forward slash. For example - /* As you know this is a multiline comment, in which you can break the sentence into n number of lines.*/.</li>
-<li>You might want to use comments for any piece of code in order to instruct yourself or to any other developer in the team that what that code does, etc.</li>
-<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
-</ul>
-
-
-<h3>Variables</h3>
-
-<ul>
-<li>Variables in JavaScript are declared with &lsquo;var&rsquo; keyword.</li>
-<li>Variables type is inferred, i.e. they don&rsquo;t have a type until a value has been assigned to a variable. When assigned, the type is then defined from type of value specified.</li>
-<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
-</ul>
-
-
-<h3>Null</h3>
-
-<ul>
-<li>Is one of the JavaScript primitive types.</li>
-<li>Null means the absence of a value.</li>
-<li>But when null is used in any boolean expression like in case of a if condition, it evaluates to false.</li>
-<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
-</ul>
-
-
-<h3>Undefined</h3>
-
-<ul>
-<li>Is also one of the JavaScript primitive types.</li>
-<li>It represents an unknown value i.e. a variable that has not been assigned anything.</li>
-<li>We encounter undefined when a non-existence object property is called.</li>
-<li>But when undefined is used in any boolean expression like in case of a if condition, it evaluates to false.</li>
-<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
-</ul>
-
-
-<h3>Finding Help</h3>
-
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla Developer Network</a></li>
-</ul>
-
-
-<h3>Objects</h3>
-
-<ul>
-<li>Everything in JavaScript is an object except for the simple types like string, number, boolean, null and undefined.</li>
-<li>Objects are collection of properties and the values of those properties can be of any type.</li>
-<li><p>Objects are declared with the object literal notation. <br/>
-<code>var anobject = { firstValue: 'a', secondValue: 2 };</code></p>
-
-<ul>
-<li>In the above example, we have created a anobject object, with two properties - firstValue with a string value and secondValue with a numeric value.</li>
-</ul>
-</li>
-<li>In JavaScript, there is no class construct but we can define our objects and properties.</li>
-<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
-</ul>
-
-
-<h3>Equality</h3>
-
-<ul>
-<li>Objects are only equal to them-self.</li>
-<li>Primitives are equal only if the values matches like (&ldquo;Dog&rdquo;===&ldquo;Dog&rdquo;).</li>
-<li><p>There are two types of equality operators in JavaScript:</p>
-
-<ul>
-<li>==</li>
-<li><hr /></li>
-<li>The difference between the two is type coercion.</li>
-<li>== only checks for values but === check for values and also for the type.</li>
-<li>Use === over == and !== over != as it gives a proper answer comparing value and the type. Although, the decision is yours. </li>
-<li><strong>The working demo for this post is  <a href="http://codepen.io/siddharth-pandey/full/Fxdol">here</a>.</strong></li>
-</ul>
-</li>
-</ul>
-
-
-<p>  <a href="http://learnwithsid.blogspot.com/2012/11/learning-javascript-fundamentals.html"><strong>Keep reading the other post in this series to learn JavaScript.</strong></a> Happy Learning!</p>
 ]]></content>
   </entry>
   
