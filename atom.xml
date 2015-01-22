@@ -4,7 +4,7 @@
   <title><![CDATA[Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why does my mac terminal still uses an older version of Java?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/22/why-does-my-mac-terminal-still-uses-an-older-version-of-java/"/>
+    <updated>2015-01-22T16:23:03+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/22/why-does-my-mac-terminal-still-uses-an-older-version-of-java</id>
+    <content type="html"><![CDATA[<p>While I was working on my mac, I got a pop up to update Java running on it.
+I did all the process that was required. It was also needed by one of my application being developed in Android Studio on latest platform. But when I  checked the version number using <code>System Preferences &gt; Java</code> which opens the Java Control Panel in a separate window. If you click on the <code>About</code> button under <code>General</code> tab of this new window, it displays the Version details which said the following and with other copyright information:</p>
+
+<!-- more -->
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Version 8 Update 31 (build 1.8.0_31-b13)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It was time to check within Terminal as well by following command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java -version</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That returned an older version of Java. <code>java version "1.6.xxx"</code>
+I then wasted my time to solve this odd issue. Finally, I got a solution that I also need to <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">update JDK</a> to work with Android Studio. Agree to the terms and conditions and download the file based on the product you have.</p>
+
+<p>Following the above steps, solved my version issue due to which I was not able to work with Android Studio. And running the above java version command in Terminal returned correct version.</p>
+
+<p>While searching for the solution online, there were many other ways as well and obviously it depends on different kind of issues with java versions with XCode or Eclipse or Android Studio.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Introduction to Dependency Injection]]></title>
@@ -232,7 +264,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Compress, Decompress a String in C# Using GZipStream?]]></title>
+    <title type="html"><![CDATA[How to compress, decompress a string in c# using GZipStream?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/"/>
     <updated>2014-09-15T12:37:12+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream</id>
@@ -365,7 +397,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Customize Chrome Developer Tools?]]></title>
+    <title type="html"><![CDATA[How to customize Chrome Developer Tools?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/09/10/how-to-customize-chrome-developer-tools/"/>
     <updated>2014-09-10T10:22:10+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/09/10/how-to-customize-chrome-developer-tools</id>
@@ -394,7 +426,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Use Your Own Font Everywhere]]></title>
+    <title type="html"><![CDATA[Use your own font everywhere]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere/"/>
     <updated>2014-09-05T13:56:10+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere</id>
@@ -414,7 +446,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Get Version or Product Details From a .dll File or Running Application?]]></title>
+    <title type="html"><![CDATA[How to get version or product details from a .dll file or running application?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/"/>
     <updated>2014-08-28T15:54:26+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application</id>
@@ -452,7 +484,7 @@ This scenario may be required either to read a <code>.dll</code> file from disk 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[HTML5 LocalStorage API to the Rescue]]></title>
+    <title type="html"><![CDATA[HTML5 LocalStorage API to the rescue]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/"/>
     <updated>2014-08-25T12:34:12+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue</id>
@@ -601,7 +633,7 @@ When using Modernizr, the client code consuming the above module looks like:</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Get UnAuthorizedAccess (401) HTTP Response When Using ASP.NET Forms Authentication and AJAX?]]></title>
+    <title type="html"><![CDATA[How to get UnAuthorizedAccess (401) HTTP response when using ASP.NET Forms Authentication and AJAX?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax/"/>
     <updated>2014-08-11T17:25:21+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/08/11/how-to-get-unauthorizedaccess-401-http-response-when-using-asp-dot-net-forms-authentication-and-ajax</id>
@@ -683,7 +715,7 @@ When using Modernizr, the client code consuming the above module looks like:</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Cookie Issues With Internet Explorer.]]></title>
+    <title type="html"><![CDATA[Cookie issues with Internet Explorer.]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/"/>
     <updated>2014-06-15T00:07:17+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer</id>
@@ -710,7 +742,7 @@ Technically, an underscore (like this _ ) is not a DNS character, and while Wind
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Add a Set of Directories to Environment Variable $PATH on a Mac?]]></title>
+    <title type="html"><![CDATA[How to add a set of directories to environment variable $PATH on a mac?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/"/>
     <updated>2014-06-06T12:22:14+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac</id>
@@ -749,7 +781,7 @@ So, I thought to write this quick post. Below is the directions to achieve the a
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & V6+ MVC Razor Cheatsheets]]></title>
+    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & v6+ MVC Razor Cheatsheets]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/"/>
     <updated>2013-11-12T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic</id>
@@ -775,7 +807,7 @@ So, I thought to write this quick post. Below is the directions to achieve the a
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC Application]]></title>
+    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC application]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development/"/>
     <updated>2013-10-17T00:00:00+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development</id>
@@ -1011,7 +1043,7 @@ So, I thought to write this quick post. Below is the directions to achieve the a
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Some Facts About All the Programmer or a Software Developer]]></title>
+    <title type="html"><![CDATA[Some facts about all the Programmer or a Software Developer]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/01/20/some-facts-about-all-programmer-or/"/>
     <updated>2013-01-20T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/01/20/some-facts-about-all-programmer-or</id>
@@ -1184,7 +1216,7 @@ Going to college or university has many advantages. You might find yourself crea
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Career of a Software Developer and Some Strategies to Survive]]></title>
+    <title type="html"><![CDATA[Career of a Software Developer and some strategies to Survive]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/01/10/career-of-software-developer-and-some/"/>
     <updated>2013-01-10T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/01/10/career-of-software-developer-and-some</id>
@@ -1235,7 +1267,7 @@ Going to college or university has many advantages. You might find yourself crea
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[What if I Don’t Have SQL Express Installed?]]></title>
+    <title type="html"><![CDATA[What if I don’t have SQL Express installed?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express/"/>
     <updated>2013-01-03T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express</id>
@@ -1259,7 +1291,7 @@ No problem! You can quickly switch to use the new SQL Server Compact – a light
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Extract Key/values From FormCollection in ASP.NET MVC Action Method]]></title>
+    <title type="html"><![CDATA[Extract key/values from FormCollection in ASP.NET MVC action method]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection/"/>
     <updated>2013-01-03T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection</id>
@@ -1283,7 +1315,7 @@ Hope this helps. </li>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Must Have Developer Tools! Some Tricks to Develop Quicker]]></title>
+    <title type="html"><![CDATA[Must Have Developer Tools! Some tricks to develop quicker]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/"/>
     <updated>2012-12-20T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks</id>
@@ -1311,145 +1343,6 @@ Hope this helps. </li>
 <li>Sometimes, its hard for us to find where the error is in our script, so you might want to open the script in developer tools and then click the pause button, now chrome will set a breakpoint when it find the statement because of which the error is being logged in console.</li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Learn How to Build HTML5 and JavaScript Apps With MVVM and Knockout (Part - 1)]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript/"/>
-    <updated>2012-12-05T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2012/12/05/learn-how-to-build-html5-and-javascript</id>
-    <content type="html"><![CDATA[<p>One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application:</p>
-
-<ol>
-<li>The Structure i.e. HTML</li>
-<li>Presentation i.e. CSS</li>
-<li>Behaviour i.e. JavaScript</li>
-</ol>
-
-
-<p>Do we use any UI patterns with JavaScript development, like </p>
-
-<ol>
-<li>MVVM or</li>
-<li>Data binding structures</li>
-</ol>
-
-
-<p>How should be write structured JavaScript? Should we write in a modular pattern?</p>
-
-<!-- more -->
-
-
-<p></p>
-
-<p>Also, all apps love data, so, how should we care about data and bindings. Somehow, we need to load data from somewhere, such as using an Ajax service or loading JSON data on your screen and after getting the data how will you respect changes from the user</p>
-
-<p>Knockout is a JavaScript library that can solve the above issues in a very nice and efficient manner.</p>
-
-<p>So, what is Knockout?</p>
-
-<ol>
-<li>It allows you to have rich client-side interactivity for your UX provide a good pattern. </li>
-<li>It gives you a good separation of structure and behaviour.</li>
-<li>It provides you to use declarative bindings to be able to help you bind your UI elements, in case, HTML or even may be CSS styles and classes down to your source object. </li>
-<li>Offers you to work in MVVM pattern.</li>
-<li>It has a very good browser support. (IE6+, Firefox 2+, Chrome, Safari, Opera)</li>
-</ol>
-
-
-<p>Key Concepts of Knockout:</p>
-
-<ol>
-<li>Dependency Tracking via observables (eg: a property depending on another property and it is in sync with a UI control and vice-versa(optional).)</li>
-<li>Declarative Bindings (Instead of using JavaScript to go through DOM and find a particular control with certain ID use can bind the control from the html itself to push data to the UI and pull data from UI again from/to the source object.)</li>
-<li>Templating Support (eg: you might have repetitive structures in your webpage like list of abc or rows in a list box, rows in a table or li in a ul/ol. You can use templates to take care of those views. You can use jQuery templates with Knockout, or native templates of Knockout or any third party templating engine.)</li>
-</ol>
-
-
-<p>Demo</p>
-
-<ul>
-<li><a href="http://codepen.io/siddharth-pandey/full/ovrxL">Hello World Demo</a> (Open in a good browser as CodePen needs it.)</li>
-</ul>
-
-
-<p>The important factor is to understand the MVVM in terms of Knockout: the separation of concerns. </p>
-
-<ol>
-<li>MVVM is just a separation pattern and a way to organise your code structure to make it easier to maintain and to deal with separation and responsibilities.</li>
-<li>Model-View-ViewModel</li>
-<li>Not technology specific. ( you might have heard MVVM with XAML and now you are using with Knockout with JavaScript and HTML.)</li>
-<li>Works well with data bindings. (in this case its html)</li>
-</ol>
-
-
-<p>MVVM Components</p>
-
-<ol>
-<li>We have a view which is this case is HTML. ( is the user friendly presentation of information)</li>
-<li>We have our model which is in JSON. (javascript object in this case which has a property named as firstName)</li>
-<li><p>Between above two, we have logic to separate to how to  present that model JSON data into the view itself and that is our view model. </p></li>
-<li><p> It contains all the behaviour for the view that the view needs and can aggregate on or more models to show the data inside the view.</p></li>
-<li> Contains properties like firstName, methods and the Model.</li>
-</ol>
-
-
-<p>Demo</p>
-
-<ul>
-<li><a href="http://codepen.io/siddharth-pandey/full/tcuob">A quick demo using JavaScript&rsquo;s object literal notation</a></li>
-<li><a href="http://codepen.io/siddharth-pandey/full/dsmtH">A quick demo using JavaScript&rsquo;s function</a></li>
-<li><a href="http://a%20quick%20demo%20using%20javascript%27s%20function/">A quick demo</a></li>
-</ul>
-
-
-<p>Visual Studio Extensions for your productivity</p>
-
-<ul>
-<li>Nuget - to manage 3rd party libraries and references.</li>
-<li>Web Essentials - code collapsing, vendor specific css properties, etc.</li>
-<li>Web Standards Update - html intellisense and validation.</li>
-<li>WoVS Default Browser Switcher - quickly change the default browser from visual studio.</li>
-<li>JSLint - javascript code analysis.</li>
-<li>CSSCop - catches common CSS issues.</li>
-<li>Resharper 6 (trial version only) - javascript refactoring tools.</li>
-</ul>
-
-
-<p>Begin Coding with Knockout and Visual Studio</p>
-
-<ul>
-<li>Either download the JavaScript references from  <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>.</li>
-<li>Either get the debugger or minified version from Github.</li>
-<li>Use Nuget to install Knockout.</li>
-<li><p>Add intellisense for Knockout in Visual Studio for any *.js files by adding the following: &amp; lt; reference path=&ldquo;/scripts/knockout-2.2.0.debug.js&rdquo; / &amp; gt; at script-page level.</p>
-
-<ul>
-<li>After doing this, whenever you will type ko. you will see all the options that you can use from the Knockout library.</li>
-<li>It has to be the first line of code in the page and you have to comment it using &ldquo;///&rdquo;.</li>
-<li>Or use a tool like Resharper that will add the intellisense support for your project by its own.</li>
-</ul>
-</li>
-</ul>
-
-
-<p>Key Resources</p>
-
-<ul>
-<li>Knockout  - <a href="http://knockoutjs.com/">http://knockoutjs.com</a></li>
-<li>Source Code - <a href="https://github.com/SteveSanderson/knockout">https://github.com/SteveSanderson/knockout</a></li>
-<li>Documentation - <a href="http://jpapa.me/kodocs">http://jpapa.me/kodocs</a></li>
-<li>Forums - <a href="http://jpapa.me/koforum">http://jpapa.me/koforum</a></li>
-<li>Tutorials - <a href="http://learn.knockoutjs.com/">http://learn.knockoutjs.com</a></li>
-<li>Stackoverflow - <a href="http://jpapa.me/kostackoverflow">http://jpapa.me/kostackoverflow</a></li>
-<li>Ryan Niemeyer&rsquo;s Blog - <a href="http://www.knockmeout.net/">http://www.knockmeout.net</a></li>
-<li>jsFiddle - <a href="http://www.jsfiddle.net/">http://www.jsfiddle.net</a></li>
-<li>CodePen.io - <a href="http://codepen.io/">codepen.io</a></li>
-</ul>
-
-
-<p>Stay tuned for part - 2.</p>
 ]]></content>
   </entry>
   

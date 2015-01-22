@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Responsive | Sid's Blog]]></title>
+  <title><![CDATA[Category: responsive | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/responsive/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Our Users Always Remember the Website Experience That We Offer]]></title>
+    <title type="html"><![CDATA[Our users always remember the website experience that we offer]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website/"/>
     <updated>2012-11-23T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2012/11/23/our-users-always-remember-website</id>

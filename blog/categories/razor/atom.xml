@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Razor | Sid's Blog]]></title>
+  <title><![CDATA[Category: razor | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/razor/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & V6+ MVC Razor Cheatsheets]]></title>
+    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & v6+ MVC Razor Cheatsheets]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/"/>
     <updated>2013-11-12T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic</id>

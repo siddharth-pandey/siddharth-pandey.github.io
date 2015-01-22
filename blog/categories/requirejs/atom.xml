@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Requirejs | Sid's Blog]]></title>
+  <title><![CDATA[Category: requirejs | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/requirejs/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[HTML5 LocalStorage API to the Rescue]]></title>
+    <title type="html"><![CDATA[HTML5 LocalStorage API to the rescue]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/"/>
     <updated>2014-08-25T12:34:12+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue</id>

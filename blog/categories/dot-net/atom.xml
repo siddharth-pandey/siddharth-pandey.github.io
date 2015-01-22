@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .net | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/dot-net/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -228,7 +228,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Compress, Decompress a String in C# Using GZipStream?]]></title>
+    <title type="html"><![CDATA[How to compress, decompress a string in c# using GZipStream?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/"/>
     <updated>2014-09-15T12:37:12+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream</id>
@@ -305,7 +305,7 @@ Basically, as discussed above, IoC is the concept or pattern(ish) that we use to
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Get Version or Product Details From a .dll File or Running Application?]]></title>
+    <title type="html"><![CDATA[How to get version or product details from a .dll file or running application?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/"/>
     <updated>2014-08-28T15:54:26+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application</id>

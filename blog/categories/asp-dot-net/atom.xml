@@ -4,7 +4,7 @@
   <title><![CDATA[Category: asp.net | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/asp-dot-net/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How to Compress, Decompress a String in C# Using GZipStream?]]></title>
+    <title type="html"><![CDATA[How to compress, decompress a string in c# using GZipStream?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/"/>
     <updated>2014-09-15T12:37:12+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream</id>
@@ -91,7 +91,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Get Version or Product Details From a .dll File or Running Application?]]></title>
+    <title type="html"><![CDATA[How to get version or product details from a .dll file or running application?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/"/>
     <updated>2014-08-28T15:54:26+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application</id>
@@ -117,7 +117,7 @@ string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAsse
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC Application]]></title>
+    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC application]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development/"/>
     <updated>2013-10-17T00:00:00+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development</id>
@@ -353,7 +353,7 @@ string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAsse
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Extract Key/values From FormCollection in ASP.NET MVC Action Method]]></title>
+    <title type="html"><![CDATA[Extract key/values from FormCollection in ASP.NET MVC action method]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection/"/>
     <updated>2013-01-03T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection</id>

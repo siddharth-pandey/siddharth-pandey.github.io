@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Osx | Sid's Blog]]></title>
+  <title><![CDATA[Category: osx | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,35 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How to Add a Set of Directories to Environment Variable $PATH on a Mac?]]></title>
+    <title type="html"><![CDATA[Why does my mac terminal still uses an older version of Java?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/22/why-does-my-mac-terminal-still-uses-an-older-version-of-java/"/>
+    <updated>2015-01-22T16:23:03+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/22/why-does-my-mac-terminal-still-uses-an-older-version-of-java</id>
+    <content type="html"><![CDATA[<p>While I was working on my mac, I got a pop up to update Java running on it.
+I did all the process that was required. It was also needed by one of my application being developed in Android Studio on latest platform. But when I  checked the version number using <code>System Preferences &gt; Java</code> which opens the Java Control Panel in a separate window. If you click on the <code>About</code> button under <code>General</code> tab of this new window, it displays the Version details which said the following and with other copyright information:</p>
+
+<!-- more -->
+
+
+<pre><code>Version 8 Update 31 (build 1.8.0_31-b13)
+</code></pre>
+
+<p>It was time to check within Terminal as well by following command:</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>That returned an older version of Java. <code>java version "1.6.xxx"</code>
+I then wasted my time to solve this odd issue. Finally, I got a solution that I also need to <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">update JDK</a> to work with Android Studio. Agree to the terms and conditions and download the file based on the product you have.</p>
+
+<p>Following the above steps, solved my version issue due to which I was not able to work with Android Studio. And running the above java version command in Terminal returned correct version.</p>
+
+<p>While searching for the solution online, there were many other ways as well and obviously it depends on different kind of issues with java versions with XCode or Eclipse or Android Studio.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to add a set of directories to environment variable $PATH on a mac?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac/"/>
     <updated>2014-06-06T12:22:14+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/06/06/how-to-add-a-set-of-directories-to-environment-variable-on-a-mac</id>

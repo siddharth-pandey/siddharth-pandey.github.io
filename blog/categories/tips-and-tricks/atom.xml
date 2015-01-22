@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Tips & Tricks | Sid's Blog]]></title>
+  <title><![CDATA[Category: tips & tricks | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/tips-and-tricks/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How to Customize Chrome Developer Tools?]]></title>
+    <title type="html"><![CDATA[How to customize Chrome Developer Tools?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/09/10/how-to-customize-chrome-developer-tools/"/>
     <updated>2014-09-10T10:22:10+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/09/10/how-to-customize-chrome-developer-tools</id>
@@ -43,7 +43,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Use Your Own Font Everywhere]]></title>
+    <title type="html"><![CDATA[Use your own font everywhere]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere/"/>
     <updated>2014-09-05T13:56:10+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/09/05/use-your-own-font-everywhere</id>

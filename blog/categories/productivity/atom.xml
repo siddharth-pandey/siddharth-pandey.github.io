@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Productivity | Sid's Blog]]></title>
+  <title><![CDATA[Category: productivity | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/productivity/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Must Have Developer Tools! Some Tricks to Develop Quicker]]></title>
+    <title type="html"><![CDATA[Must Have Developer Tools! Some tricks to develop quicker]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/"/>
     <updated>2012-12-20T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks</id>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Nunit | Sid's Blog]]></title>
+  <title><![CDATA[Category: nunit | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/nunit/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC Application]]></title>
+    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC application]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development/"/>
     <updated>2013-10-17T00:00:00+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development</id>

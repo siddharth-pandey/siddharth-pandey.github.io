@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Modernizr | Sid's Blog]]></title>
+  <title><![CDATA[Category: modernizr | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/modernizr/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[HTML5 LocalStorage API to the Rescue]]></title>
+    <title type="html"><![CDATA[HTML5 LocalStorage API to the rescue]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue/"/>
     <updated>2014-08-25T12:34:12+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/08/25/html5-localstorage-api-to-the-rescue</id>
@@ -99,7 +99,7 @@ When using Modernizr, the client code consuming the above module looks like:</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Learn Modernizr Library With Some Quick Demo]]></title>
+    <title type="html"><![CDATA[Learn Modernizr Library with some quick Demo]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick/"/>
     <updated>2012-11-28T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick</id>

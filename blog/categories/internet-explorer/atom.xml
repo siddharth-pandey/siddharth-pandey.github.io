@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Internet Explorer | Sid's Blog]]></title>
+  <title><![CDATA[Category: internet explorer | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/internet-explorer/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Cookie Issues With Internet Explorer.]]></title>
+    <title type="html"><![CDATA[Cookie issues with Internet Explorer.]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer/"/>
     <updated>2014-06-15T00:07:17+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2014/06/15/cookie-issues-with-internet-explorer</id>

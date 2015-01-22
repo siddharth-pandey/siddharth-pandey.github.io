@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Coding Style | Sid's Blog]]></title>
+  <title><![CDATA[Category: coding style | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/coding-style/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-15T17:06:40+00:00</updated>
+  <updated>2015-01-22T16:50:31+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & V6+ MVC Razor Cheatsheets]]></title>
+    <title type="html"><![CDATA[Umbraco Cheat Sheet for V4.7.1+ Dynamic-Nodes & v6+ MVC Razor Cheatsheets]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic/"/>
     <updated>2013-11-12T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/11/12/umbraco-cheat-sheet-for-v471-dynamic</id>
@@ -29,7 +29,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC Application]]></title>
+    <title type="html"><![CDATA[Unit Test and Test Driven Development in ASP.NET MVC application]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development/"/>
     <updated>2013-10-17T00:00:00+01:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2013/10/17/unit-test-and-test-driven-development</id>
@@ -265,7 +265,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Learn Modernizr Library With Some Quick Demo]]></title>
+    <title type="html"><![CDATA[Learn Modernizr Library with some quick Demo]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick/"/>
     <updated>2012-11-28T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2012/11/28/learn-modernizr-library-with-some-quick</id>
@@ -274,7 +274,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Some Tools to Instantly Code Faster...]]></title>
+    <title type="html"><![CDATA[Some tools to instantly code faster...]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster/"/>
     <updated>2012-11-22T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2012/11/22/some-tools-to-instantly-code-faster</id>
@@ -309,7 +309,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Does Your Code Communicate With Other Dev's?]]></title>
+    <title type="html"><![CDATA[Does your code communicate with other Dev's?]]></title>
     <link href="http://siddharth-pandey.github.io/blog/2012/11/21/why-coding-style-matters/"/>
     <updated>2012-11-21T00:00:00+00:00</updated>
     <id>http://siddharth-pandey.github.io/blog/2012/11/21/why-coding-style-matters</id>
