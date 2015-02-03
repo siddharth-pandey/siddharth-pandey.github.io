@@ -9,8 +9,7 @@
   <meta name="author" content="Siddharth Pandey">
 
   
-  <meta name="description" content="One needs to understand the &ldquo;Separation of Concerns&rdquo; while building an application: The Structure i.e. HTML
-Presentation i.e. CSS &hellip;">
+  <meta name="description" content="To avoid you from having to chase for the same information: here&rsquo;s how you extract key / value pairs from the FormCollection that comes as an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,91 @@ Presentation i.e. CSS &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/03/extract-keyvalues-from-formcollection/">Extract key/values from FormCollection in ASP.NET MVC action method</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-01-03'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2013/01/03/extract-keyvalues-from-formcollection/#disqus_thread"
+             data-disqus-identifier="http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To avoid you from having to chase for the same information: here&rsquo;s how you extract key / value pairs from the FormCollection that comes as an argument in an ASP.NET MVC action method:</p>
+
+<pre><code>public ActionResult Create(FormCollection formCollection){ foreach (var key in formCollection.AllKeys) { var value = formCollection[key]; // etc. } foreach (var key in formCollection.Keys) { var value = formCollection[key.ToString()]; // etc. }}
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/01/03/extract-keyvalues-from-formcollection/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/20/must-have-developer-tools-some-tricks/">Must Have Developer Tools! Some tricks to develop quicker</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-20'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2012/12/20/must-have-developer-tools-some-tricks/#disqus_thread"
+             data-disqus-identifier="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Google Developer Tools, Some tricks to develop quicker</strong></p>
+
+<ol>
+<li>View Source => By going through menu navigation or Ctrl-Shit-I on windows or Cmd-option(alt)-I on mac.</li>
+<li>Or for particular element, just right click on it and choose inspect element.</li>
+<li>For fast navigation, prefer keyboard arrow keys to collapse or expand DOM elements. You will find the width and height of that active element as you move in Developer Tool.</li>
+<li>To get the full view of the page, try Ctrl - (minus) to zoom out so as to see your whole page with developer tools open without scrolling. Sometimes useful to me.</li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/12/20/must-have-developer-tools-some-tricks/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -441,6 +525,14 @@ Presentation i.e. CSS &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application/">How to store data using SQLiteDatabase in Android application?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/23/how-to-migrate-an-android-project-from-eclipse-to-android-studio/">How to migrate an android project from Eclipse to Android Studio?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/22/why-does-my-mac-terminal-still-uses-an-older-version-of-java/">Why does my mac terminal still uses an older version of Java?</a>
       </li>
     
@@ -450,14 +542,6 @@ Presentation i.e. CSS &hellip;">
     
       <li class="post">
         <a href="/blog/2015/01/06/introduction-to-inversion-of-control/">Introduction to Inversion of Control</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/03/Introduction-to-dependency-inversion-principle/">Introduction to Dependency Inversion Principle</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/15/How-to-compress-decompress-a-string-in-c-using-GZipStream/">How to compress, decompress a string in c# using GZipStream?</a>
       </li>
     
   </ul>

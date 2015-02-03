@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-22T16:50:31+00:00</updated>
+  <updated>2015-02-03T10:57:00+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to store data using SQLiteDatabase in Android application?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application/"/>
+    <updated>2015-01-28T09:35:19+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application</id>
+    <content type="html"><![CDATA[<p>I was asked by one of my friend to help him to save some data in his android application. Due to that nature of the application, his preferred storage option was <a href="http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a> which resides under <code>android.database.sqlite</code> namespace. It exposes methods to manage a SQLite database. It also has methods to create, delete, execute SQL commands, and perform other common database management tasks.</p>
+
+<!-- more -->
+
+
+<p><a href="https://github.com/siddharth-pandey/Students-Catalog">You can view and download the sample application here</a>. Feel free to download or modify the project by extending it.</p>
+
+<p>Let us look at the following code below that is taken from the project mentioned in the link above.</p>
+
+<p>Below is the code from <code>onCreate()</code> overload function that is called when the activity is first created.</p>
+
+<pre><code>/** Called when the activity is first created. */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editRollno=(EditText)findViewById(R.id.editRollno);
+        editName=(EditText)findViewById(R.id.editName);
+        editMarks=(EditText)findViewById(R.id.editMarks);
+        btnAdd=(Button)findViewById(R.id.btnAdd);
+        btnDelete=(Button)findViewById(R.id.btnDelete);
+        btnModify=(Button)findViewById(R.id.btnModify);
+        btnView=(Button)findViewById(R.id.btnView);
+        btnViewAll=(Button)findViewById(R.id.btnViewAll);
+        btnShowInfo=(Button)findViewById(R.id.btnShowInfo);
+
+        // setup click listener for all the buttons
+        btnAdd.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
+        btnModify.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnViewAll.setOnClickListener(this);
+        btnShowInfo.setOnClickListener(this);
+
+        // database related code
+        db = openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);");
+    }
+</code></pre>
+
+<p>Let us look at the code above. We get references to all the buttons and edittext widgets in our code that is quite straightforward. Then we setup click listeners for all the buttons. To do that we make our Activity class implement <code>View.OnClickListener</code> interface. We are using this way to setup click handlers so basically, the <code>onClick()</code> function is called when a <code>View</code> has been clicked.</p>
+
+<p>Next is the code related to database. <code>openOrCreateDatabase()</code> function, as the name suggests opens <code>StudentDB</code> database if it exists already. If not, it then creates it. The first paramter is the name of the database that we want to open or create i.e. <code>StudentDB</code>. The second parameter, <code>Context.MODE_PRIVATE</code> indicates that the database file can only be accessed by the calling application or all applications sharing the same user ID. The third parameter is a <code>Cursor</code> factory object which can be left null if not required.</p>
+
+<p>The second statement, <code>db.execSQL()</code> function is to execute any SQL command. Above, it is used to create a table named <code>student</code> if it doesn&rsquo;t exist. We use this function for queries like <code>INSERT, UPDATE, DELETE</code>.</p>
+
+<p>This app also uses <code>db.rawQuery()</code> that runs the provided SQL and returns aCursor over the result set and we check the result by using <code>moveToFirst()</code> function that moves the cursor to the first row and returns a boolean. If false we then show either a alert or Toast message to user.</p>
+
+<p>I&rsquo;m not going to paste all the code from project here as the main statements and functions are already covered above. Download the project and give it a try.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to migrate an android project from Eclipse to Android Studio?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/23/how-to-migrate-an-android-project-from-eclipse-to-android-studio/"/>
+    <updated>2015-01-23T14:32:46+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/23/how-to-migrate-an-android-project-from-eclipse-to-android-studio</id>
+    <content type="html"><![CDATA[<p>This post can help you if you have been working on android projects in Eclipse with ADT and want to migrate that project to Android Studio.</p>
+
+<p>Google had made Android Studio the official IDE for Android, so you should migrate to Android Studio to receive all the latest IDE updates.</p>
+
+<!-- more -->
+
+
+<p><a href="https://developer.android.com/sdk/installing/migrate.html">This is the link</a> that shows some steps how to migrate. Below are the same steps:</p>
+
+<ul>
+<li>In Android Studio, close any projects currently open. You should see the Welcome to Android Studio window.</li>
+<li>Click Import Non-Android Studio project.</li>
+<li>Locate the project you exported from Eclipse, expand it, select the build.gradle file and click OK.</li>
+<li>In the following dialog, leave Use gradle wrapper selected and click OK. (You do not need to specify the Gradle home.)</li>
+</ul>
+
+
+<p>Android Studio properly updates the project structure and creates the appropriate Gradle build file.</p>
+
+<p>You can also import the same project in Android Studio by selecting <code>Import Project</code> from <code>File</code> option in Android Studio. Locate the project and follow thesteps in the wizard.</p>
+
+<p>Hope following the steps above can help you migrate your project. If you face any issues, post a comment and I&rsquo;ll try help you to solve it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why does my mac terminal still uses an older version of Java?]]></title>

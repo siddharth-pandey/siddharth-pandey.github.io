@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: eclipse | Sid's Blog]]></title>
+  <link href="http://siddharth-pandey.github.io/blog/categories/eclipse/atom.xml" rel="self"/>
+  <link href="http://siddharth-pandey.github.io/"/>
+  <updated>2015-02-03T10:57:00+00:00</updated>
+  <id>http://siddharth-pandey.github.io/</id>
+  <author>
+    <name><![CDATA[Siddharth Pandey]]></name>
+    <email><![CDATA[siddharthkpandey@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to migrate an android project from Eclipse to Android Studio?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/23/how-to-migrate-an-android-project-from-eclipse-to-android-studio/"/>
+    <updated>2015-01-23T14:32:46+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/23/how-to-migrate-an-android-project-from-eclipse-to-android-studio</id>
+    <content type="html"><![CDATA[<p>This post can help you if you have been working on android projects in Eclipse with ADT and want to migrate that project to Android Studio.</p>
+
+<p>Google had made Android Studio the official IDE for Android, so you should migrate to Android Studio to receive all the latest IDE updates.</p>
+
+<!-- more -->
+
+
+<p><a href="https://developer.android.com/sdk/installing/migrate.html">This is the link</a> that shows some steps how to migrate. Below are the same steps:</p>
+
+<ul>
+<li>In Android Studio, close any projects currently open. You should see the Welcome to Android Studio window.</li>
+<li>Click Import Non-Android Studio project.</li>
+<li>Locate the project you exported from Eclipse, expand it, select the build.gradle file and click OK.</li>
+<li>In the following dialog, leave Use gradle wrapper selected and click OK. (You do not need to specify the Gradle home.)</li>
+</ul>
+
+
+<p>Android Studio properly updates the project structure and creates the appropriate Gradle build file.</p>
+
+<p>You can also import the same project in Android Studio by selecting <code>Import Project</code> from <code>File</code> option in Android Studio. Locate the project and follow thesteps in the wizard.</p>
+
+<p>Hope following the steps above can help you migrate your project. If you face any issues, post a comment and I&rsquo;ll try help you to solve it.</p>
+]]></content>
+  </entry>
+  
+</feed>

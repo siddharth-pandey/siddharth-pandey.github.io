@@ -4,7 +4,7 @@
   <title><![CDATA[Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-01-22T16:50:31+00:00</updated>
+  <updated>2015-02-03T10:57:00+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,122 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to store data using SQLiteDatabase in Android application?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application/"/>
+    <updated>2015-01-28T09:35:19+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application</id>
+    <content type="html"><![CDATA[<p>I was asked by one of my friend to help him to save some data in his android application. Due to that nature of the application, his preferred storage option was <a href="http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a> which resides under <code>android.database.sqlite</code> namespace. It exposes methods to manage a SQLite database. It also has methods to create, delete, execute SQL commands, and perform other common database management tasks.</p>
+
+<!-- more -->
+
+
+<p><a href="https://github.com/siddharth-pandey/Students-Catalog">You can view and download the sample application here</a>. Feel free to download or modify the project by extending it.</p>
+
+<p>Let us look at the following code below that is taken from the project mentioned in the link above.</p>
+
+<p>Below is the code from <code>onCreate()</code> overload function that is called when the activity is first created.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/** Called when the activity is first created. */
+</span><span class='line'>    @Override
+</span><span class='line'>    protected void onCreate(Bundle savedInstanceState) {
+</span><span class='line'>        super.onCreate(savedInstanceState);
+</span><span class='line'>        setContentView(R.layout.activity_main);
+</span><span class='line'>
+</span><span class='line'>        editRollno=(EditText)findViewById(R.id.editRollno);
+</span><span class='line'>        editName=(EditText)findViewById(R.id.editName);
+</span><span class='line'>        editMarks=(EditText)findViewById(R.id.editMarks);
+</span><span class='line'>        btnAdd=(Button)findViewById(R.id.btnAdd);
+</span><span class='line'>        btnDelete=(Button)findViewById(R.id.btnDelete);
+</span><span class='line'>        btnModify=(Button)findViewById(R.id.btnModify);
+</span><span class='line'>        btnView=(Button)findViewById(R.id.btnView);
+</span><span class='line'>        btnViewAll=(Button)findViewById(R.id.btnViewAll);
+</span><span class='line'>        btnShowInfo=(Button)findViewById(R.id.btnShowInfo);
+</span><span class='line'>
+</span><span class='line'>        // setup click listener for all the buttons
+</span><span class='line'>        btnAdd.setOnClickListener(this);
+</span><span class='line'>        btnDelete.setOnClickListener(this);
+</span><span class='line'>        btnModify.setOnClickListener(this);
+</span><span class='line'>        btnView.setOnClickListener(this);
+</span><span class='line'>        btnViewAll.setOnClickListener(this);
+</span><span class='line'>        btnShowInfo.setOnClickListener(this);
+</span><span class='line'>
+</span><span class='line'>        // database related code
+</span><span class='line'>        db = openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
+</span><span class='line'>        db.execSQL("CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);");
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let us look at the code above. We get references to all the buttons and edittext widgets in our code that is quite straightforward. Then we setup click listeners for all the buttons. To do that we make our Activity class implement <code>View.OnClickListener</code> interface. We are using this way to setup click handlers so basically, the <code>onClick()</code> function is called when a <code>View</code> has been clicked.</p>
+
+<p>Next is the code related to database. <code>openOrCreateDatabase()</code> function, as the name suggests opens <code>StudentDB</code> database if it exists already. If not, it then creates it. The first paramter is the name of the database that we want to open or create i.e. <code>StudentDB</code>. The second parameter, <code>Context.MODE_PRIVATE</code> indicates that the database file can only be accessed by the calling application or all applications sharing the same user ID. The third parameter is a <code>Cursor</code> factory object which can be left null if not required.</p>
+
+<p>The second statement, <code>db.execSQL()</code> function is to execute any SQL command. Above, it is used to create a table named <code>student</code> if it doesn&rsquo;t exist. We use this function for queries like <code>INSERT, UPDATE, DELETE</code>.</p>
+
+<p>This app also uses <code>db.rawQuery()</code> that runs the provided SQL and returns aCursor over the result set and we check the result by using <code>moveToFirst()</code> function that moves the cursor to the first row and returns a boolean. If false we then show either a alert or Toast message to user.</p>
+
+<p>I&rsquo;m not going to paste all the code from project here as the main statements and functions are already covered above. Download the project and give it a try.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to migrate an android project from Eclipse to Android Studio?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/01/23/how-to-migrate-an-android-project-from-eclipse-to-android-studio/"/>
+    <updated>2015-01-23T14:32:46+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/01/23/how-to-migrate-an-android-project-from-eclipse-to-android-studio</id>
+    <content type="html"><![CDATA[<p>This post can help you if you have been working on android projects in Eclipse with ADT and want to migrate that project to Android Studio.</p>
+
+<p>Google had made Android Studio the official IDE for Android, so you should migrate to Android Studio to receive all the latest IDE updates.</p>
+
+<!-- more -->
+
+
+<p><a href="https://developer.android.com/sdk/installing/migrate.html">This is the link</a> that shows some steps how to migrate. Below are the same steps:</p>
+
+<ul>
+<li>In Android Studio, close any projects currently open. You should see the Welcome to Android Studio window.</li>
+<li>Click Import Non-Android Studio project.</li>
+<li>Locate the project you exported from Eclipse, expand it, select the build.gradle file and click OK.</li>
+<li>In the following dialog, leave Use gradle wrapper selected and click OK. (You do not need to specify the Gradle home.)</li>
+</ul>
+
+
+<p>Android Studio properly updates the project structure and creates the appropriate Gradle build file.</p>
+
+<p>You can also import the same project in Android Studio by selecting <code>Import Project</code> from <code>File</code> option in Android Studio. Locate the project and follow thesteps in the wizard.</p>
+
+<p>Hope following the steps above can help you migrate your project. If you face any issues, post a comment and I&rsquo;ll try help you to solve it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why does my mac terminal still uses an older version of Java?]]></title>
@@ -1287,62 +1403,6 @@ No problem! You can quickly switch to use the new SQL Server Compact – a light
 <p>Ta da – no more external database required. Run your project again (Shift-F5) and this time it will create and connect to a file-based database (a .sdf file will appear in your ~/App_Data folder). The EFCodeFirst.SqlServerCompact package adds a file to your project called AppStart_SQLCEEntityFramework.cs, which configures the runtime to use SQL CE.</p>
 
 <p>Of course you probably still want the proper version of SQL Server when you eventually deploy your application for public use, but for small applications or for learning, SQL CE is really handy.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Extract key/values from FormCollection in ASP.NET MVC action method]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection/"/>
-    <updated>2013-01-03T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2013/01/03/extract-keyvalues-from-formcollection</id>
-    <content type="html"><![CDATA[<p>To avoid you from having to chase for the same information: here&rsquo;s how you extract key / value pairs from the FormCollection that comes as an argument in an ASP.NET MVC action method:</p>
-
-<pre><code>public ActionResult Create(FormCollection formCollection){ foreach (var key in formCollection.AllKeys) { var value = formCollection[key]; // etc. } foreach (var key in formCollection.Keys) { var value = formCollection[key.ToString()]; // etc. }}
-</code></pre>
-
-<!-- more -->
-
-
-<p>Also, a final tip: If you find that the formCollection does not contain the key/value pairs you expected, check that </p>
-
-<ol>
-<li>Your controls reside within the correct form (you can have more than one)</li>
-<li>Your controls have names (just having an id is not returning values in the formCollection)
-Hope this helps. </li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Must Have Developer Tools! Some tricks to develop quicker]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks/"/>
-    <updated>2012-12-20T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2012/12/20/must-have-developer-tools-some-tricks</id>
-    <content type="html"><![CDATA[<p><strong>Google Developer Tools, Some tricks to develop quicker</strong></p>
-
-<ol>
-<li>View Source => By going through menu navigation or Ctrl-Shit-I on windows or Cmd-option(alt)-I on mac.</li>
-<li>Or for particular element, just right click on it and choose inspect element.</li>
-<li>For fast navigation, prefer keyboard arrow keys to collapse or expand DOM elements. You will find the width and height of that active element as you move in Developer Tool.</li>
-<li>To get the full view of the page, try Ctrl - (minus) to zoom out so as to see your whole page with developer tools open without scrolling. Sometimes useful to me.</li>
-</ol>
-
-
-<!-- more -->
-
-
-<ol>
-<li>You can copy the the content or the DOM elements by using your mouse, but you might like to do this by using console&rsquo;s copy() method. For example, copy(document.body.innerText) and then paste that anywhere. Its handy if you know the DOM element and may help for productivity.</li>
-<li>Use clear(); function to clear the console, however the developer tool has a GUI for that.</li>
-<li>Use inspect(body) to inspect body element of the DOM, just pass any element in the function.</li>
-<li>Also, you can use $0 to access the element that is selected in the DOM in a console. So,  you can pass $( $0 ) for jquery method where an anchor tag was selected in your DOM, so it means you are accessing that anchor method.</li>
-<li>Under Network tab, the blue line in the waterfall chart shows that the DOM is ready or the DOMContentLoaded Event fire and the read line shows the windows load event which waits for the documents to load images, iframes, etc.</li>
-<li>You an see the cookies information by going through the Network tab and then selecting Header or Cookies tab.</li>
-<li>For javascript debugging, we can edit the script file of the page on the fly and it will render it as this feature is unique to Chrome because of its V8 JavaScript engine.</li>
-<li>Sometimes, its hard for us to find where the error is in our script, so you might want to open the script in developer tools and then click the pause button, now chrome will set a breakpoint when it find the statement because of which the error is being logged in console.</li>
-</ol>
-
 ]]></content>
   </entry>
   
