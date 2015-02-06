@@ -9,7 +9,7 @@
   <meta name="author" content="Siddharth Pandey">
 
   
-  <meta name="description" content="Recently I had a need to use HTML5 LocalStorage API in my web application project. The requirement was to save the vertical scroll position of window &hellip;">
+  <meta name="description" content="I came across a scenario where I had to access some information from a file with .dll extension. And then I thought to write this post. This &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to get version or product details from a .dll file or running application?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-28T15:54:26+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:54 pm</span></time>
+        
+           | <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/#disqus_thread"
+             data-disqus-identifier="http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I came across a scenario where I had to access some information from a file with <code>.dll</code> extension. And then I thought to write this post. This information may include that assembly&rsquo;s product name, product version, file version etc.
+This scenario may be required either to read a <code>.dll</code> file from disk or from the current running application. The code below covers both the scenarios:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// From executing application.
+</span><span class='line'>string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+</span><span class='line'>
+</span><span class='line'>// From a physical file, provide full path to that file.
+</span><span class='line'>string assemblyVersion = Assembly.LoadFile('your assembly file').GetName().Version.ToString();
+</span><span class='line'>
+</span><span class='line'>// From executing application, gives file version.
+</span><span class='line'>string fileVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+</span><span class='line'>
+</span><span class='line'>// From executing application, gives product version.
+</span><span class='line'>string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -448,51 +511,6 @@ So, I thought to write this quick post. Below is the directions to achieve the a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/03/what-if-i-dont-have-sql-express/">What if I don’t have SQL Express installed?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-01-03'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2013/01/03/what-if-i-dont-have-sql-express/#disqus_thread"
-             data-disqus-identifier="http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4> what if I don’t have SQL Express installed?</h4>
-
-<p>If you don’t have SQL Express installed and running, you may have got the following error when your code tried to read or write some data:</p>
-
-<blockquote><p><em>A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Blah blah blah…</em>
-No problem! You can quickly switch to use the new SQL Server Compact – a lightweight, in-process database – without having to download or install anything manually. Simply add SQL Server Compact to your project by issuing the following command in the Package Manager Console:</p></blockquote>
-
-<pre><code>Install-Package EFCodeFirst.SqlServerCompact
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/01/03/what-if-i-dont-have-sql-express/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -510,6 +528,10 @@ No problem! You can quickly switch to use the new SQL Server Compact – a light
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application/">Where is SQLiteDatabase stored in a Android application?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application/">How to store data using SQLiteDatabase in Android application?</a>
       </li>
     
@@ -523,10 +545,6 @@ No problem! You can quickly switch to use the new SQL Server Compact – a light
     
       <li class="post">
         <a href="/blog/2015/01/12/introduction-to-dependency-injection/">Introduction to Dependency Injection</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/06/introduction-to-inversion-of-control/">Introduction to Inversion of Control</a>
       </li>
     
   </ul>

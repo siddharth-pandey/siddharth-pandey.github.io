@@ -4,7 +4,7 @@
   <title><![CDATA[Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-02-03T10:57:00+00:00</updated>
+  <updated>2015-02-06T13:56:30+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Where is SQLiteDatabase stored in a Android application?]]></title>
+    <link href="http://siddharth-pandey.github.io/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application/"/>
+    <updated>2015-02-04T06:55:53+00:00</updated>
+    <id>http://siddharth-pandey.github.io/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application</id>
+    <content type="html"><![CDATA[<p>Recently I published an article to help my friend to understand <a href="http://siddharth-pandey.github.io/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application/">how to store data using SQLiteDatabase in Android application</a>.</p>
+
+<!-- more -->
+
+
+<p>I&rsquo;m using Android Studio as my IDE. To view database, follow the steps below:
+ - Run your application either in emulator or physical device.
+ - In Android Studio, go to <code>Tools &gt; Android &gt; Android Device Monitor</code>. This will open in a separate window.
+ - Select your choice of device at the left side of window.
+ - Now select <code>File Explorer</code> tab from the right side of window.
+ - Inside the details area of tab, navigate to <code>data &gt; data &gt; {your app package name} &gt; databases &gt; {your database name}</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to store data using SQLiteDatabase in Android application?]]></title>
@@ -1379,30 +1398,6 @@ Going to college or university has many advantages. You might find yourself crea
 <p>Somehow, your work will take the priority of more number of hours from the 24 hours and you will get  very less time to spend only for you! So, you would not choose something as your goal that you don&rsquo;t enjoy or that is boring! Choose something, that you love and enjoy and even getting paid for that enjoyment. If you are doing this, then someone is not stealing your life! Instead they are paying you to do something that you would be doing if you don&rsquo;t had a job. Also, everyone one has financial needs, so choose wisely if money is your main reason for success. </p>
 
 <p><strong>Try to answer the above questions taking your case in your mind. Write it down and keep reading. I will be coming with the next part - <a href="http://learnwithsid.blogspot.co.uk/2013/01/some-facts-about-all-programmer-or.html">Some facts about all the Programmers or Software Developers</a>.</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What if I don’t have SQL Express installed?]]></title>
-    <link href="http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express/"/>
-    <updated>2013-01-03T00:00:00+00:00</updated>
-    <id>http://siddharth-pandey.github.io/blog/2013/01/03/what-if-i-dont-have-sql-express</id>
-    <content type="html"><![CDATA[<h4> what if I don’t have SQL Express installed?</h4>
-
-<p>If you don’t have SQL Express installed and running, you may have got the following error when your code tried to read or write some data:</p>
-
-<blockquote><p><em>A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Blah blah blah…</em>
-No problem! You can quickly switch to use the new SQL Server Compact – a lightweight, in-process database – without having to download or install anything manually. Simply add SQL Server Compact to your project by issuing the following command in the Package Manager Console:</p></blockquote>
-
-<pre><code>Install-Package EFCodeFirst.SqlServerCompact
-</code></pre>
-
-<!-- more -->
-
-
-<p>Ta da – no more external database required. Run your project again (Shift-F5) and this time it will create and connect to a file-based database (a .sdf file will appear in your ~/App_Data folder). The EFCodeFirst.SqlServerCompact package adds a file to your project called AppStart_SQLCEEntityFramework.cs, which configures the runtime to use SQL CE.</p>
-
-<p>Of course you probably still want the proper version of SQL Server when you eventually deploy your application for public use, but for small applications or for learning, SQL CE is really handy.</p>
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Siddharth Pandey">
 
   
-  <meta name="description" content="I was asked by one of my friend to help him to save some data in his android application. Due to that nature of the application, his preferred &hellip;">
+  <meta name="description" content="Recently I published an article to help my friend to understand how to store data using SQLiteDatabase in Android application. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application/">Where is SQLiteDatabase stored in a Android application?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-04T06:55:53+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:55 am</span></time>
+        
+           | <a href="/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application/#disqus_thread"
+             data-disqus-identifier="http://siddharth-pandey.github.io/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I published an article to help my friend to understand <a href="http://siddharth-pandey.github.io/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application/">how to store data using SQLiteDatabase in Android application</a>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -445,69 +482,6 @@ Please read <a href="http://siddharth-pandey.github.io/blog/2014/12/23/Introduct
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">How to get version or product details from a .dll file or running application?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-28T15:54:26+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:54 pm</span></time>
-        
-           | <a href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/#disqus_thread"
-             data-disqus-identifier="http://siddharth-pandey.github.io/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I came across a scenario where I had to access some information from a file with <code>.dll</code> extension. And then I thought to write this post. This information may include that assembly&rsquo;s product name, product version, file version etc.
-This scenario may be required either to read a <code>.dll</code> file from disk or from the current running application. The code below covers both the scenarios:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// From executing application.
-</span><span class='line'>string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-</span><span class='line'>
-</span><span class='line'>// From a physical file, provide full path to that file.
-</span><span class='line'>string assemblyVersion = Assembly.LoadFile('your assembly file').GetName().Version.ToString();
-</span><span class='line'>
-</span><span class='line'>// From executing application, gives file version.
-</span><span class='line'>string fileVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
-</span><span class='line'>
-</span><span class='line'>// From executing application, gives product version.
-</span><span class='line'>string productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/08/28/how-to-get-version-or-product-details-from-a-dll-file-or-running-application/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -523,6 +497,10 @@ This scenario may be required either to read a <code>.dll</code> file from disk 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/04/where-is-sqlitedatabase-stored-in-a-android-application/">Where is SQLiteDatabase stored in a Android application?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/28/how-to-store-data-using-sqlitedatabase-in-android-application/">How to store data using SQLiteDatabase in Android application?</a>
       </li>
     
@@ -536,10 +514,6 @@ This scenario may be required either to read a <code>.dll</code> file from disk 
     
       <li class="post">
         <a href="/blog/2015/01/12/introduction-to-dependency-injection/">Introduction to Dependency Injection</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/06/introduction-to-inversion-of-control/">Introduction to Inversion of Control</a>
       </li>
     
   </ul>
