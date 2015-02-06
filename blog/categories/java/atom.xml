@@ -4,7 +4,7 @@
   <title><![CDATA[Category: java | Sid's Blog]]></title>
   <link href="http://siddharth-pandey.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://siddharth-pandey.github.io/"/>
-  <updated>2015-02-06T13:56:30+00:00</updated>
+  <updated>2015-02-06T13:58:33+00:00</updated>
   <id>http://siddharth-pandey.github.io/</id>
   <author>
     <name><![CDATA[Siddharth Pandey]]></name>
@@ -23,12 +23,14 @@
 <!-- more -->
 
 
-<p>I&rsquo;m using Android Studio as my IDE. To view database, follow the steps below:
- - Run your application either in emulator or physical device.
- - In Android Studio, go to <code>Tools &gt; Android &gt; Android Device Monitor</code>. This will open in a separate window.
- - Select your choice of device at the left side of window.
- - Now select <code>File Explorer</code> tab from the right side of window.
- - Inside the details area of tab, navigate to <code>data &gt; data &gt; {your app package name} &gt; databases &gt; {your database name}</code></p>
+<p>I&rsquo;m using Android Studio as my IDE. To view database, follow the steps below:</p>
+
+<pre><code>- Run your application either in emulator or physical device.
+- In Android Studio, go to `Tools &gt; Android &gt; Android Device Monitor`. This will open in a separate window.
+- Select your choice of device at the left side of window.
+- Now select `File Explorer` tab from the right side of window.
+- Inside the details area of tab, navigate to `data &gt; data &gt; {your app package name} &gt; databases &gt; {your database name}`
+</code></pre>
 ]]></content>
   </entry>
   
